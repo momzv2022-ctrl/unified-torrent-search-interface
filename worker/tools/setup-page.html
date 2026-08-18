@@ -224,16 +224,17 @@ td, th { text-align: left; padding: .4rem .5rem .4rem 0; border-bottom: 1px soli
 <h2>2 &middot; Deploy it</h2>
 <div class="card">
   <p style="margin-top:0">
-    This link opens Cloudflare's deploy screen with the program already loaded,
-    your key already in it, and a name already filled in. Nothing to copy,
-    nothing to paste, and no editor in the way.
+    This link opens the program in Cloudflare's playground with your key already
+    in it: an editor with a live preview beside it, and a <em>Deploy</em> button
+    on top. Nothing to copy and nothing to paste.
   </p>
   <!-- A new tab, deliberately. This page is holding a key that exists nowhere
        else yet, and navigating away from it before it is saved is the one way
        to lose it. -->
-  <a class="button" id="open-deploy" href="#" target="_blank" rel="noopener">
-    Deploy it &nearr;
+  <a class="button" id="open-playground" href="#" target="_blank" rel="noopener">
+    Open it in Cloudflare &nearr;
   </a>
+  <div class="status" id="playground-status" role="status" aria-live="polite"></div>
   <div class="status" id="link-status" role="status" aria-live="polite">preparing the link…</div>
   <p class="note" style="margin-bottom:0">
     It opens in a new tab, so this page &mdash; and your key &mdash; stays put.
@@ -248,9 +249,10 @@ td, th { text-align: left; padding: .4rem .5rem .4rem 0; border-bottom: 1px soli
 
 <ol class="steps">
   <li>
-    <strong>Sign in, or make a free account</strong>
+    <strong>Press <em>Deploy</em>, then sign in or make a free account</strong>
     An email address and a password &mdash; no domain and no card. The program is
-    shown under <em>Code preview</em>, so you can read what you are about to run.
+    in the editor and already running in the preview beside it, so you can read
+    and try what you are about to deploy before you do.
   </li>
   <li>
     <strong>Take the address it shows you</strong>
@@ -271,19 +273,20 @@ td, th { text-align: left; padding: .4rem .5rem .4rem 0; border-bottom: 1px soli
 
 <div class="card">
   <details>
-    <summary>Rather watch it run before you deploy anything?</summary>
+    <summary>Skipping the editor &mdash; and why that link is not the one above</summary>
     <p class="note">
-      This opens the same program in Cloudflare's playground instead: an editor
-      with a live preview beside it, where you can type <code>/healthz</code> in
-      the preview's address box and watch it answer. It has its own
-      <em>Deploy</em> button that lands on the very screen above, so nothing is
-      lost by starting here &mdash; it is one more page, and one more page that
-      can have a bad day.
+      There is a second link that jumps straight to Cloudflare's deploy screen,
+      past the editor. <strong>It does not work at the moment.</strong> Since
+      2026-08-18 that screen rejects the payload with <em>&ldquo;Incoming
+      deployment from Workers Playground missing worker hash&rdquo;</em> and
+      renders an error page instead of the deploy form &mdash; an undocumented
+      format Cloudflare changed at their end, not something this page can fix.
+      It is kept here because the format may come back, and because the button
+      above reaches the same place through the editor.
     </p>
-    <a class="button secondary" id="open-playground" href="#" target="_blank" rel="noopener">
-      Open the playground instead &nearr;
+    <a class="button secondary" id="open-deploy" href="#" target="_blank" rel="noopener">
+      Deploy it &nearr;
     </a>
-    <div class="status" id="playground-status" role="status" aria-live="polite"></div>
   </details>
 </div>
 
@@ -508,7 +511,7 @@ __PLAYGROUND_LIB__
       // is big enough that the link passes that. Not a guess and not hidden:
       // the copy-and-paste route below gets to exactly the same place, and
       // Safari users are told so before they tap.
-      if (links.deploy.length > 78000) {
+      if (links.playground.length > 78000) {
         linkStatus.textContent =
           "In Safari this link is too long to open — use “copy and paste instead” below. " +
           "Chrome, Firefox and Edge open it fine.";
