@@ -25,7 +25,7 @@
  *   8. routes              — auth, /healthz, /api/v1/engines, /api/v1/search
  *   9. entry               — the runtime's twelve lines
  *
- * https://github.com/raul2hot/unified-torrent-search-interface
+ * https://github.com/momzv2022-ctrl/unified-torrent-search-interface
  * MIT licensed. No warranty. Laws differ where you are, and complying with
  * them — and with the terms of the sites this queries — is your responsibility.
  */
@@ -53,7 +53,7 @@ const VERSION = "0.4.0";
 // Where `/healthz` looks for "is there a newer version". Reached from
 // `/healthz` only, never from a search, and never fatal: if it does not answer
 // the update field is simply absent. `UTSI_UPDATE_CHECK=0` turns it off.
-const UPDATE_FEED = "https://raul2hot.github.io/unified-torrent-search-interface/version.json";
+const UPDATE_FEED = "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/version.json";
 
 // Where the engine feed lives (see "THE FEED" below). The feed is how a pasted
 // Worker keeps its engine addresses and definitions current without ever being
@@ -61,7 +61,7 @@ const UPDATE_FEED = "https://raul2hot.github.io/unified-torrent-search-interface
 // root keys pinned below, and a Worker that cannot fetch or verify it simply
 // keeps the engine definitions compiled into this file. UTSI_FEED_URL points it
 // elsewhere; UTSI_FEED=0 turns it off entirely.
-const DEFAULT_FEED_URL = "https://raul2hot.github.io/unified-torrent-search-interface/feed.json";
+const DEFAULT_FEED_URL = "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/feed.json";
 
 /**
  * The Ed25519 public keys this Worker trusts to anchor the feed, base64, raw
@@ -272,7 +272,7 @@ const DEFAULT_TRACKERS = [
 const API_SUFFIXES = ["/api/v1/search", "/api/v1", "/api"];
 
 const USER_AGENT =
-  "utsi-worker/" + VERSION + " (+https://github.com/raul2hot/unified-torrent-search-interface)";
+  "utsi-worker/" + VERSION + " (+https://github.com/momzv2022-ctrl/unified-torrent-search-interface)";
 
 // --- reading `env` ---------------------------------------------------------
 //
@@ -3888,7 +3888,7 @@ const BANNER = `Unified Torrent Search Interface
   GET /api/v1/engines        which engines this instance runs
   GET /healthz               liveness, no key needed
 
-https://github.com/raul2hot/unified-torrent-search-interface
+https://github.com/momzv2022-ctrl/unified-torrent-search-interface
 `;
 
 /** Named origins only. A wildcard would let any page spend this instance. */

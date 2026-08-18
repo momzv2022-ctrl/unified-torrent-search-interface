@@ -5,7 +5,7 @@ machine you neither own nor pay for. One JavaScript file, no dependencies, no
 build step, pasted into a free Cloudflare account.
 
 The setup page is at
-**<https://raul2hot.github.io/unified-torrent-search-interface/>**. It mints a
+**<https://momzv2022-ctrl.github.io/unified-torrent-search-interface/>**. It mints a
 key in your browser and hands you a link that opens Cloudflare's playground with
 the program already loaded — press Deploy and name it. The steps are in the
 [README](../README.md); how that link works, and what about it is still

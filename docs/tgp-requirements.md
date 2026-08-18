@@ -147,7 +147,7 @@ reasoning as publishing `worker.js.sha256` next to a file anyone can read.
   "moved_to": null,
   "mirrors": [
     "https://feed.example.org/feed.json",
-    "https://raul2hot.github.io/unified-torrent-search-interface/feed.json"
+    "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/feed.json"
   ],
   "engines": [ /* descriptors, section 6 */ ]
 }

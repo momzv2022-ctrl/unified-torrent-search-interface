@@ -45,7 +45,7 @@ dev = [
 utsi = "utsi.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/raul2hot/unified-torrent-search-interface"
+Homepage = "https://github.com/momzv2022-ctrl/unified-torrent-search-interface"
 Protocol = "https://github.com/raul2hot/torrent-stream-protocol"
 
 [build-system]

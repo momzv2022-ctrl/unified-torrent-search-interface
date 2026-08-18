@@ -1563,7 +1563,7 @@ test("healthz says when a newer version exists, and never lets that break a sear
   assert.ok(!("update" in offline.body));
   assert.equal(offline.body.status, "ok");
 
-  const feed = stub({ "https://raul2hot.github.io": { version: "99.0.0" } });
+  const feed = stub({ "https://momzv2022-ctrl.github.io": { version: "99.0.0" } });
   const newer = await run("GET", "https://w.dev/healthz", {}, feed, config);
   assert.deepEqual(
     { latest: newer.body.update.latest, available: newer.body.update.available },
@@ -1586,7 +1586,7 @@ test("healthz says when a newer version exists, and never lets that break a sear
 
   // ...and it can be switched off entirely. It is the one request this Worker
   // makes that is not on your behalf.
-  const silent = stub({ "https://raul2hot.github.io": { version: "99.0.0" } });
+  const silent = stub({ "https://momzv2022-ctrl.github.io": { version: "99.0.0" } });
   const quiet = await run("GET", "https://w.dev/healthz", {}, silent, { ...config, updateCheck: false });
   assert.ok(!("update" in quiet.body));
   assert.equal(silent.calls.length, 0);

@@ -47,7 +47,7 @@ const FIXTURES = join(REPO, "worker", "tests", "fixtures");
 const WORKER_SOURCE = join(REPO, "worker", "src", "worker.js");
 
 const EXPIRES_DAYS = 14;
-const PAGES_BASE = "https://raul2hot.github.io/unified-torrent-search-interface/";
+const PAGES_BASE = "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/";
 
 const read = (path) => readFileSync(path, "utf8");
 const writeJson = (path, value) => writeFileSync(path, JSON.stringify(value, null, 2) + "\n");

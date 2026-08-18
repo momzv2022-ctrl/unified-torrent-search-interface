@@ -184,7 +184,7 @@ const TARGETS = [
 ];
 
 const USER_AGENT =
-  "utsi-probe (+https://github.com/raul2hot/unified-torrent-search-interface)";
+  "utsi-probe (+https://github.com/momzv2022-ctrl/unified-torrent-search-interface)";
 
 /**
  * What a browser sends. Used only as the *second* attempt, never the first.

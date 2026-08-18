@@ -31,7 +31,7 @@ const SOURCE_PATH = join(REPO, "worker", "src", "worker.js");
 const PAGE_PATH = join(HERE, "setup-page.html");
 const PLAYGROUND_PATH = join(HERE, "playground.js");
 
-const REPO_URL = "https://github.com/raul2hot/unified-torrent-search-interface";
+const REPO_URL = "https://github.com/momzv2022-ctrl/unified-torrent-search-interface";
 
 const source = readFileSync(SOURCE_PATH, "utf8");
 

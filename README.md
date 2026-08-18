@@ -12,7 +12,7 @@ list, and hands back names, sizes, swarm counts and `magnet:` links.
 
 Nothing to install, no terminal, no GitHub account. It works on a phone.
 
-**[→ Open the setup page](https://raul2hot.github.io/unified-torrent-search-interface/)**
+**[→ Open the setup page](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/)**
 
 That page mints you a key and a worker name, and hands you **one link**. The link
 opens Cloudflare's deploy screen with the program already loaded, your key
@@ -54,7 +54,7 @@ qBittorrent's own search plugins in a sandbox. You need **Python 3.11 or newer**
 and a Mac, a Linux box, or Windows with WSL.
 
 ```sh
-git clone https://github.com/raul2hot/unified-torrent-search-interface
+git clone https://github.com/momzv2022-ctrl/unified-torrent-search-interface
 cd unified-torrent-search-interface
 ./start.sh
 ```
