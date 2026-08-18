@@ -1,0 +1,191 @@
+name: ci
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.11 is the floor the gateway supports; 3.12 is what the image ships,
+        # and what community plugins using PEP 701 f-strings need.
+        python: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - name: Lint
+        run: ruff check .
+      - name: Tests (offline — no plugin or torrent site is contacted)
+        run: pytest
+
+  worker:
+    # The Cloudflare Worker. One JavaScript file with no dependencies, so this
+    # needs no install step and no lockfile — `node --test` is the whole
+    # toolchain. The suite includes the frozen answers the Python Worker used to
+    # produce, which is what keeps the port honest now that it is gone.
+    runs-on: ubuntu-latest
+    strategy:
+      # Both, and 20 is not decoration. Node 22.7 turned on automatic ES-module
+      # detection, which quietly papered over the fact that this repository had
+      # no package.json: `.js` meant CommonJS, and `import { x } from "./x.js"`
+      # threw everywhere on 20 — the whole test suite included — while CI, pinned
+      # to 22, stayed green. Testing only the newest Node is how a project ships
+      # a repository that will not run for anyone on the LTS before it.
+      fail-fast: false
+      matrix:
+        node: ["20", "22"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Tests (offline — the network is a table of fixtures)
+        run: node --test worker/tests/worker.test.mjs
+      - name: The playground-link encoder still matches lz-string
+        run: node worker/tools/playground-link.mjs --self-test
+      - name: A deploy link for the real Worker is generated, and fits in a URL
+        # The second half of that sentence used to be decorative: this step
+        # printed the length and asserted nothing, so only the node test was
+        # holding the line. Both now do, and this one says the number out loud
+        # in the log, which is what you want when the link starts misbehaving.
+        # The bound is Chrome and Firefox's tolerance, not Safari's: the feed
+        # machinery pushed the link past Safari's ~80,000 in 0.4.0, and the
+        # setup page steers Safari to copy-and-paste. See docs/deploy-link.md.
+        run: |
+          node worker/tools/playground-link.mjs worker/src/worker.js | head -2
+          chars=$(node -e "
+            import('./worker/tools/playground.js').then(async (m) => {
+              const { readFileSync } = await import('node:fs');
+              process.stdout.write(String(m.playgroundLink(readFileSync('worker/src/worker.js', 'utf8')).length));
+            })")
+          echo "deploy link is $chars characters (Safari gives up around 80,000; Chrome and Firefox take megabytes)"
+          test "$chars" -lt 300000
+      - name: The feed descriptors reproduce the golden rows
+        # feed/engines.json is what the nightly feed workflow signs and every
+        # deployed Worker eventually runs. It must never drift from the seed
+        # compiled into worker.js — the replay gate holds the two together.
+        run: node worker/tools/feed.mjs check
+      - name: Build the artifact and the setup page
+        run: node worker/tools/build.mjs
+      - name: The artifact is a copy of the source, not a build of it
+        # The SHA-256 the setup page publishes is only worth anything if the
+        # file it names is the file on GitHub.
+        run: cmp worker/src/worker.js site/worker.js
+      - name: It is well under the free plan's 3 MB, and still readable
+        run: |
+          bytes=$(wc -c < site/worker.js)
+          echo "worker.js is $bytes bytes"
+          test "$bytes" -lt 3145728
+          test "$bytes" -lt 204800
+      - uses: actions/upload-artifact@v4
+        # Once, not once per Node. Two matrix legs uploading the same artifact
+        # name is an error in upload-artifact v4, and the built file does not
+        # differ between them anyway — the build is a copy, not a compile.
+        if: matrix.node == '22'
+        with:
+          name: worker
+          path: site/
+
+  setup-page:
+    # "Mobile-first" is five assertions rather than a design opinion, and this is
+    # where they are checked: no sideways scroll at 320 CSS pixels, wide things
+    # scrolling inside their own box, tappable targets, a key legible without
+    # pinch-zoom, and a copy button that really does yield the program with the
+    # browser's own key spliced in. Plus one that is not about layout: the page
+    # must make no network request at all.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: node worker/tools/build.mjs
+      - name: Install a browser
+        run: |
+          npm install --no-save --no-audit --no-fund playwright@1
+          npx playwright install --with-deps chromium
+      - run: node worker/tools/check-page.mjs
+
+  spec-drift:
+    # `spec/tsp-openapi.yaml` is what the conformance tests validate against.
+    # If upstream moves and this copy does not, the tests would quietly be
+    # checking the wrong contract.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compare the vendored TSP contract with upstream
+        run: |
+          curl -fsSL -o /tmp/upstream.yaml \
+            https://raw.githubusercontent.com/raul2hot/torrent-stream-protocol/main/openapi.yaml
+          if ! diff -u spec/tsp-openapi.yaml /tmp/upstream.yaml; then
+            echo "::error::spec/tsp-openapi.yaml is out of date. Refresh it and re-run the conformance tests."
+            exit 1
+          fi
+
+  registry-dry-run:
+    # Exercises the wiki parser, the static scanner and the pinning logic
+    # against live upstream, without writing anything. This is the regression
+    # guard for the parser; a copy of the wiki page is not checked in.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - run: utsi registry-update --dry-run | tee /tmp/dry-run.txt
+      - name: Sanity-check the plugin count
+        run: |
+          python - <<'PY'
+          import re, sys
+          text = open("/tmp/dry-run.txt").read()
+          match = re.search(r"^(\d+) plugins;", text, re.MULTILINE)
+          assert match, f"no summary line in:\n{text}"
+          count = int(match.group(1))
+          # The wiki has hovered around 100 for years. A large swing means the
+          # page format changed and the parser needs a look.
+          assert 70 <= count <= 200, f"parsed {count} plugins, expected 70-200"
+          print(f"parsed {count} plugins")
+          PY
+
+  start-script:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # The one command the README tells people to run. If this breaks, the
+      # project is broken for everyone arriving at it for the first time.
+      - name: Start it the way the README says
+        run: ./start.sh --local
+        env:
+          UTSI_API_KEY: ci-key
+      - name: The API answers, and refuses a wrong key
+        run: |
+          curl -fsS http://127.0.0.1:7860/healthz | tee /dev/stderr | grep -q '"status":"ok"'
+          # A missing key must be 401, never an empty result set.
+          test "$(curl -s -o /dev/null -w '%{http_code}' 'http://127.0.0.1:7860/api/v1/search?q=x')" = 401
+          test "$(curl -s -o /dev/null -w '%{http_code}' -H 'X-API-Key: wrong' \
+            'http://127.0.0.1:7860/api/v1/search?q=x')" = 403
+          curl -fsS -H 'X-API-Key: ci-key' 'http://127.0.0.1:7860/api/v1/search?q=linux&limit=5' >/dev/null
+      - name: Stop it again
+        if: always()
+        run: ./stop.sh
+      - name: Server log
+        if: always()
+        run: cat .utsi/utsi.log || true

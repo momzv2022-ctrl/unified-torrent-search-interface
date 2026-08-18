@@ -1,0 +1,268 @@
+{
+  "tgp_version": 1,
+  "serial": 2,
+  "issued_at": "2026-08-18T05:03:09Z",
+  "expires_at": "2026-09-01T05:03:09Z",
+  "moved_to": null,
+  "mirrors": [
+    "https://raul2hot.github.io/unified-torrent-search-interface/feed.json"
+  ],
+  "engines": [
+    {
+      "name": "knaben",
+      "kind": "json",
+      "breadth": "broad",
+      "enabled": true,
+      "origins": [
+        "https://api.knaben.org",
+        "https://api.knaben.eu"
+      ],
+      "site": "https://knaben.org",
+      "request": {
+        "method": "POST",
+        "path": "/v1",
+        "body": {
+          "search_type": "100%",
+          "search_field": "title",
+          "query": "{q}",
+          "order_by": "seeders",
+          "order_direction": "desc",
+          "from": 0,
+          "size": "{limit}",
+          "hide_unsafe": true
+        }
+      },
+      "rows": "hits",
+      "rows_required": true,
+      "provenance": "tracker",
+      "fields": {
+        "name": "title",
+        "infohash": [
+          "hash",
+          "magnetUrl"
+        ],
+        "size_bytes": "bytes",
+        "seeders": "seeders",
+        "leechers": "peers",
+        "first_seen": "date",
+        "description_url": "details"
+      }
+    },
+    {
+      "name": "piratebay",
+      "kind": "json",
+      "breadth": "broad",
+      "enabled": true,
+      "origins": [
+        "https://apibay.org"
+      ],
+      "site": "https://apibay.org",
+      "request": {
+        "method": "GET",
+        "path": "/q.php",
+        "query": {
+          "q": "{q}"
+        }
+      },
+      "rows": "",
+      "fields": {
+        "name": "name",
+        "infohash": "info_hash",
+        "size_bytes": {
+          "from": "size",
+          "nonzero": true
+        },
+        "files": {
+          "from": "num_files",
+          "nonzero": true
+        },
+        "seeders": "seeders",
+        "leechers": "leechers",
+        "category": {
+          "from": "category",
+          "prefix": 1,
+          "map": {
+            "1": "audio",
+            "2": "video",
+            "3": "software",
+            "4": "software"
+          }
+        },
+        "first_seen": "added",
+        "description_url": {
+          "template": "https://thepiratebay.org/description.php?id={value}",
+          "from": "id"
+        }
+      }
+    },
+    {
+      "name": "torrentscsv",
+      "kind": "json",
+      "breadth": "broad",
+      "enabled": true,
+      "origins": [
+        "https://torrents-csv.com"
+      ],
+      "site": "https://torrents-csv.com",
+      "request": {
+        "method": "GET",
+        "path": "/service/search",
+        "query": {
+          "q": "{q}",
+          "size": "{limit}"
+        }
+      },
+      "rows": "torrents",
+      "fields": {
+        "name": "name",
+        "infohash": "infohash",
+        "size_bytes": "size_bytes",
+        "seeders": "seeders",
+        "leechers": "leechers",
+        "first_seen": "created_unix"
+      }
+    },
+    {
+      "name": "animetosho",
+      "kind": "json",
+      "breadth": "narrow",
+      "enabled": true,
+      "origins": [
+        "https://feed.animetosho.org"
+      ],
+      "site": "https://animetosho.org",
+      "request": {
+        "method": "GET",
+        "path": "/json",
+        "query": {
+          "q": "{q}"
+        }
+      },
+      "rows": "",
+      "fields": {
+        "name": "title",
+        "infohash": "magnet_uri",
+        "size_bytes": "total_size",
+        "seeders": "seeders",
+        "leechers": "leechers",
+        "first_seen": "timestamp",
+        "description_url": "link"
+      }
+    },
+    {
+      "name": "eztvx",
+      "kind": "json",
+      "breadth": "narrow",
+      "enabled": true,
+      "origins": [
+        "https://eztvx.to"
+      ],
+      "site": "https://eztvx.to",
+      "request": {
+        "method": "GET",
+        "path": "/api/get-torrents",
+        "query": {
+          "limit": "{limit}",
+          "page": "1",
+          "Keywords": "{q}"
+        }
+      },
+      "rows": "torrents",
+      "fields": {
+        "name": "title",
+        "infohash": [
+          "hash",
+          "magnet_url"
+        ],
+        "size_bytes": {
+          "from": "size_bytes",
+          "nonzero": true
+        },
+        "seeders": "seeds",
+        "leechers": "peers",
+        "category": {
+          "const": "video"
+        },
+        "first_seen": "date_released_unix",
+        "description_url": "episode_url"
+      }
+    },
+    {
+      "name": "nyaa",
+      "kind": "rss",
+      "breadth": "narrow",
+      "enabled": true,
+      "origins": [
+        "https://nyaa.si"
+      ],
+      "site": "https://nyaa.si",
+      "request": {
+        "method": "GET",
+        "path": "/",
+        "query": {
+          "page": "rss",
+          "q": "{q}"
+        }
+      },
+      "namespaces": {
+        "nyaa": "https://nyaa.si/xmlns/nyaa"
+      },
+      "fields": {
+        "name": "title",
+        "infohash": "nyaa:infoHash",
+        "size_bytes": "nyaa:size",
+        "seeders": "nyaa:seeders",
+        "leechers": "nyaa:leechers",
+        "category": {
+          "from": "nyaa:categoryId",
+          "prefix": 1,
+          "map": {
+            "1": "video",
+            "2": "audio",
+            "3": "document",
+            "4": "video",
+            "5": "image",
+            "6": "software"
+          }
+        },
+        "first_seen": "pubDate",
+        "torrent_url": "link",
+        "description_url": "guid"
+      }
+    },
+    {
+      "name": "yts",
+      "kind": "json",
+      "breadth": "narrow",
+      "enabled": true,
+      "origins": [
+        "https://yts.bz",
+        "https://yts.lt"
+      ],
+      "site": "https://yts.bz",
+      "note": "Deployed Workers keep their built-in yts adapter (its release name is assembled from four fields, which descriptors cannot express) and use this entry for its origins only. yts.mx already died once; this is the line that repairs the next move without a re-paste.",
+      "request": {
+        "method": "GET",
+        "path": "/api/v2/list_movies.json",
+        "query": {
+          "query_term": "{q}",
+          "limit": "{limit}"
+        },
+        "limit_cap": 50
+      },
+      "rows": "data.movies[].torrents[]",
+      "fields": {
+        "name": "^.title_long",
+        "infohash": "hash",
+        "size_bytes": "size_bytes",
+        "seeders": "seeds",
+        "leechers": "peers",
+        "category": {
+          "const": "video"
+        },
+        "first_seen": "date_uploaded_unix",
+        "description_url": "^.url"
+      }
+    }
+  ]
+}

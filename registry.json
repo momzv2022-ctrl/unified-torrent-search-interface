@@ -1,0 +1,3294 @@
+{
+  "generated_at": "2026-08-18T04:33:32Z",
+  "plugin_repo_ref": "a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991",
+  "runtime": {
+    "repo": "qbittorrent/qBittorrent",
+    "ref": "b1fa46da8e8a8f7c04052dbd464c732d25c3cfef",
+    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/b1fa46da8e8a8f7c04052dbd464c732d25c3cfef/src/searchengine/nova3",
+    "files": {
+      "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
+      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
+      "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
+      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
+      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002"
+    }
+  },
+  "plugins": [
+    {
+      "id": "academictorrents",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/academictorrents.py",
+      "source": "wiki",
+      "site": "Academic Torrents",
+      "site_url": "https://academictorrents.com/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.2",
+      "last_update": "2023-03-19",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "5a4e025814e1fc8ae97a6c267fb706e03976fef1b629cb63eeb9944ebd9b49d3",
+      "hosts": [
+        "academictorrents.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5 **READ REPOSITORY NOTES**"
+    },
+    {
+      "id": "acgrip",
+      "url": "https://raw.githubusercontent.com/nishizhen/qBit-search-plugins/main/acgrip.py",
+      "source": "wiki",
+      "site": "acgrip",
+      "site_url": "https://acg.rip",
+      "author": "nishizhen",
+      "repo": "https://github.com/nishizhen/qBit-search-plugins",
+      "version": "2.1",
+      "last_update": "2026-08-04",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "81c51080d5610ea7eefcc2749355d15ac82174375245a1805294f733db4928a5",
+      "hosts": [
+        "acg.rip"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.10+"
+    },
+    {
+      "id": "ali213",
+      "url": "https://raw.githubusercontent.com/hannsen/qbittorrent_search_plugins/master/ali213.py",
+      "source": "wiki",
+      "site": "ali213.net",
+      "site_url": "http://down.ali213.net/",
+      "author": "hannsen",
+      "repo": "https://github.com/hannsen/qbittorrent_search_plugins/",
+      "version": "1.00",
+      "last_update": "2017-12-25",
+      "license": "unknown",
+      "wiki_status": "warn",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "ca6167e6717896f4034fa14b1ad773b3ab613a643a6bd435b664788ab5a8022b",
+      "hosts": [
+        "btfile.soft5566.com",
+        "down.ali213.net",
+        "www.soft50.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.1.x / Python 3.5.0 ❗ qbt 4.3.0.1 / Python 3.9"
+    },
+    {
+      "id": "anidex",
+      "url": "https://raw.githubusercontent.com/nindogo/qbtSearchScripts/master/anidex.py",
+      "source": "wiki",
+      "site": "anidex.info",
+      "site_url": "https://anidex.info/",
+      "author": "Ni Ndogo",
+      "repo": "https://github.com/nindogo",
+      "version": "0.02",
+      "last_update": "2019-07-06",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "79a66e01e573e2df4d5511f09c67ec3b341f47cd8aa2926b5adfa698562ab02e",
+      "hosts": [
+        "anidex.info"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.x / Python 3.5.0"
+    },
+    {
+      "id": "animetosho",
+      "url": "https://raw.githubusercontent.com/AlaaBrahim/qBitTorrent-animetosho-search-plugin/main/animetosho.py",
+      "source": "wiki",
+      "site": "animetosho.org",
+      "site_url": "https://animetosho.org",
+      "author": "AlaaBrahim",
+      "repo": "https://github.com/AlaaBrahim",
+      "version": "1.1.0",
+      "last_update": "2024-11-14",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "00f041833a06de3f32821101b06535f2bd2255f228a8aa40e0f8e91850bd73c9",
+      "hosts": [
+        "animetosho.org",
+        "feed.animetosho.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x / Python 3.x.x"
+    },
+    {
+      "id": "apachetorrent",
+      "url": "https://gist.githubusercontent.com/bebetoh/3bb49cdf2b3718937b5446db1e4a4915/raw/1819e3ed75faa0da1571173a677081dc107054aa/apachetorrent.py",
+      "source": "wiki",
+      "site": "Apache Torrent",
+      "site_url": "https://apachetorrent.com",
+      "author": "bebetoh",
+      "repo": "https://github.com/bebetoh",
+      "version": "1.0.0",
+      "last_update": "2026-04-05",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "528566aa9144ccfec70e862e0af9ebc51c794979f181ae7146b04bca9b5ec105",
+      "hosts": [
+        "apachetorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 5.1.x / Python 3.11.x"
+    },
+    {
+      "id": "audiobookbay",
+      "url": "https://raw.githubusercontent.com/nklido/qBittorrent_search_engines/master/engines/audiobookbay.py",
+      "source": "wiki",
+      "site": "AudioBook Bay (ABB)",
+      "site_url": "http://theaudiobookbay.se/",
+      "author": "nKlido",
+      "repo": "https://github.com/nklido/qBittorrent_search_engines",
+      "version": "0.4",
+      "last_update": "2025-02-22",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "a815c16da570e58b1eba211d4bd1fbee835dddcd9e7f9a1ac63d7becbf41cb5e",
+      "hosts": [
+        "audiobookbay.fi",
+        "audiobookbay.is",
+        "theaudiobookbay.se"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.12.x"
+    },
+    {
+      "id": "bakabt",
+      "url": "https://raw.githubusercontent.com/MadeOfMagicAndWires/qBit-plugins/master/engines/bakabt.py",
+      "source": "wiki",
+      "site": "BakaBT",
+      "site_url": "https://bakabt.me",
+      "author": "Made Of Magic And Wires",
+      "repo": "https://github.com/MadeOfMagicAndWires/qBit-plugins",
+      "version": "1.30",
+      "last_update": "2017-04-13",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "628c516fbb9cfa78ff50ffbce0b0b5680a1d5a9fc892ee85ba3d8b52cf9ff56e",
+      "hosts": [
+        "bakabt.me"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.9.x"
+    },
+    {
+      "id": "bitsearch",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/bitsearch.py",
+      "source": "wiki",
+      "site": "Bit Search",
+      "site_url": "https://bitsearch.to",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.1",
+      "last_update": "2024-04-13",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "21b856f02ebcc28497a020539e80d347d5df5b6e2d6997d42cb5f9d90ab2a895",
+      "hosts": [
+        "bitsearch.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python 3.9.x"
+    },
+    {
+      "id": "bt4gprx",
+      "url": "https://raw.githubusercontent.com/TuckerWarlock/qbittorrent-search-plugins/main/bt4gprx.com/bt4gprx.py",
+      "source": "wiki",
+      "site": "bt4gprx",
+      "site_url": "https://bt4gprx.com/",
+      "author": "TuckerWarlock",
+      "repo": "https://github.com/TuckerWarlock/qbittorrent-search-plugins",
+      "version": "2.0",
+      "last_update": "2023-08-27",
+      "license": "unknown",
+      "wiki_status": "warn",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "9c6cc2672592239c18f75d9c3c939d1f3e3b952a556fc196dc8fe3f8b18469ac",
+      "hosts": [
+        "bt4gprx.com",
+        "downloadtorrentfile.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.5.x / Python 3.10.x ❗ Working when DDOS Cloudflare protection is disabled"
+    },
+    {
+      "id": "btdig",
+      "url": "https://raw.githubusercontent.com/galaris/BTDigg-qBittorrent-plugin/main/btdig.py",
+      "source": "wiki",
+      "site": "btdig",
+      "site_url": "https://www.btdig.com",
+      "author": "galaris",
+      "repo": "https://github.com/galaris/BTDigg-qBittorrent-plugin",
+      "version": "1.1",
+      "last_update": "2024-07-24",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "32ea79f5686fff4e3cea0f3fcd97bf1df9da16c29a64e5f742db8a055ce87d84",
+      "hosts": [
+        "www.btdig.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.4 / Python 3.9.x"
+    },
+    {
+      "id": "c411",
+      "url": "https://raw.githubusercontent.com/OptimusKoala/qbittorrent-c411-plugin/refs/heads/main/c411.py",
+      "source": "wiki",
+      "site": "C411",
+      "site_url": "https://c411.org/",
+      "author": "OptimusKoala",
+      "repo": "https://github.com/OptimusKoala/qbittorrent-c411-plugin",
+      "version": "1.00",
+      "last_update": "2026-03-21",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "b535c042ad912453658539b912d50b8ea0ac109de41764495730ac1b34e034eb",
+      "hosts": [
+        "c411.org",
+        "torznab.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9+ Private tracker, requires API key"
+    },
+    {
+      "id": "calidadtorrent",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/calidadtorrent.py",
+      "source": "wiki",
+      "site": "CalidadTorrent",
+      "site_url": "https://calidadtorrent.com",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-24",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "6cf8c997c762c807d3d48fe966b7957e88d1a1d0ef747f138656348c517d53d0",
+      "hosts": [
+        "calidadtorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "cloudtorrents",
+      "url": "https://raw.githubusercontent.com/elazar/qbittorrent-search-plugins/refs/heads/add-cloudtorrents-plugin/nova3/engines/cloudtorrents.py",
+      "source": "wiki",
+      "site": "CloudTorrents",
+      "site_url": "https://cloudtorrents.com",
+      "author": "elazar",
+      "repo": "https://github.com/elazar",
+      "version": "1.0",
+      "last_update": "2024-12-31",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "861485972efd8f442f289c80146e5d7b113c071667f07c2e2484d265859ba720",
+      "hosts": [
+        "api.cloudtorrents.com",
+        "cloudtorrents.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.3 / Python 3.9.0"
+    },
+    {
+      "id": "cpasbien",
+      "url": "https://raw.githubusercontent.com/MarcBresson/cpasbien/master/src/cpasbien.py",
+      "source": "wiki",
+      "site": "Cpasbien",
+      "site_url": "http://www.cpasbien.fr",
+      "author": "MarcBresson",
+      "repo": "https://github.com/MarcBresson/cpasbien",
+      "version": "2.2",
+      "last_update": "2023-12-24",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "69884cfd0e78708f5227859bca9e310227c1a9507d5cd0d03e4992dfdb2c76e6",
+      "hosts": [
+        "raw.githubusercontent.com",
+        "www.cpasbien.biz",
+        "www.cpasbien.fr"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x / Python 3.11.x"
+    },
+    {
+      "id": "danishbytes",
+      "url": "https://raw.githubusercontent.com/444995/qbit-search-plugins/main/engines/danishbytes.py",
+      "source": "wiki",
+      "site": "DanishBytes",
+      "site_url": "https://danishbytes.club",
+      "author": "444995",
+      "repo": "https://github.com/444995/qbit-search-plugins",
+      "version": "1.50",
+      "last_update": "2024-07-22",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "8091bf0ac73c3cde9dae08e8f6ca7a5a05cc620df3a6a650c211a51cb6572918",
+      "hosts": [
+        "danishbytes.club",
+        "danishbytes2.org",
+        "dbytes.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt v4.6.5 / Python 3.11.1"
+    },
+    {
+      "id": "darklibria",
+      "url": "https://raw.githubusercontent.com/bugsbringer/qbit-plugins/master/darklibria.py",
+      "source": "wiki",
+      "site": "dark-libria",
+      "site_url": "https://dark-libria.it/",
+      "author": "Bugsbringer",
+      "repo": "https://github.com/bugsbringer/qbit-plugins",
+      "version": "0.10",
+      "last_update": "2020-06-20",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "c2e2cd728b69e3a1ddb75374dc95a0010b6f85d037dc9f38eefb48c7f42b058f",
+      "hosts": [
+        "darklibria.it"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.2.x / Python 3.5.0"
+    },
+    {
+      "id": "divxtotal",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/divxtotal.py",
+      "source": "wiki",
+      "site": "divxtotal",
+      "site_url": "https://divxtotal.wtf/",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-07",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "cec809857e1087a13bf27f74a8f46d710ba8b353fec772f92fc011e8fc8746e9",
+      "hosts": [
+        "divxtotal.wtf"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "dmhy",
+      "url": "https://raw.githubusercontent.com/diazchika/dmhy/main/dmhy.py",
+      "source": "wiki",
+      "site": "DMHY",
+      "site_url": "https://share.dmhy.org/",
+      "author": "dchika",
+      "repo": "https://github.com/diazchika/dmhy",
+      "version": "1.0",
+      "last_update": "2024-07-08",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "f946209618a8cbe8cda9c0498e8bc3cfe04221d4010b578ae39f84232ab34576",
+      "hosts": [
+        "dmhy.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python >= 3.7"
+    },
+    {
+      "id": "dodi_repacks",
+      "url": "https://raw.githubusercontent.com/Bioux1/qbtSearchPlugins/main/dodi_repacks.py",
+      "source": "wiki",
+      "site": "DODI Repacks",
+      "site_url": "https://dodi-repacks.site/",
+      "author": "Bioux1",
+      "repo": "https://github.com/Bioux1/qbtSearchPlugins",
+      "version": "1.1",
+      "last_update": "2025-05-01",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "51b49a2c181088da532afa2fdd75b64e480d20f0d67c83076a1f85bc16bd8506",
+      "hosts": [
+        "dodi-repacks.site",
+        "hydralinks.cloud"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.0 / Python 3.13.3"
+    },
+    {
+      "id": "dontorrent",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/dontorrent.py",
+      "source": "wiki",
+      "site": "dontorrent",
+      "site_url": "https://dontorrent.phd",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-07",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "f9a0ada328c01598f00d34a30b6447a9fdf86810c870b2cbcc65e99098857ae2",
+      "hosts": [
+        "dontorrent.phd"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "elitetorrent",
+      "url": "https://raw.githubusercontent.com/iordic/qbittorrent-search-plugins/master/engines/elitetorrent.py",
+      "source": "wiki",
+      "site": "Elitetorrent",
+      "site_url": "https://www.elitetorrent.com",
+      "author": "iordic",
+      "repo": "https://github.com/iordic/qbittorrent-search-plugins",
+      "version": "1.5",
+      "last_update": "2024-09-21",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "181186dbb86f5b3b817ac97d96169ea0c5b0d907a9ddb0cff204456a8014e994",
+      "hosts": [
+        "www.elitetorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.7 / Python 3.9.5"
+    },
+    {
+      "id": "esmeraldatorrent",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/esmeraldatorrent.py",
+      "source": "wiki",
+      "site": "esmeraldatorrent",
+      "site_url": "https://esmeraldatorrent.com/",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-07",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "1004b06f4bac2af34270fcecb29d81ca7b918f28bea6dadc710643360f528baf",
+      "hosts": [
+        "esmeraldatorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "eztv",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/eztv.py",
+      "source": "official",
+      "site": "eztv",
+      "site_url": "https://eztvx.to/",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "1.23",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all",
+        "tv"
+      ],
+      "link_kind": "magnet",
+      "pinned_sha256": "69d456f547e1ed92d7b9ab530887e6badf8181902dafd9c1fd25e46a80c67fe8",
+      "hosts": [
+        "eztvx.to"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "eztvx",
+      "url": "https://raw.githubusercontent.com/DrPurp/eztvx-qbittorrent-plugin/main/eztvx.py",
+      "source": "wiki",
+      "site": "EZTV",
+      "site_url": "https://eztvx.to",
+      "author": "DrPurp",
+      "repo": "https://github.com/DrPurp/eztvx-qbittorrent-plugin",
+      "version": "2.00",
+      "last_update": "2026-04-18",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "07383109341fd035073f35ca3ddcd9095a407afcba8248b573419ae90759767a",
+      "hosts": [
+        "eztvx.to",
+        "www.omdbapi.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.x / Python 3.x — Uses official EZTV JSON API"
+    },
+    {
+      "id": "filelist",
+      "url": "https://raw.githubusercontent.com/RaresPNet/filelist_search_plugin/main/filelist.py",
+      "source": "wiki",
+      "site": "FileList",
+      "site_url": "https://filelist.io",
+      "author": "RaresPNet",
+      "repo": "https://github.com/RaresPNet/filelist_search_plugin",
+      "version": "1.2",
+      "last_update": "2026-03-25",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "93b889155dcc03c868baf08c4ade923762c4d1689d21a9f9c359430b787e2148",
+      "hosts": [
+        "filelist.io"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.x / Python 3.x"
+    },
+    {
+      "id": "fitgirl_repacks",
+      "url": "https://raw.githubusercontent.com/Bioux1/qbtSearchPlugins/main/fitgirl_repacks.py",
+      "source": "wiki",
+      "site": "FitGirl Repacks",
+      "site_url": "https://fitgirl-repacks.site/",
+      "author": "Bioux1",
+      "repo": "https://github.com/Bioux1/qbtSearchPlugins",
+      "version": "1.1",
+      "last_update": "2025-05-01",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "3285f800eac78beb6bec8ad0503d34966abcea36ecbf802048e87a46b6965bd2",
+      "hosts": [
+        "fitgirl-repacks.site",
+        "hydralinks.cloud"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.0 / Python 3.13.3"
+    },
+    {
+      "id": "gazellegames",
+      "url": "https://raw.githubusercontent.com/Ooggle/qbittorrent-search-plugins/master/engines/gazellegames.py",
+      "source": "wiki",
+      "site": "GazelleGames",
+      "site_url": "https://gazellegames.net",
+      "author": "Ooggle",
+      "repo": "https://github.com/Ooggle/qbittorrent-search-plugins",
+      "version": "1.30",
+      "last_update": "2022-10-07",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "d95e07f55a33107f8aad5d3c0afc9b5860f9ec01e8437fe6f0c9ec2d875de931",
+      "hosts": [
+        "gazellegames.net"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.4.x / Python 3.9+"
+    },
+    {
+      "id": "glotorrents",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/glotorrents.py",
+      "source": "wiki",
+      "site": "GloTorrents",
+      "site_url": "https://glodls.to/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.5",
+      "last_update": "2022-07-28",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "66f7ac3ec14f7739451d4614823f82acda619430dda59bb521c51f507b5966ca",
+      "hosts": [
+        "glodls.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.5 / Python 3.8.5"
+    },
+    {
+      "id": "goggames",
+      "url": "https://raw.githubusercontent.com/tolotp/qbittorrent-search-plugins-de-busqueda/refs/heads/main/Plugins/goggames.py",
+      "source": "wiki",
+      "site": "Gog-games",
+      "site_url": "https://gog-games.to",
+      "author": "tolotp",
+      "repo": "https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda",
+      "version": "1.0",
+      "last_update": "2026-03-10",
+      "license": "MIT",
+      "wiki_status": "warn",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "756bf172b89051f15f726618fc38cd3a44cb74a2a810a46ed2d1ed8fcbdb7642",
+      "hosts": [
+        "gog-games.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.5.x+ / Python 3.9.x+ ❗ Pls read this INFO"
+    },
+    {
+      "id": "iptorrents",
+      "url": "https://raw.githubusercontent.com/txtsd/qB-IPT/master/iptorrents.py",
+      "source": "wiki",
+      "site": "IPTorrents",
+      "site_url": "https://iptorrents.com",
+      "author": "txtsd (qB-IPT)",
+      "repo": "https://github.com/txtsd/qB-IPT",
+      "version": "1.01",
+      "last_update": "2019-10-22",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "c96f3d6a8788ebeb240253c366c8d5421340859c5b8c04142ab9a3849bac54fc",
+      "hosts": [
+        "iptorrents.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.x / Python 3.5.0"
+    },
+    {
+      "id": "jackett",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/jackett.py",
+      "source": "official",
+      "site": "jackett",
+      "site_url": "",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "4.10",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all",
+        "anime",
+        "books",
+        "games",
+        "movies",
+        "music",
+        "pictures",
+        "software",
+        "tv"
+      ],
+      "link_kind": "magnet",
+      "pinned_sha256": "9718e87a1e29f8bc16effaf89413db9c57e3f6436440a9fd46c7de3ad1af9720",
+      "hosts": [
+        "127.0.0.1",
+        "github.com"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "Adapter for a self-hosted Jackett/Torznab instance."
+    },
+    {
+      "id": "kickasstorrents",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/kickasstorrents.py",
+      "source": "wiki",
+      "site": "Kickass Torrent",
+      "site_url": "https://katcr.to/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2022-07-28",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "b3e9f714f06936a9185b3a54bd58a6f4230d13d1378d87012284f2955bf68d69",
+      "hosts": [
+        "katcr.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5"
+    },
+    {
+      "id": "kinozal",
+      "url": "https://raw.githubusercontent.com/imDMG/qBt_SE/master/engines/kinozal.py",
+      "source": "wiki",
+      "site": "Kinozal",
+      "site_url": "https://kinozal.me/",
+      "author": "imDMG",
+      "repo": "https://github.com/imDMG/qBt_SE",
+      "version": "2.20",
+      "last_update": "2025-11-20",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "00a7e6d13b1e381d3453e7d434da4a205ac144ec19ea5de9252333f26da4a828",
+      "hosts": [
+        "kinozal.me"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.2.x / Python 3.7+ | static scan: [deny] denied-import:11 socket"
+    },
+    {
+      "id": "latteam",
+      "url": "https://raw.githubusercontent.com/tolotp/qbittorrent-search-plugins-de-busqueda/refs/heads/main/Plugins/latteam.py",
+      "source": "wiki",
+      "site": "Lat-Team",
+      "site_url": "https://lat-team.com/",
+      "author": "tolotp",
+      "repo": "https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda",
+      "version": "1.0",
+      "last_update": "2026-03-06",
+      "license": "MIT",
+      "wiki_status": "warn",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "83ecf058611c2fdb3eb28932b06310d09d0b27b89c60651b4f70b78ca5a726e4",
+      "hosts": [
+        "lat-team.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.5.x+ / Python 3.9.x+ ❗ Pls read the guide"
+    },
+    {
+      "id": "limetorrents",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/limetorrents.py",
+      "source": "official",
+      "site": "limetorrents",
+      "site_url": "https://www.limetorrents.lol",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "4.14",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all",
+        "anime",
+        "books",
+        "games",
+        "movies",
+        "music",
+        "tv"
+      ],
+      "link_kind": "needs_dl",
+      "pinned_sha256": "b620d1db20136fafc6041029feb8493841550ee6afac9990f79ed07b070ce4d4",
+      "hosts": [
+        "www.limetorrents.lol"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "linuxtracker",
+      "url": "https://raw.githubusercontent.com/MadeOfMagicAndWires/qBit-plugins/6074a7cccb90dfd5c81b7eaddd3138adec7f3377/engines/linuxtracker.py",
+      "source": "wiki",
+      "site": "Linux Tracker",
+      "site_url": "http://linuxtracker.org",
+      "author": "Made Of Magic And Wires",
+      "repo": "https://github.com/MadeOfMagicAndWires/qBit-plugins",
+      "version": "1.00",
+      "last_update": "2017-04-12",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "1e0bd56b2146f8b12b5a966b3c26fb9668e43c20bff9a3551ee1ebc749093c87",
+      "hosts": [
+        "linuxtracker.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.x / Python 3.5.0"
+    },
+    {
+      "id": "lostfilm",
+      "url": "https://raw.githubusercontent.com/bugsbringer/qbit-plugins/master/lostfilm.py",
+      "source": "wiki",
+      "site": "LostFilm.TV",
+      "site_url": "https://www.lostfilm.tv/",
+      "author": "Bugsbringer",
+      "repo": "https://github.com/bugsbringer/qbit-plugins",
+      "version": "0.14",
+      "last_update": "2020-06-13",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "bce29accd37ce5561c21b25e358125da06d50d37fb7b6d8f2041608d0c36422e",
+      "hosts": [
+        "www.lostfilm.tv"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.2.x / Python 3.5.0"
+    },
+    {
+      "id": "magnetdl",
+      "url": "https://Scare.ca/dl/qBittorrent/magnetdl.py",
+      "source": "wiki",
+      "site": "MagnetDL with categories",
+      "site_url": "https://www.magnetdl.com",
+      "author": "Scare!",
+      "repo": "https://Scare.ca/dl/qBittorrent/",
+      "version": "2.0",
+      "last_update": "2022-09-08",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "a1cc2b920f1a9c94e902aa0361d1f57fcf372bb6a84c1f8c608e66c48f15f4e3",
+      "hosts": [
+        "www.magnetdl.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
+    },
+    {
+      "id": "maxitorrent",
+      "url": "https://raw.githubusercontent.com/joseeloren/search-plugins/master/nova3/engines/maxitorrent.py",
+      "source": "wiki",
+      "site": "MaxiTorrent",
+      "site_url": "https://atomixhq.com",
+      "author": "joseeloren",
+      "repo": "https://github.com/joseeloren/qbittorrent-search-plugins",
+      "version": "1.25",
+      "last_update": "2021-04-16",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "7dfd624b206f74a4f65dbb47f430082dac580a75e8edb657ef6b90d576b485a0",
+      "hosts": [
+        "atomixhq.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.5.0"
+    },
+    {
+      "id": "mejortorrent",
+      "url": "https://raw.githubusercontent.com/iordic/qbittorrent-search-plugins/master/engines/mejortorrent.py",
+      "source": "wiki",
+      "site": "MejorTorrent",
+      "site_url": "https://www36.mejortorrent.eu",
+      "author": "iordic",
+      "repo": "https://github.com/iordic/qbittorrent-search-plugins",
+      "version": "1.0",
+      "last_update": "2024-09-27",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "3ba2a8d31316970a05d933cdd563aa17ec3d4976cb355da24ed5e47834ff783a",
+      "hosts": [
+        "www36.mejortorrent.eu"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.7 / Python 3.9.5"
+    },
+    {
+      "id": "mikan",
+      "url": "https://raw.githubusercontent.com/Cycloctane/qBittorrent-plugins/master/engines/mikan.py",
+      "source": "wiki",
+      "site": "Mikan Project",
+      "site_url": "https://mikanime.tv",
+      "author": "Cycloctane",
+      "repo": "https://github.com/Cycloctane/qBittorrent-plugins",
+      "version": "0.4",
+      "last_update": "2025-05-08",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "91d6a0a308443fbb8501a1238a07179630ee34d1b253a5248b8dbfbcc88a4907",
+      "hosts": [
+        "mikanime.tv"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x / Python 3.9.x"
+    },
+    {
+      "id": "mikanani",
+      "url": "https://raw.githubusercontent.com/Cc050511/qBit-search-plugins/main/mikanani.py",
+      "source": "wiki",
+      "site": "mikanani",
+      "site_url": "https://mikanime.tv",
+      "author": "Yun",
+      "repo": "https://github.com/Cc050511/qBit-search-plugins",
+      "version": "1.2",
+      "last_update": "2024-02-11",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "6718aa913e7f244b4699835eec05cb91c9acdaaf741f6c3ef651fc348e383a52",
+      "hosts": [
+        "mikanime.tv"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.2 / Python 3.10"
+    },
+    {
+      "id": "milkie",
+      "url": "https://raw.githubusercontent.com/tolotp/qbittorrent-search-plugins-de-busqueda/refs/heads/main/Plugins/milkie.py",
+      "source": "wiki",
+      "site": "Milkie",
+      "site_url": "https://milkie.cc",
+      "author": "tolotp",
+      "repo": "https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda",
+      "version": "1.0",
+      "last_update": "2026-03-10",
+      "license": "MIT",
+      "wiki_status": "warn",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "418f8d5d9bb8ead7c3b98f64e71fff35104db4b45fb47faf0c0233bf963f59d4",
+      "hosts": [
+        "milkie.cc"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.5.x+ / Python 3.9.x+ ❗ Pls read the guide"
+    },
+    {
+      "id": "mypornclub",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/mypornclub.py",
+      "source": "wiki",
+      "site": "My Porn Club",
+      "site_url": "https://myporn.club",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.1",
+      "last_update": "2024-11-09",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "11aa1fdbe2e9ffa48aa0a89fa9115b6b7bc0fe979d6a99d58882ea9e2484558b",
+      "hosts": [
+        "myporn.club",
+        "sxyprn.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python 3.9.x"
+    },
+    {
+      "id": "naranjatorrent",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/naranjatorrent.py",
+      "source": "wiki",
+      "site": "naranjatorrent",
+      "site_url": "https://naranjatorrent.com/",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-07",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "b0aee03a25844b2aef789afa0da6e4258b4e9a6b69970172f435a118410bfa6d",
+      "hosts": [
+        "naranjatorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "ncore",
+      "url": "https://raw.githubusercontent.com/darktohka/qbittorrent-plugins/master/ncore.py",
+      "source": "wiki",
+      "site": "nCore",
+      "site_url": "https://ncore.pro",
+      "author": "darktohka",
+      "repo": "https://github.com/darktohka/qbittorrent-plugins",
+      "version": "1.3",
+      "last_update": "2021-02-16",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "b0f875f12c72d35c452afe1b12b533805c57aaad18278b92122e7c8f5e84b8fd",
+      "hosts": [
+        "github.com",
+        "ncore.pro"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.x / Python 3.6+"
+    },
+    {
+      "id": "nekobt",
+      "url": "https://raw.githubusercontent.com/tolotp/qbittorrent-search-plugins-de-busqueda/refs/heads/main/Plugins/nekobt.py",
+      "source": "wiki",
+      "site": "nekoBT",
+      "site_url": "https://nekobt.to/",
+      "author": "tolotp",
+      "repo": "https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda",
+      "version": "1.0",
+      "last_update": "2026-03-06",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "29aba65332f19823208c1186d4366b5d909f0cab4043a6876f204e417819964a",
+      "hosts": [
+        "nekobt.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x+ / Python 3.9.x+"
+    },
+    {
+      "id": "nnmclub",
+      "url": "https://raw.githubusercontent.com/imDMG/qBt_SE/master/engines/nnmclub.py",
+      "source": "wiki",
+      "site": "NoNaMe-Club",
+      "site_url": "https://nnmclub.to/forum/",
+      "author": "imDMG",
+      "repo": "https://github.com/imDMG/qBt_SE",
+      "version": "2.22",
+      "last_update": "2025-11-20",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "921745b01a3497f385d0730fdf6722fe5bac4b77d2519f28035d8245784a4812",
+      "hosts": [
+        "bulk.nnmclub.to",
+        "nnmclub.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.2.x / Python 3.7+ | static scan: [deny] denied-import:10 socket"
+    },
+    {
+      "id": "nyaa",
+      "url": "https://raw.githubusercontent.com/phuongtailtranminh/qBittorrent-Nyaa-Search-Plugin/master/nyaa.py",
+      "source": "wiki",
+      "site": "Sukebei Nyaa",
+      "site_url": "https://sukebei.nyaa.si",
+      "author": "phuongtail tranminh",
+      "repo": "https://github.com/phuongtailtranminh/qBittorrent-Nyaa-Search-Plugin/",
+      "version": "1.01",
+      "last_update": "2017-05-19",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "416a318040aa6359ae14bddd083a947b7910e2de944b8ae2b801c174de65a485",
+      "hosts": [
+        "sukebei.nyaa.si"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0"
+    },
+    {
+      "id": "nyaapantsu",
+      "url": "https://raw.githubusercontent.com/MadeOfMagicAndWires/qBit-plugins/refs/heads/main/engines/nyaapantsu.py",
+      "source": "wiki",
+      "site": "Nyaa.pantsu",
+      "site_url": "https://nyaa.pantsu.cat",
+      "author": "Made Of Magic And Wires",
+      "repo": "https://github.com/MadeOfMagicAndWires/qBit-plugins",
+      "version": "1.3",
+      "last_update": "2021-01-02",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "32d4b6488d72d6a42f31bb70c05e2d01b8cfc62a370daafda4eed7d2971a1173",
+      "hosts": [
+        "nyaa.pantsu.cat"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0"
+    },
+    {
+      "id": "nyaasi",
+      "url": "https://raw.githubusercontent.com/MadeOfMagicAndWires/qBit-plugins/master/engines/nyaasi.py",
+      "source": "wiki",
+      "site": "Nyaa.si",
+      "site_url": "https://nyaa.si",
+      "author": "Made Of Magic And Wires",
+      "repo": "https://github.com/MadeOfMagicAndWires/qBit-plugins",
+      "version": "1.1",
+      "last_update": "2019-03-01",
+      "license": "none",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "8b38deb7d22d86c3d64300cd58d55810260ea61b96b0fd552c3748201de44e46",
+      "hosts": [
+        "nyaa.si"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.4.3.1 / Python 3.10.5"
+    },
+    {
+      "id": "onlinefix",
+      "url": "https://raw.githubusercontent.com/caiocinel/onlinefix-qbittorrent-plugin/main/onlinefix.py",
+      "source": "wiki",
+      "site": "Online-Fix",
+      "site_url": "https://online-fix.me/",
+      "author": "caiocinel",
+      "repo": "https://github.com/caiocinel/onlinefix-qbittorrent-plugin",
+      "version": "1.0",
+      "last_update": "2024-08-10",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "614fbe675d23bc60def90828aef3d8b4b2f2bf1ccdd58c395f0dc4e686f2f155",
+      "hosts": [
+        "hydralinks.cloud",
+        "online-fix.me"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.5 / Python 3.12.4"
+    },
+    {
+      "id": "pantsu",
+      "url": "https://raw.githubusercontent.com/libellula/qbt-plugins/main/pantsu.py",
+      "source": "wiki",
+      "site": "Nyaa.Pantsu",
+      "site_url": "https://nyaa.pantsu.cat/",
+      "author": "4chenz",
+      "repo": "https://github.com/4chenz/pantsu-plugin/",
+      "version": "1.21",
+      "last_update": "2021-01-02",
+      "license": "unknown",
+      "wiki_status": "broken",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": null,
+      "hosts": [],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0 ✖ qbt 4.1.3 (intermittent failure) | unreachable"
+    },
+    {
+      "id": "pediatorrent",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/pediatorrent.py",
+      "source": "wiki",
+      "site": "PediaTorrent",
+      "site_url": "https://pediatorrent.com",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-24",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "33539ee6edd1733dee72cc6a474a6861edfb16a66d9a2008428d5757421fe327",
+      "hosts": [
+        "pediatorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "piratebay",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/piratebay.py",
+      "source": "official",
+      "site": "piratebay",
+      "site_url": "https://thepiratebay.org",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "3.9",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all",
+        "games",
+        "movies",
+        "music",
+        "software"
+      ],
+      "link_kind": "magnet",
+      "pinned_sha256": "362f0124700a38213dd4489626ae3e865c85c291b9ce7daa414281aadb797575",
+      "hosts": [
+        "apibay.org",
+        "exodus.desync.com",
+        "open.stealth.si",
+        "p4p.arenabg.ch",
+        "retracker.lanta-net.ru",
+        "thepiratebay.org",
+        "tracker.internetwarriors.net",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.tiny-vps.com",
+        "tracker.torrent.eu.org",
+        "www.torrent.eu.org"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "pirateiro",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/pirateiro.py",
+      "source": "wiki",
+      "site": "Pirateiro",
+      "site_url": "https://pirateiro.io/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2022-07-28",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "eb71a8f5e9cd05b5e469193cc5960c2ba9c109fafc8498752c868e1dabe26f15",
+      "hosts": [
+        "pirateiro.io"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5"
+    },
+    {
+      "id": "pornolab",
+      "url": "https://raw.githubusercontent.com/TainakaDrums/qbPornolab/master/pornolab.py",
+      "source": "wiki",
+      "site": "Pornolab",
+      "site_url": "https://pornolab.net/",
+      "author": "TainakaDrums",
+      "repo": "https://github.com/TainakaDrums/qbPornolab",
+      "version": "1.0",
+      "last_update": "2021-03-09",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": null,
+      "hosts": [],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.2.x / Python 3.5.0 | unreachable"
+    },
+    {
+      "id": "prowlarr",
+      "url": "https://raw.githubusercontent.com/swannie-eire/prowlarr-qbittorrent-plugins/main/prowlarr.py",
+      "source": "wiki",
+      "site": "Prowlarr",
+      "site_url": "https://github.com/Prowlarr/Prowlarr",
+      "author": "swannie-eire",
+      "repo": "https://github.com/swannie-eire/prowlarr-qbittorrent-plugins",
+      "version": "1.0",
+      "last_update": "2021-12-17",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "6fd63129ad11f4d72dd41d1a28d2d459ff52c8ee656b98855edc7817959f2957",
+      "hosts": [
+        "127.0.0.1",
+        "github.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.+"
+    },
+    {
+      "id": "redacted_ch",
+      "url": "https://raw.githubusercontent.com/evyd13/search-plugins/master/nova3/engines/redacted_ch.py",
+      "source": "wiki",
+      "site": "Redacted",
+      "site_url": "https://redacted.ch",
+      "author": "Evyd13",
+      "repo": "https://github.com/evyd13/search-plugins",
+      "version": "1.00",
+      "last_update": "2021-10-10",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "9a98885c978959afbc151224ffe480717a11328913c9c397388b25a97fc61abc",
+      "hosts": [
+        "redacted.ch"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.10.x"
+    },
+    {
+      "id": "redetorrent",
+      "url": "https://gist.githubusercontent.com/bebetoh/b5e1f4731462de9b837f5026617b1d4a/raw/e71d0020078d56d3f7e9a903ca7b4d44774e10f7/redetorrent.py",
+      "source": "wiki",
+      "site": "Rede Torrent",
+      "site_url": "https://redetorrent.com",
+      "author": "bebetoh",
+      "repo": "https://github.com/bebetoh",
+      "version": "1.0.0",
+      "last_update": "2026-04-05",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "ce2016fc6bd2c6a0f417d0167a5906ffed09f4656077c046058ca6a919d206da",
+      "hosts": [
+        "redetorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 5.1.x / Python 3.11.x"
+    },
+    {
+      "id": "rockbox",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/rockbox.py",
+      "source": "wiki",
+      "site": "RockBox",
+      "site_url": "https://rawkbawx.rocks/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2021-06-17",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "fe17c0a0a51029abe159143ad9ce0178ce05aeaa7f12da3453f19c429815ed7c",
+      "hosts": [
+        "rawkbawx.rocks"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5"
+    },
+    {
+      "id": "rutor",
+      "url": "https://raw.githubusercontent.com/imDMG/qBt_SE/master/engines/rutor.py",
+      "source": "wiki",
+      "site": "Rutor",
+      "site_url": "https://rutor.info/",
+      "author": "imDMG",
+      "repo": "https://github.com/imDMG/qBt_SE",
+      "version": "1.17",
+      "last_update": "2025-11-20",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "1cf9c5c302ad8defbe6ddb90bcbdf56cc905b49517b9233618b0f5a252845913",
+      "hosts": [
+        "rutor.info"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.2.x / Python 3.7+ | static scan: [deny] denied-import:10 socket"
+    },
+    {
+      "id": "rutracker",
+      "url": "https://raw.githubusercontent.com/nbusseneau/qBittorrent-rutracker-plugin/master/rutracker.py",
+      "source": "wiki",
+      "site": "RuTracker",
+      "site_url": "https://rutracker.org/",
+      "author": "nbusseneau",
+      "repo": "https://github.com/nbusseneau/qBittorrent-rutracker-plugin",
+      "version": "2.2.1",
+      "last_update": "2026-07-15",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "bb8407c57a5c563effdab206a93e0df239a9f4d9ea32fd3c37cda6325876b1aa",
+      "hosts": [
+        "rutracker.net",
+        "rutracker.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.x / Python 3.10.x"
+    },
+    {
+      "id": "sktorrent",
+      "url": "https://raw.githubusercontent.com/Ashalda/sktorrent-qbt/refs/heads/main/sktorrent.py",
+      "source": "wiki",
+      "site": "SkTorrent",
+      "site_url": "https://sktorrent.eu",
+      "author": "Ashalda",
+      "repo": "https://github.com/Ashalda/sktorrent-qbt",
+      "version": "1.1",
+      "last_update": "2025-12-27",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "a917b482741a0b301f09ce0c1edbfe5d7b4663c2367ede1a1bcde2641d62e28c",
+      "hosts": [
+        "sktorrent.eu"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.x / Python 3.9.x WORKING WITHOUT LOGIN - EVERYTHING EXCEPT XXX AND SOFTWARE"
+    },
+    {
+      "id": "smallgames",
+      "url": "https://raw.githubusercontent.com/hannsen/qbittorrent_search_plugins/master/smallgames.py",
+      "source": "wiki",
+      "site": "small-games.info",
+      "site_url": "http://small-games.info/",
+      "author": "hannsen",
+      "repo": "https://github.com/hannsen/qbittorrent_search_plugins/",
+      "version": "1.00",
+      "last_update": "2017-12-25",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "7d1086be858e8b4f59fc8c8c201b612c740a1b22c98a75b27477a1f00f1ed233",
+      "hosts": [
+        "small-games.info"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0"
+    },
+    {
+      "id": "snowfl",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/snowfl.py",
+      "source": "wiki",
+      "site": "Snowfl",
+      "site_url": "https://snowfl.com/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.3",
+      "last_update": "2022-07-28",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "04a1f767f03c18134ce193eabcda43f4c37c53d56ed06d67b4fc7627ca0eb710",
+      "hosts": [
+        "snowfl.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5 **READ REPOSITORY NOTES**"
+    },
+    {
+      "id": "solidtorrents",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/solidtorrents.py",
+      "source": "official",
+      "site": "solidtorrents",
+      "site_url": "https://solidtorrents.to",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "2.8",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "magnet",
+      "pinned_sha256": "13b133254b16bfb6290059f577bf84900dc7a4cf37fa8a068626328dcb585b73",
+      "hosts": [
+        "solidtorrents.to"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "speedapp",
+      "url": "https://raw.githubusercontent.com/miIiano/SpeedApp.io-qBittorent-search-plugin/main/speedapp.py",
+      "source": "wiki",
+      "site": "SpeedApp.IO",
+      "site_url": "https://speedapp.io",
+      "author": "miIiano",
+      "repo": "https://github.com/miIiano/SpeedApp.io-qBittorent-search-plugin",
+      "version": "1.1",
+      "last_update": "2023-08-11",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "67dd25182039eccd6ffddf50634ad4a026ff19c9f11505e61f9a2f390e208fb7",
+      "hosts": [
+        "speedapp.io"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x / Python 3.+"
+    },
+    {
+      "id": "subsplease",
+      "url": "https://raw.githubusercontent.com/kli885/qBittorent-SubsPlease-Search-Plugin/main/subsplease.py",
+      "source": "wiki",
+      "site": "SubsPlease.org",
+      "site_url": "https://subsplease.org/",
+      "author": "PlutoMonkey (kli885)",
+      "repo": "https://github.com/kli885/qBittorent-SubsPlease-Search-Plugin",
+      "version": "1.0",
+      "last_update": "2024-09-07",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "3348ff9076b03c34ce87152597ffe0034ce1e192520d79b154952aa862bfc21c",
+      "hosts": [
+        "subsplease.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.0 / Python 3.8.x"
+    },
+    {
+      "id": "sukebei",
+      "url": "https://raw.githubusercontent.com/libellula/qbt-plugins/main/sukebei.py",
+      "source": "wiki",
+      "site": "Sukebei.Pantsu",
+      "site_url": "https://sukebei.pantsu.cat/",
+      "author": "4chenz",
+      "repo": "https://github.com/4chenz/pantsu-plugin/",
+      "version": "1.21",
+      "last_update": "2021-01-02",
+      "license": "unknown",
+      "wiki_status": "broken",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": null,
+      "hosts": [],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0 ✖ qbt 4.1.3 (intermittent failure) | unreachable"
+    },
+    {
+      "id": "sukebeisi",
+      "url": "https://github.com/vt-idiot/qBit-SukebeiNyaa-plugin/raw/master/engines/sukebeisi.py",
+      "source": "wiki",
+      "site": "Sukebei (Nyaa)",
+      "site_url": "https://sukebei.nyaa.si",
+      "author": "vt-idiot",
+      "repo": "https://github.com/vt-idiot/qBit-SukebeiNyaa-plugin",
+      "version": "1.11",
+      "last_update": "2022-06-21",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "353cb88a05a37f6ca30f9ce36163d64926c8706a5a41bef634e4b4e07b155539",
+      "hosts": [
+        "sukebei.nyaa.si"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.4.3.1 / Python 3.10.5"
+    },
+    {
+      "id": "tapochek",
+      "url": "https://raw.githubusercontent.com/MjKey/qBT-SE/refs/heads/master/enigines/tapochek.py",
+      "source": "wiki",
+      "site": "Tapochek",
+      "site_url": "https://tapochek.net/",
+      "author": "MjKey",
+      "repo": "https://github.com/MjKey/qBT-SE",
+      "version": "1.1",
+      "last_update": "2025-08-13",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "c213ffa435fcdd862a5d309b29b87c80c3f0d2389652fb2f371b0da3e03638c1",
+      "hosts": [
+        "tapochek.net"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.2.x / Python 3.7+ | static scan: [deny] denied-import:11 socket"
+    },
+    {
+      "id": "thepiratebay",
+      "url": "https://Scare.ca/dl/qBittorrent/thepiratebay.py",
+      "source": "wiki",
+      "site": "ThePirateBay with categories",
+      "site_url": "https://thepiratebay.org",
+      "author": "Scare!",
+      "repo": "https://Scare.ca/dl/qBittorrent",
+      "version": "2.0",
+      "last_update": "2022-09-01",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "58e4672890ae3d769dbcbdef8cf29205b24a4a2a38562d32c9c6a9f68c3128a5",
+      "hosts": [
+        "9.rarbg.me",
+        "9.rarbg.to",
+        "apibay.org",
+        "open.stealth.si",
+        "p4p.arenabg.com",
+        "thepiratebay.org",
+        "tracker.coppersurfer.tk",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.tiny-vps.com",
+        "tracker.torrent.eu.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
+    },
+    {
+      "id": "therarbg",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/therarbg.py",
+      "source": "wiki",
+      "site": "The RarBg",
+      "site_url": "https://therarbg.com",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.3",
+      "last_update": "2024-10-20",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "4e748cbe68989c3d26bfda76a03d8640314802507fde8005f05878165f803cbc",
+      "hosts": [
+        "therarbg.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python 3.9.x"
+    },
+    {
+      "id": "tokyotoshokan",
+      "url": "https://raw.githubusercontent.com/BrunoReX/qBittorrent-Search-Plugin-TokyoToshokan/master/tokyotoshokan.py",
+      "source": "wiki",
+      "site": "Tokyo Toshokan",
+      "site_url": "http://tokyotosho.info",
+      "author": "BrunoReX",
+      "repo": "https://github.com/BrunoReX/qBittorrent-Search-Plugin-TokyoToshokan",
+      "version": "2.3",
+      "last_update": "2018-03-18",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "e0cac329d5787d9a83a5bb7365af64fa939152dd5b9104daeaa1a37713c0dbe5",
+      "hosts": [
+        "tokyotosho.info"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.0.x / Python 3.5.0 ❌qbt 4.6+ Will break the plugin system. #274 / #284"
+    },
+    {
+      "id": "toloka_to",
+      "url": "https://raw.githubusercontent.com/playday3008/qBittorrent-plugins/refs/heads/main/plugins/search/toloka_to.py",
+      "source": "wiki",
+      "site": "Гуртом — торрент-толока",
+      "site_url": "https://toloka.to/",
+      "author": "PlayDay",
+      "repo": "https://github.com/playday3008",
+      "version": "1.01",
+      "last_update": "2025-12-19",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "f35cacefb92ea17379c3a9703780327ded0fb302565a9983139717fed2a5ad85",
+      "hosts": [
+        "toloka.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.x / Python 3.11+"
+    },
+    {
+      "id": "tomadivx",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/tomadivx.py",
+      "source": "wiki",
+      "site": "TomaDivx",
+      "site_url": "https://tomadivx.net/",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.1",
+      "last_update": "2024-11-07",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "fed83e5beacad5c38940d34aa650ba451e74fc90949df3a0eb74815c6693f017",
+      "hosts": [
+        "tomadivx.net"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "torlock",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/torlock.py",
+      "source": "official",
+      "site": "torlock",
+      "site_url": "https://www.torlock.com",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "2.29",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all",
+        "anime",
+        "books",
+        "games",
+        "movies",
+        "music",
+        "pictures",
+        "software",
+        "tv"
+      ],
+      "link_kind": "torrent_url",
+      "pinned_sha256": "6dc6bf81e5ccc22f497eba87dcfb89c4df5bd847f1c36351c40d9ea872f96181",
+      "hosts": [
+        "www.torlock.com"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "torrenflix",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/torrenflix.py",
+      "source": "wiki",
+      "site": "Torrenflix",
+      "site_url": "https://torrenflix.com/",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2024-11-23",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": null,
+      "hosts": [],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x | unreachable"
+    },
+    {
+      "id": "torrent9",
+      "url": "https://raw.githubusercontent.com/menegop/qbfrench/master/torrent9.py",
+      "source": "wiki",
+      "site": "Torrent9",
+      "site_url": "http://torent9.fr",
+      "author": "menegop",
+      "repo": "https://raw.githubusercontent.com/menegop/qbfrench",
+      "version": "2.0",
+      "last_update": "2023-01-01",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "e178e65032c2dd6e60c54713943eedc3c51de4f4c6b18c1d671cf9b3a41b3e7a",
+      "hosts": [
+        "raw.githubusercontent.com",
+        "torent9.fr",
+        "www.torrent9.fm"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.6 / Python 3.8"
+    },
+    {
+      "id": "torrentdownload",
+      "url": "https://Scare.ca/dl/qBittorrent/torrentdownload.py",
+      "source": "wiki",
+      "site": "TorrentDownload with categories",
+      "site_url": "https://www.torrentdownload.info",
+      "author": "Scare!",
+      "repo": "https://Scare.ca/dl/qBittorrent/",
+      "version": "2.0",
+      "last_update": "2022-09-07",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "a77676406966dffd1f93485fe6c9548a462e0e93629003d773273f8389f7889f",
+      "hosts": [
+        "www.torrentdownload.info"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
+    },
+    {
+      "id": "torrentdownloads",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/torrentdownloads.py",
+      "source": "wiki",
+      "site": "Torrent Downloads Pro",
+      "site_url": "https://torrentdownloads.pro",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.1",
+      "last_update": "2024-10-20",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "c97e0405d5b9cd4db9c91da94ddd1a1da0326cf8d8ee9671f10be33f8b449c8a",
+      "hosts": [
+        "torrentdownloads.pro"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python 3.9.x"
+    },
+    {
+      "id": "torrentgalaxy",
+      "url": "https://raw.githubusercontent.com/nindogo/qbtSearchScripts/master/torrentgalaxy.py",
+      "source": "wiki",
+      "site": "TorrentGalaxy",
+      "site_url": "https://torrentgalaxy.to",
+      "author": "Ni Ndogo",
+      "repo": "https://github.com/nindogo",
+      "version": "0.08",
+      "last_update": "2024-11-09",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "9448cbebc24ebf2db5f422d4e0ae13917b8512a82d465ba27edad58202ddc32e",
+      "hosts": [
+        "torrentgalaxy.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.6+ / Python 3.11.4"
+    },
+    {
+      "id": "torrentleech",
+      "url": "https://raw.githubusercontent.com/444995/qbit-search-plugins/main/engines/torrentleech.py",
+      "source": "wiki",
+      "site": "TorrentLeech",
+      "site_url": "https://www.torrentleech.org",
+      "author": "444995",
+      "repo": "https://github.com/444995/qbit-search-plugins",
+      "version": "1.00",
+      "last_update": "2024-08-06",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "bc0a73346616024d969ec78d6b80f5254c30963d421ca5527b868cc6a3b5fcfe",
+      "hosts": [
+        "www.torrentleech.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt v4.6.5 / Python 3.11.1"
+    },
+    {
+      "id": "torrentproject",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/torrentproject.py",
+      "source": "official",
+      "site": "torrentproject",
+      "site_url": "https://torrentproject.com.se",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "1.91",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "needs_dl",
+      "pinned_sha256": "f723ae655d13f6277280ee1bc2d0669f68a363342a83c665a6b4867d619a1aab",
+      "hosts": [
+        "torrentproject.com.se"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "torrentscsv",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991/nova3/engines/torrentscsv.py",
+      "source": "official",
+      "site": "torrentscsv",
+      "site_url": "https://torrents-csv.com",
+      "author": "qBittorrent",
+      "repo": "https://github.com/qbittorrent/search-plugins",
+      "version": "1.8",
+      "last_update": "",
+      "license": "GPL-2.0-or-later",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "magnet",
+      "pinned_sha256": "7c7c8a54249e5f2ce237df6421a735a5c1bd7acefd1304d736ee8f925fd6031b",
+      "hosts": [
+        "exodus.desync.com",
+        "open.stealth.si",
+        "p4p.arenabg.ch",
+        "retracker.lanta-net.ru",
+        "torrents-csv.com",
+        "tracker.internetwarriors.net",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.tiny-vps.com",
+        "tracker.torrent.eu.org",
+        "www.torrent.eu.org"
+      ],
+      "health": {
+        "score": 0.8,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": ""
+    },
+    {
+      "id": "traht",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/traht.py",
+      "source": "wiki",
+      "site": "TrahT",
+      "site_url": "https://traht.org",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2023-12-27",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "de1d9447998276a807ac8ee20007ec4049d17de0b3b7886094136806d0e2b6bc",
+      "hosts": [
+        "traht.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.6.x / Python 3.9.x"
+    },
+    {
+      "id": "tsukihime",
+      "url": "https://raw.githubusercontent.com/dominc8/qbittorrent-tsukihime-search-plugin/refs/heads/master/tsukihime.py",
+      "source": "wiki",
+      "site": "TsukiHime",
+      "site_url": "https://tsukihime.org",
+      "author": "dominc8",
+      "repo": "https://github.com/dominc8/qbittorrent-tsukihime-search-plugin",
+      "version": "1.0",
+      "last_update": "2026-08-02",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "1b12c5ee8ea7e9dfdab0d7f1c705b150f57cee249d18ed18d88e719bf73b535a",
+      "hosts": [
+        "api.tsukihime.org",
+        "tsukihime.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 5.2.3 / Python 3.14.6"
+    },
+    {
+      "id": "uindex",
+      "url": "https://raw.githubusercontent.com/tolotp/qbittorrent-search-plugins-de-busqueda/refs/heads/main/Plugins/uindex.py",
+      "source": "wiki",
+      "site": "UIndex",
+      "site_url": "https://uindex.org/",
+      "author": "tolotp",
+      "repo": "https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda",
+      "version": "1.0",
+      "last_update": "2026-03-05",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": null,
+      "hosts": [],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.5.x+ / Python 3.9.x+ | unreachable"
+    },
+    {
+      "id": "uniondht",
+      "url": "https://raw.githubusercontent.com/msagca/qbittorrent-plugins/main/uniondht.py",
+      "source": "wiki",
+      "site": "UnionDHT",
+      "site_url": "http://uniondht.org",
+      "author": "msagca",
+      "repo": "https://github.com/msagca/qbittorrent-plugins/",
+      "version": "1.2",
+      "last_update": "2024-10-09",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "4b298abdd30844dde360729c718d31be19410207659d7d667a83b2dd43304877",
+      "hosts": [
+        "uniondht.org"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0 / Python 3.12"
+    },
+    {
+      "id": "unionfansub",
+      "url": "https://gitlab.com/CrimsonKoba/qb-search-plugin/-/raw/master/unionfansub.py",
+      "source": "wiki",
+      "site": "UnionFansub",
+      "site_url": "https://torrent.unionfansub.com/",
+      "author": "CrimsonKoba",
+      "repo": "https://gitlab.com/CrimsonKoba/qb-search-plugin",
+      "version": "1.2",
+      "last_update": "2024-01-05",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "74399f914ab46f452d023c55b76dbd0de2f4550987001f08e650bfdde11da870",
+      "hosts": [
+        "foro.unionfansub.com",
+        "torrent.unionfansub.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.x / Python 3.+"
+    },
+    {
+      "id": "xxxclubto",
+      "url": "https://raw.githubusercontent.com/BurningMop/qBittorrent-Search-Plugins/refs/heads/main/xxxclubto.py",
+      "source": "wiki",
+      "site": "XXXClub",
+      "site_url": "https://xxxclub.to",
+      "author": "BurningMop",
+      "repo": "https://github.com/BurningMop/qBittorrent-Search-Plugins",
+      "version": "1.3",
+      "last_update": "2024-10-29",
+      "license": "MIT",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "212470cca92675c7752ae6dc6516af42c72d93931176324ebd9349b3443071d0",
+      "hosts": [
+        "xxxclub.to"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.0.x / Python 3.9.x"
+    },
+    {
+      "id": "yggapi",
+      "url": "https://raw.githubusercontent.com/Laiteux/YggAPI-qBittorrent-Search-Plugin/main/yggapi.py",
+      "source": "wiki",
+      "site": "YggAPI",
+      "site_url": "https://yggapi.eu",
+      "author": "Laiteux",
+      "repo": "https://github.com/Laiteux/YggAPI-qBittorrent-Search-Plugin",
+      "version": "1.1",
+      "last_update": "2025-01-31",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "081dd01c9c54836c63f6a25ad75a68c5fa2a7eec8b4a476b75a616b3ac6122fc",
+      "hosts": [
+        "www.yggtorrent.org",
+        "yggapi.eu"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.1.0+ / Python 3.6+"
+    },
+    {
+      "id": "yggtorrent",
+      "url": "https://raw.githubusercontent.com/CravateRouge/qBittorrentSearchPlugins/master/yggtorrent.py",
+      "source": "wiki",
+      "site": "YggTorrent",
+      "site_url": "https://ygg.guru",
+      "author": "CravateRouge",
+      "repo": "https://github.com/CravateRouge/qBittorrentSearchPlugins",
+      "version": "1.0",
+      "last_update": "2019-11-25",
+      "license": "unknown",
+      "wiki_status": "warn",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "3bab7078e4d59c86b57d51454627d78841cb9d5707f84ed5566df12b31d0c70c",
+      "hosts": [
+        "ygg.guru"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "❗ Working when DDOS Cloudflare protection is disabled"
+    },
+    {
+      "id": "yggtracker",
+      "url": "https://raw.githubusercontent.com/YGGverse/qbittorrent-yggtracker-search-plugin/main/yggtracker.py",
+      "source": "wiki",
+      "site": "YGGtracker",
+      "site_url": "https://github.com/YGGverse/YGGtracker",
+      "author": "YGGverse",
+      "repo": "https://github.com/YGGverse/qbittorrent-yggtracker-search-plugin",
+      "version": "1.1.0",
+      "last_update": "2023-10-19",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "e5fdede3e0f2f721c8fbcf5cbd1af9643e423b7a1baf8bf689e65b623d78d8d9",
+      "hosts": [
+        "github.com",
+        "raw.githubusercontent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.5.1 / v5.0.0alpha1 / Python 3.11.4 Requires Yggdrasil connection"
+    },
+    {
+      "id": "yourbittorrent",
+      "url": "https://raw.githubusercontent.com/LightDestory/qBittorrent-Search-Plugins/master/src/engines/yourbittorrent.py",
+      "source": "wiki",
+      "site": "YourBittorrent",
+      "site_url": "https://yourbittorrent.com/",
+      "author": "LightDestory",
+      "repo": "https://github.com/LightDestory/qBittorrent-Search-Plugins",
+      "version": "1.0",
+      "last_update": "2021-06-17",
+      "license": "GPL-3.0",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "5aeccc1e6addce6e632d159b412cd43335c6dc8a31a55397655af1dd14938187",
+      "hosts": [
+        "yourbittorrent.com"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 4.3.x / Python 3.8.5"
+    },
+    {
+      "id": "yts",
+      "url": "https://codeberg.org/lazulyra/qbit-plugins/raw/branch/main/yts/yts.py",
+      "source": "wiki",
+      "site": "YTS",
+      "site_url": "https://yts.bz/",
+      "author": "lazulyra",
+      "repo": "https://codeberg.org/lazulyra/qbit-plugins",
+      "version": "1.6",
+      "last_update": "2025-11-25",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "cb066319b5f6092621b21debc4303d937bacd2bdaef643f1740a516145cbfb9e",
+      "hosts": [
+        "yts.bz"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": false,
+      "notes": "✔ qbt 4.6.2 / Python 3.12.0"
+    },
+    {
+      "id": "zamundarip",
+      "url": "https://raw.githubusercontent.com/codeobfuscation/qBittorrent-ZamundaRIP-plugin/main/zamundarip.py",
+      "source": "wiki",
+      "site": "Zamunda.RIP",
+      "site_url": "https://zamunda.rip",
+      "author": "Necrosis",
+      "repo": "https://github.com/codeobfuscation/qBittorrent-ZamundaRIP-plugin",
+      "version": "1.0",
+      "last_update": "2026-05-22",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "cab764ca80b0d617e2f43615d85ca08a0e01bf9dd95cc73f4883b0be0d969b69",
+      "hosts": [
+        "zamunda.rip"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.1.x / Python 3.9+"
+    },
+    {
+      "id": "zooqle",
+      "url": "https://raw.githubusercontent.com/444995/qbit-search-plugins/main/engines/zooqle.py",
+      "source": "wiki",
+      "site": "Zooqle",
+      "site_url": "https://zooqle.skin",
+      "author": "444995",
+      "repo": "https://github.com/444995/qbit-search-plugins",
+      "version": "1.10",
+      "last_update": "2024-08-07",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": false,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "beb30e1de0577b07d031e5e66174bf724bc5e2821f3f4924bd5d9a79256e5f62",
+      "hosts": [
+        "zooqle.skin"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt v4.6.5 / Python 3.11.1"
+    }
+  ]
+}

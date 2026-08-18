@@ -1,0 +1,15 @@
+{
+  "name": "unified-torrent-search-interface",
+  "private": true,
+  "type": "module",
+  "description": "Present so that Node reads the two .js files as ES modules. No dependencies, no install step, no lockfile — see docs/development.md.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test worker/tests/worker.test.mjs",
+    "build": "node worker/tools/build.mjs",
+    "probe": "node worker/tools/probe-indexes.mjs"
+  }
+}

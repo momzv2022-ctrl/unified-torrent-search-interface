@@ -1,0 +1,80 @@
+[project]
+name = "utsi"
+version = "0.1.0"
+description = "Torrent Stream Protocol index backed by qBittorrent search plugins fetched at runtime"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "unified-torrent-search-interface contributors" }]
+keywords = ["torrent", "search", "qbittorrent", "nova3", "torrent-stream-protocol"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+]
+dependencies = [
+  "fastapi>=0.115",
+  # Plain uvicorn, not uvicorn[standard]: the extras pull uvloop and httptools,
+  # which are C extensions with no wheels for Android. This service is
+  # subprocess- and network-bound, so the event loop is never the bottleneck —
+  # see the `speedups` extra for servers that want them anyway.
+  "uvicorn>=0.30",
+  "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+# uvloop + httptools. Worth having on a server, unavailable on Android, and
+# measurably irrelevant either way for a workload dominated by subprocesses.
+speedups = ["uvicorn[standard]>=0.30"]
+# Not imported by this project. A couple of community plugins reach for these
+# instead of `helpers.retrieve_url`, and without them they fail on import.
+# Measured across the current registry: 2 of ~60 provisioned engines.
+plugin-runtime = [
+  "requests>=2.32",
+  "beautifulsoup4>=4.12",
+]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+  "ruff>=0.6",
+  "jsonschema>=4.21",
+  "pyyaml>=6.0",
+]
+
+[project.scripts]
+utsi = "utsi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/raul2hot/unified-torrent-search-interface"
+Protocol = "https://github.com/raul2hot/torrent-stream-protocol"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+utsi = ["_shim.py", "ui.html"]
+
+[tool.pytest.ini_options]
+# The Cloudflare Worker is no longer Python. It is one JavaScript file with its
+# own suite — `node --test worker/tests/worker.test.mjs` — and CI runs both.
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+asyncio_mode = "auto"
+addopts = "-q"
+
+[tool.ruff]
+line-length = 110
+src = ["src", "tools", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
+ignore = ["B008"]  # FastAPI Depends/Query in defaults
+
+[tool.ruff.lint.per-file-ignores]
+# Fixture engines deliberately follow the nova3 plugin contract, which requires
+# a lowercase class name matching the module and a `supported_categories` dict.
+"tests/fixtures/**" = ["RUF012", "E501"]

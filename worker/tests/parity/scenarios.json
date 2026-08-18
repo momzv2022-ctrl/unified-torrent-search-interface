@@ -1,0 +1,294 @@
+[
+  {
+    "name": "upstream-passthrough",
+    "why": "Rows from another TSP index, with its parsed metadata reused verbatim.",
+    "settings": { "engines": ["upstream"], "upstream_url": "https://index.test", "upstream_apikey": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu" },
+    "routes": { "https://index.test/api/v1/search": { "fixture": "upstream.json" } },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "upstream-small-page",
+    "why": "A limit=5 client must shrink the per-engine window, and still page correctly.",
+    "settings": { "engines": ["upstream"], "upstream_url": "https://index.test" },
+    "routes": { "https://index.test/api/v1/search": { "fixture": "upstream.json" } },
+    "query": { "q": "bunny", "limit": 2, "offset": 1 }
+  },
+  {
+    "name": "knaben",
+    "why": "Numbers as strings, an infohash recovered from a magnet, a title-less hit dropped.",
+    "settings": { "engines": ["knaben"] },
+    "routes": { "https://api.knaben.org/v1": { "fixture": "knaben.json" } },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "knaben-down-piratebay-carries-it",
+    "why": "The whole point of a second broad engine: knaben refuses, and a general search still answers instead of collapsing to films and anime.",
+    "settings": { "engines": ["knaben", "piratebay", "yts", "nyaa"] },
+    "routes": {
+      "https://api.knaben.org/v1": { "status": 429 },
+      "https://apibay.org/q.php": { "fixture": "piratebay.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "piratebay",
+    "why": "Every field a string, two categories mapped and one left to the name classifier, and their one-row 'no results' sentinel dropped.",
+    "settings": { "engines": ["piratebay"] },
+    "routes": { "https://apibay.org/q.php": { "fixture": "piratebay.json" } },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "two-broad-engines-merge",
+    "why": "The point of carrying two broad indexes: the same release from both collapses to one row, and knaben going dark costs coverage rather than everything.",
+    "settings": { "engines": ["knaben", "piratebay"] },
+    "routes": {
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://apibay.org/q.php": { "fixture": "piratebay.json" }
+    },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "broad-engine-down-narrow-survives",
+    "why": "knaben refusing while piratebay answers: the search still works, which is the whole reason the second broad engine exists.",
+    "settings": { "engines": ["knaben", "piratebay", "yts"] },
+    "routes": {
+      "https://api.knaben.org/v1": { "status": 403 },
+      "https://apibay.org/q.php": { "fixture": "piratebay.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" }
+    },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "torrentscsv",
+    "why": "A DHT crawl: no categories at all, so every row is classified from its name.",
+    "settings": { "engines": ["torrentscsv"] },
+    "routes": { "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" } },
+    "query": { "q": "big buck bunny" }
+  },
+  {
+    "name": "yts",
+    "why": "One film flattened into its torrents, with the release name rebuilt from fields.",
+    "settings": { "engines": ["yts"] },
+    "routes": { "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" } },
+    "query": { "q": "sintel" }
+  },
+  {
+    "name": "nyaa-rss",
+    "why": "RSS with a private namespace, human-readable sizes, RFC 822 dates with -0000.",
+    "settings": { "engines": ["nyaa"] },
+    "routes": { "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" } },
+    "query": { "q": "some show" }
+  },
+  {
+    "name": "torznab",
+    "why": "XML attributes, peers-minus-seeders, and a row with no magnet at all.",
+    "settings": { "engines": ["torznab"], "torznab_url": "https://indexer.test/api" },
+    "routes": { "https://indexer.test/api": { "fixture": "torznab.xml" } },
+    "query": { "q": "bunny" }
+  },
+  {
+    "name": "merge-across-engines",
+    "why": "The same infohash from four engines collapses to one row; the first listed wins.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv", "yts", "nyaa"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "limit": 50 }
+  },
+  {
+    "name": "merge-reordered",
+    "why": "Same rows, reversed roster: whichever engine is first supplies the shared fields.",
+    "settings": {
+      "engines": ["torrentscsv", "knaben", "upstream"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" }
+    },
+    "query": { "q": "bunny" }
+  },
+  {
+    "name": "filter-category-video",
+    "why": "A category filter narrows without deleting rows nothing contradicts.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv", "nyaa"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "cat": "video" }
+  },
+  {
+    "name": "filter-category-audio",
+    "why": "The other half: a row the classifier reads as video is still dropped.",
+    "settings": { "engines": ["nyaa", "knaben"] },
+    "routes": {
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" }
+    },
+    "query": { "q": "bunny", "cat": "audio" }
+  },
+  {
+    "name": "filter-resolution",
+    "why": "The cheap substring pre-filter, then the real parse, on rows from three shapes.",
+    "settings": {
+      "engines": ["upstream", "torrentscsv", "nyaa"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "res": "1080p" }
+  },
+  {
+    "name": "filter-year-and-seeders",
+    "why": "Two filters that run in different stages of the pipeline.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" }
+    },
+    "query": { "q": "bunny", "year": "2008", "min_seeders": 100 }
+  },
+  {
+    "name": "sort-size",
+    "why": "A different sort key, with the dedupe key as the tie-break that makes paging stable.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv", "yts", "nyaa"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "sort": "size" }
+  },
+  {
+    "name": "sort-recent",
+    "why": "Sorting on a string key rather than a number, across engines that date rows differently.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv", "yts", "nyaa"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "sort": "recent" }
+  },
+  {
+    "name": "engine-failures",
+    "why": "One engine 502s, one sends HTML, one is fine. The answer says which did what.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "status": 502 },
+      "https://api.knaben.org/v1": { "text": "<html>nope" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" }
+    },
+    "query": { "q": "bunny" }
+  },
+  {
+    "name": "upstream-auth-failure",
+    "why": "401 and 403 from your own index are different complaints, answered precisely.",
+    "settings": { "engines": ["upstream"], "upstream_url": "https://index.test", "upstream_apikey": "uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu" },
+    "routes": { "https://index.test/api/v1/search": { "status": 401 } },
+    "query": { "q": "bunny" }
+  },
+  {
+    "name": "everything-empty-then-fallback",
+    "why": "Every engine found nothing, so the last resort runs — and only then.",
+    "settings": {
+      "engines": ["torrentscsv"],
+      "fallback_url": "https://fallback.test"
+    },
+    "routes": {
+      "https://torrents-csv.com/service/search": { "text": "{\"torrents\": []}" },
+      "https://fallback.test/api/v1/search": { "fixture": "upstream.json" }
+    },
+    "query": { "q": "obscure" }
+  },
+  {
+    "name": "no-engines-at-all",
+    "why": "An empty roster is an empty answer, not a crash.",
+    "settings": { "engines": [] },
+    "routes": {},
+    "query": { "q": "bunny" }
+  },
+  {
+    "name": "paging-offset-past-the-end",
+    "why": "An offset beyond the result set is an empty page with a true count.",
+    "settings": {
+      "engines": ["upstream", "knaben"],
+      "upstream_url": "https://index.test"
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" }
+    },
+    "query": { "q": "bunny", "limit": 10, "offset": 99 }
+  },
+  {
+    "name": "row-cap-of-one",
+    "why": "The per-engine cap is a prefix of what the site sent, not a sample of it.",
+    "settings": {
+      "engines": ["upstream", "knaben", "torrentscsv", "yts", "nyaa"],
+      "upstream_url": "https://index.test",
+      "max_rows_per_engine": 1
+    },
+    "routes": {
+      "https://index.test/api/v1/search": { "fixture": "upstream.json" },
+      "https://api.knaben.org/v1": { "fixture": "knaben.json" },
+      "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" },
+      "https://yts.bz/api/v2/list_movies.json": { "fixture": "yts.json" },
+      "https://nyaa.si/?page=rss": { "fixture": "nyaa.xml" }
+    },
+    "query": { "q": "bunny", "cat": "video" }
+  },
+  {
+    "name": "separators-in-the-query",
+    "why": "TSP's query rules are applied once, before the fan-out, so every engine agrees.",
+    "settings": { "engines": ["torrentscsv"] },
+    "routes": { "https://torrents-csv.com/service/search": { "fixture": "torrentscsv.json" } },
+    "query": { "q": "  Big.Buck_Bunny-2008  " }
+  },
+  {
+    "name": "engine-url-override",
+    "why": "UTSI_ENGINE_URLS replaces the address an adapter was written against.",
+    "settings": {
+      "engines": ["yts"],
+      "engine_urls": { "yts": "https://yts.example.test" }
+    },
+    "routes": { "https://yts.example.test/api/v2/list_movies.json": { "fixture": "yts.json" } },
+    "query": { "q": "sintel" }
+  }
+]

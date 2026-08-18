@@ -1,0 +1,121 @@
+# Machine-readable form of README.md — the two endpoints an index server
+# implements to back a streaming client. Render it with Swagger UI or Redoc, or
+# generate a server stub from it; README.md carries the rationale.
+openapi: 3.0.3
+info:
+  title: Torrent Stream Protocol
+  version: "1"
+  description: >
+    A searchable catalogue of torrents. Clients speak exactly one remote
+    service — an index implementing this contract — and stream what they find
+    from the BitTorrent swarm. Field-level rules and client behaviour
+    (retries, fan-out, key scoping) are documented in README.md.
+servers:
+  - url: https://index.example.com
+    description: Wherever the operator hosts it; clients take the base URL in their settings.
+security:
+  - apiKey: []
+paths:
+  /api/v1/search:
+    get:
+      summary: Search the index, or list it when q is empty
+      description: >
+        Empty `q` with filters is a client's "browse the whole index".
+        The client clamps `limit` to 1–200 before sending; servers should cap
+        at 200 as well. 429 and 5xx are retried with backoff; other 4xx are
+        not.
+      parameters:
+        - {name: q, in: query, schema: {type: string}, description: "Search terms; word order irrelevant, `. _ -` treated as separators. Empty returns a filtered listing."}
+        - {name: cat, in: query, schema: {type: string, enum: ["", video, audio, software, archive, document, image]}, description: Category filter; empty for all.}
+        - {name: year, in: query, schema: {type: string}, description: Four-digit year, or empty.}
+        - {name: res, in: query, schema: {type: string, enum: ["", 2160p, 1080p, 720p, 480p]}}
+        - {name: min_seeders, in: query, schema: {type: integer, minimum: 0}}
+        - {name: sort, in: query, schema: {type: string, enum: ["", seeders, size, recent]}, description: Empty means server default.}
+        - {name: limit, in: query, schema: {type: integer, minimum: 1, maximum: 200, default: 50}}
+        - {name: offset, in: query, schema: {type: integer, minimum: 0, default: 0}}
+      responses:
+        "200":
+          description: Matching rows, best first by the requested ordering.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/SearchResult"}
+        "401": {description: Missing or wrong key; the client reports it and does not retry.}
+        "403": {description: Same handling as 401.}
+        "429": {description: Rate limited; the client backs off and retries.}
+  /api/v1/stats:
+    get:
+      summary: What the index holds (optional endpoint)
+      description: >
+        Lets a client hide filter chips for categories the index does not
+        hold. Absence is fine — on any failure the client silently offers
+        every category.
+      responses:
+        "200":
+          description: Aggregate counts.
+          content:
+            application/json:
+              schema: {$ref: "#/components/schemas/IndexStats"}
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: >
+        Sent on every request to the index's origin, and never to any other
+        host — a torrent_url pointing elsewhere is fetched without it.
+  schemas:
+    SearchResult:
+      type: object
+      properties:
+        query: {type: string}
+        count: {type: integer}
+        limit: {type: integer}
+        offset: {type: integer}
+        took_ms: {type: integer}
+        torrents:
+          type: array
+          items: {$ref: "#/components/schemas/Torrent"}
+    Torrent:
+      type: object
+      description: >
+        Every numeric field may be null or absent and is read as 0; every
+        string as "". Unknown extra fields are ignored, so servers may add
+        their own. The client derives swarm health as `seeders`, falling back
+        to `dht_peers` when seeders is 0.
+      required: [magnet]
+      properties:
+        infohash: {type: string, description: 40 hex characters.}
+        name: {type: string}
+        size_bytes: {type: integer, format: int64, nullable: true}
+        files: {type: integer, nullable: true}
+        category: {type: string}
+        seeders: {type: integer, nullable: true}
+        leechers: {type: integer, nullable: true}
+        dht_peers: {type: integer, nullable: true}
+        year: {type: string}
+        resolution: {type: string}
+        codec: {type: string}
+        source: {type: string}
+        season: {type: string}
+        episode: {type: string}
+        first_seen: {type: string}
+        scraped_at: {type: string}
+        magnet: {type: string, description: What a client opens.}
+        torrent_url:
+          type: string
+          description: >
+            Optional but decisive for thin swarms: a URL the .torrent itself
+            can be fetched from. Content with no swarm never starts from a
+            magnet alone (the info dict comes from peers, BEP-9), so this
+            removes peers from the critical path. If it points back at the
+            index's origin the request carries the key.
+    IndexStats:
+      type: object
+      properties:
+        torrents: {type: integer, format: int64}
+        scraped: {type: integer, format: int64}
+        by_category:
+          type: object
+          additionalProperties: {type: integer, format: int64}
+        newest_capture: {type: string}

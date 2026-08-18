@@ -1,0 +1,1930 @@
+{
+  "upstream-passthrough": {
+    "query": "big buck bunny",
+    "count": 3,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream"
+    ]
+  },
+  "upstream-small-page": {
+    "query": "bunny",
+    "count": 3,
+    "limit": 2,
+    "offset": 1,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream"
+    ]
+  },
+  "knaben": {
+    "query": "big buck bunny",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny%202008%201080p%20BluRay%20x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big Buck Bunny 2008 1080p BluRay x264-GRP",
+        "size_bytes": 1073741824,
+        "category": "video",
+        "seeders": 340,
+        "leechers": 12,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555555",
+        "sources": [
+          "knaben/1337x"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      }
+    ],
+    "engines": [
+      "knaben"
+    ]
+  },
+  "knaben-down-piratebay-carries-it": {
+    "query": "big buck bunny",
+    "count": 7,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny%202008%201080p%20BluRay%20x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big Buck Bunny 2008 1080p BluRay x264-GRP",
+        "size_bytes": 1073741824,
+        "files": 3,
+        "category": "video",
+        "seeders": 340,
+        "leechers": 12,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345678",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:9999999999999999999999999999999999999999&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "9999999999999999999999999999999999999999",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "files": 12,
+        "category": "video",
+        "seeders": 77,
+        "leechers": 5,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345679",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&dn=Some%20Album%202019%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "name": "Some Album 2019 FLAC",
+        "category": "audio",
+        "seeders": 9,
+        "leechers": 0,
+        "year": "2019",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345680",
+        "sources": [
+          "piratebay"
+        ]
+      }
+    ],
+    "engines": [
+      "piratebay",
+      "yts",
+      "nyaa"
+    ],
+    "engine_errors": {
+      "knaben": "rate limited (HTTP 429) (2 addresses tried)"
+    }
+  },
+  "piratebay": {
+    "query": "big buck bunny",
+    "count": 3,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny%202008%201080p%20BluRay%20x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big Buck Bunny 2008 1080p BluRay x264-GRP",
+        "size_bytes": 1073741824,
+        "files": 3,
+        "category": "video",
+        "seeders": 340,
+        "leechers": 12,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345678",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:9999999999999999999999999999999999999999&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "9999999999999999999999999999999999999999",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "files": 12,
+        "category": "video",
+        "seeders": 77,
+        "leechers": 5,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345679",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&dn=Some%20Album%202019%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "name": "Some Album 2019 FLAC",
+        "category": "audio",
+        "seeders": 9,
+        "leechers": 0,
+        "year": "2019",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345680",
+        "sources": [
+          "piratebay"
+        ]
+      }
+    ],
+    "engines": [
+      "piratebay"
+    ]
+  },
+  "two-broad-engines-merge": {
+    "query": "big buck bunny",
+    "count": 4,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny%202008%201080p%20BluRay%20x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big Buck Bunny 2008 1080p BluRay x264-GRP",
+        "size_bytes": 1073741824,
+        "files": 3,
+        "category": "video",
+        "seeders": 340,
+        "leechers": 12,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555555",
+        "sources": [
+          "knaben/1337x",
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:9999999999999999999999999999999999999999&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "9999999999999999999999999999999999999999",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "files": 12,
+        "category": "video",
+        "seeders": 77,
+        "leechers": 5,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345679",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&dn=Some%20Album%202019%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "name": "Some Album 2019 FLAC",
+        "category": "audio",
+        "seeders": 9,
+        "leechers": 0,
+        "year": "2019",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345680",
+        "sources": [
+          "piratebay"
+        ]
+      }
+    ],
+    "engines": [
+      "knaben",
+      "piratebay"
+    ]
+  },
+  "broad-engine-down-narrow-survives": {
+    "query": "big buck bunny",
+    "count": 5,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big%20Buck%20Bunny%202008%201080p%20BluRay%20x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big Buck Bunny 2008 1080p BluRay x264-GRP",
+        "size_bytes": 1073741824,
+        "files": 3,
+        "category": "video",
+        "seeders": 340,
+        "leechers": 12,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345678",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:9999999999999999999999999999999999999999&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "9999999999999999999999999999999999999999",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "files": 12,
+        "category": "video",
+        "seeders": 77,
+        "leechers": 5,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345679",
+        "sources": [
+          "piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee&dn=Some%20Album%202019%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "name": "Some Album 2019 FLAC",
+        "category": "audio",
+        "seeders": 9,
+        "leechers": 0,
+        "year": "2019",
+        "scraped_at": "PINNED",
+        "description_url": "https://thepiratebay.org/description.php?id=12345680",
+        "sources": [
+          "piratebay"
+        ]
+      }
+    ],
+    "engines": [
+      "piratebay",
+      "yts"
+    ],
+    "engine_errors": {
+      "knaben": "HTTP 403 (2 addresses tried)"
+    }
+  },
+  "torrentscsv": {
+    "query": "big buck bunny",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP",
+        "size_bytes": 1073741824,
+        "category": "video",
+        "seeders": 300,
+        "leechers": 20,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:58:20Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "torrentscsv"
+    ]
+  },
+  "yts": {
+    "query": "sintel",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      }
+    ],
+    "engines": [
+      "yts"
+    ]
+  },
+  "nyaa-rss": {
+    "query": "some show",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      }
+    ],
+    "engines": [
+      "nyaa"
+    ]
+  },
+  "torznab": {
+    "query": "bunny",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:5555555555555555555555555555555555555555&dn=Big%20Buck%20Bunny%202008%202160p%20UHD%20BluRay%20x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "5555555555555555555555555555555555555555",
+        "name": "Big Buck Bunny 2008 2160p UHD BluRay x265-GRP",
+        "size_bytes": 8589934592,
+        "files": 2,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 5,
+        "year": "2008",
+        "resolution": "2160p",
+        "codec": "x265",
+        "source": "bluray",
+        "first_seen": "2019-01-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://indexer.test/details/1",
+        "sources": [
+          "torznab"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:6666666666666666666666666666666666666666&dn=Big%20Buck%20Bunny%202008%201080p%20WEB-DL%20x264&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "6666666666666666666666666666666666666666",
+        "name": "Big Buck Bunny 2008 1080p WEB-DL x264",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 10,
+        "leechers": 2,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "web-dl",
+        "first_seen": "2019-01-02T00:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://indexer.test/download/2.torrent",
+        "sources": [
+          "torznab"
+        ]
+      }
+    ],
+    "engines": [
+      "torznab"
+    ]
+  },
+  "merge-across-engines": {
+    "query": "bunny",
+    "count": 9,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv",
+      "yts",
+      "nyaa"
+    ]
+  },
+  "merge-reordered": {
+    "query": "bunny",
+    "count": 5,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555555",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "torrentscsv",
+      "knaben",
+      "upstream"
+    ]
+  },
+  "filter-category-video": {
+    "query": "bunny",
+    "count": 6,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv",
+      "nyaa"
+    ]
+  },
+  "filter-category-audio": {
+    "query": "bunny",
+    "count": 1,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      }
+    ],
+    "engines": [
+      "nyaa",
+      "knaben"
+    ]
+  },
+  "filter-resolution": {
+    "query": "bunny",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "torrentscsv",
+      "nyaa"
+    ]
+  },
+  "filter-year-and-seeders": {
+    "query": "bunny",
+    "count": 1,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv"
+    ]
+  },
+  "sort-size": {
+    "query": "bunny",
+    "count": 9,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv",
+      "yts",
+      "nyaa"
+    ]
+  },
+  "sort-recent": {
+    "query": "bunny",
+    "count": 9,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dddddddddddddddddddddddddddddddddddddddd&dn=Some%20Show%20OST%20FLAC&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dddddddddddddddddddddddddddddddddddddddd",
+        "name": "Some Show OST FLAC",
+        "size_bytes": 441135923,
+        "category": "audio",
+        "seeders": 34,
+        "leechers": 1,
+        "first_seen": "2024-05-02T08:30:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837001.torrent",
+        "description_url": "https://nyaa.si/view/1837001",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&dn=Sintel%202010%204K%20Remaster%20%26%20Extras&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "Sintel 2010 4K Remaster & Extras",
+        "size_bytes": 2147483648,
+        "category": "video",
+        "seeders": 55,
+        "leechers": 2,
+        "year": "2010",
+        "resolution": "2160p",
+        "first_seen": "2024-05-01T12:00:00+00:00",
+        "scraped_at": "PINNED",
+        "description_url": "https://knaben.org/torrent/5555556",
+        "sources": [
+          "knaben/TorrentGalaxy"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "upstream/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv",
+      "yts",
+      "nyaa"
+    ]
+  },
+  "engine-failures": {
+    "query": "bunny",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP",
+        "size_bytes": 1073741824,
+        "category": "video",
+        "seeders": 300,
+        "leechers": 20,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:58:20Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "torrentscsv"
+    ],
+    "engine_errors": {
+      "upstream": "HTTP 502",
+      "knaben": "not JSON"
+    }
+  },
+  "upstream-auth-failure": {
+    "query": "bunny",
+    "count": 0,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [],
+    "engines": [],
+    "engine_errors": {
+      "upstream": "this Worker sent a key and your index saw none, which is a header going missing between them rather than a wrong key — something in front of it is dropping X-API-Key, or UTSI_UPSTREAM_APIKEY is set to an empty value."
+    }
+  },
+  "everything-empty-then-fallback": {
+    "query": "obscure",
+    "count": 3,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "fallback/1337x",
+          "fallback/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:7777777777777777777777777777777777777777&dn=Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "7777777777777777777777777777777777777777",
+        "name": "Bunny.Chronicles.S01E02.720p.WEB-DL.x265-GRP",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 88,
+        "leechers": 6,
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "season": "01",
+        "episode": "02",
+        "first_seen": "2021-05-01T00:00:00Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "fallback/nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:8888888888888888888888888888888888888888&dn=bunny%20toolkit%20installer&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "8888888888888888888888888888888888888888",
+        "name": "bunny toolkit installer",
+        "seeders": 4,
+        "leechers": 0,
+        "scraped_at": "PINNED",
+        "sources": [
+          "fallback/torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "torrentscsv",
+      "fallback"
+    ]
+  },
+  "no-engines-at-all": {
+    "query": "bunny",
+    "count": 0,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [],
+    "engines": []
+  },
+  "paging-offset-past-the-end": {
+    "query": "bunny",
+    "count": 4,
+    "limit": 10,
+    "offset": 99,
+    "took_ms": 0,
+    "torrents": [],
+    "engines": [
+      "upstream",
+      "knaben"
+    ]
+  },
+  "row-cap-of-one": {
+    "query": "bunny",
+    "count": 3,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-UPSTREAM",
+        "size_bytes": 1073741824,
+        "files": 4,
+        "category": "video",
+        "seeders": 512,
+        "leechers": 30,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T00:00:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://1337x.to/torrent/1/",
+        "sources": [
+          "knaben/1337x",
+          "torrentscsv",
+          "upstream/1337x",
+          "upstream/piratebay"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:cccccccccccccccccccccccccccccccccccccccc&dn=%5BSubGroup%5D%20Some%20Show%20-%2001%20%281080p%29%20%5BABCD1234%5D.mkv&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "cccccccccccccccccccccccccccccccccccccccc",
+        "name": "[SubGroup] Some Show - 01 (1080p) [ABCD1234].mkv",
+        "size_bytes": 1503238553,
+        "category": "video",
+        "seeders": 210,
+        "leechers": 9,
+        "resolution": "1080p",
+        "first_seen": "2024-05-01T12:00:00Z",
+        "scraped_at": "PINNED",
+        "torrent_url": "https://nyaa.si/download/1837000.torrent",
+        "description_url": "https://nyaa.si/view/1837000",
+        "sources": [
+          "nyaa"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      }
+    ],
+    "engines": [
+      "upstream",
+      "knaben",
+      "torrentscsv",
+      "yts",
+      "nyaa"
+    ]
+  },
+  "separators-in-the-query": {
+    "query": "  Big.Buck_Bunny-2008  ",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c&dn=Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "dd8255ecdc7ca55fb0bbf81323d87062db1f6d1c",
+        "name": "Big.Buck.Bunny.2008.1080p.BluRay.x264-GRP",
+        "size_bytes": 1073741824,
+        "category": "video",
+        "seeders": 300,
+        "leechers": 20,
+        "year": "2008",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:58:20Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:2222222222222222222222222222222222222222&dn=Big%20Buck%20Bunny%202008%20720p%20WEB-DL%20x265&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "2222222222222222222222222222222222222222",
+        "name": "Big Buck Bunny 2008 720p WEB-DL x265",
+        "size_bytes": 536870912,
+        "category": "video",
+        "seeders": 90,
+        "leechers": 4,
+        "year": "2008",
+        "resolution": "720p",
+        "codec": "x265",
+        "source": "web-dl",
+        "first_seen": "2018-12-31T23:56:40Z",
+        "scraped_at": "PINNED",
+        "sources": [
+          "torrentscsv"
+        ]
+      }
+    ],
+    "engines": [
+      "torrentscsv"
+    ]
+  },
+  "engine-url-override": {
+    "query": "sintel",
+    "count": 2,
+    "limit": 50,
+    "offset": 0,
+    "took_ms": 0,
+    "torrents": [
+      {
+        "magnet": "magnet:?xt=urn:btih:3333333333333333333333333333333333333333&dn=Sintel%20%282010%29%201080p%20bluray%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "3333333333333333333333333333333333333333",
+        "name": "Sintel (2010) 1080p bluray x264 YTS",
+        "size_bytes": 734003200,
+        "category": "video",
+        "seeders": 120,
+        "leechers": 8,
+        "year": "2010",
+        "resolution": "1080p",
+        "codec": "x264",
+        "source": "bluray",
+        "first_seen": "2018-12-31T23:55:00Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      },
+      {
+        "magnet": "magnet:?xt=urn:btih:4444444444444444444444444444444444444444&dn=Sintel%20%282010%29%20720p%20web%20x264%20YTS&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337%2Fannounce",
+        "infohash": "4444444444444444444444444444444444444444",
+        "name": "Sintel (2010) 720p web x264 YTS",
+        "size_bytes": 419430400,
+        "category": "video",
+        "seeders": 45,
+        "leechers": 3,
+        "year": "2010",
+        "resolution": "720p",
+        "codec": "x264",
+        "source": "webrip",
+        "first_seen": "2018-12-31T23:53:20Z",
+        "scraped_at": "PINNED",
+        "description_url": "https://yts.mx/movies/sintel-2010",
+        "sources": [
+          "yts"
+        ]
+      }
+    ],
+    "engines": [
+      "yts"
+    ]
+  }
+}
