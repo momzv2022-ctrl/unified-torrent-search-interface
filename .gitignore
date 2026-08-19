@@ -34,3 +34,8 @@ node_modules/
 # The artifact is a copy of worker/src/worker.js, so there is nothing here that
 # is not already in the repository.
 /site/
+
+# FUSE leftovers from editing over the desktop bridge. Not ours, not deletable
+# from that side; see _to_delete/.
+.fuse_hidden*
+_to_delete/

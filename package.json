@@ -8,8 +8,9 @@
     "node": ">=20"
   },
   "scripts": {
-    "test": "node --test worker/tests/worker.test.mjs",
+    "test": "node --test worker/tests/*.test.mjs",
     "build": "node worker/tools/build.mjs",
+    "preview": "node worker/tools/preview.mjs",
     "probe": "node worker/tools/probe-indexes.mjs"
   }
 }

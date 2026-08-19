@@ -29,10 +29,47 @@ Configuration is entirely environment variables; see [.env.example](../.env.exam
 ## The Worker, and the one line of npm
 
 ```sh
-node --test worker/tests/worker.test.mjs   # the whole Worker suite
-node worker/tools/build.mjs                # the artifact and the setup page
-node worker/tools/probe-indexes.mjs        # which indexes answer from here
+node --test worker/tests/*.test.mjs   # every suite: the Worker, and the setup page
+node worker/tools/build.mjs           # the artifact and the setup page
+node worker/tools/preview.mjs         # both of them running, on this machine
+node worker/tools/probe-indexes.mjs   # which indexes answer from here
 ```
+
+### Walking the setup flow without deploying anything
+
+The flow spans two origins that only exist after a deploy — the setup page,
+which mints the key, and the Worker, which is the only party that knows the
+address and hands it back. Neither half can be judged alone, and going to
+Cloudflare every time is a slow way to find a typo. `preview.mjs` serves both
+and points them at each other:
+
+```sh
+node worker/tools/preview.mjs      # or: npm run preview
+
+  setup page   http://127.0.0.1:8788/
+  worker       http://127.0.0.1:8787/
+  key          prev-iewk-eyno-tase-cret-0000
+```
+
+It builds first, splices a visibly fake key into the artifact exactly as the
+setup page does in a browser, and rewrites `SETUP_PAGE` so the Worker's *Finish
+setup* button points at the copy being served locally rather than the published
+one.
+
+Then walk it. The key is saved on this device by any of three actions — pressing
+*Deploy it*, *Copy just the key*, or *Copy the program* — and for a local walk
+you want the middle one, since the first navigates to Cloudflare and the third is
+folded inside the "if that link will not open" disclosure. So: open the setup
+page, press **Copy just the key** directly under the key in section 1, open the
+Worker, press **Finish setup**, and land back on the setup page with the address
+filled in beside that same key.
+
+`UTSI_PREVIEW_PORT` moves the pair; the setup page is always the next port up.
+
+**The deploy link is the one thing this cannot exercise**, because it goes to
+Cloudflare. Its shape is covered by `worker/tests/worker.test.mjs` and
+`worker/tools/playground-link.mjs --self-test`; what needed a real browser was
+everything after it, and that is what this is for.
 
 **There is still nothing to install.** `package.json` has no dependencies and
 there is no lockfile; `npm install` would do nothing and is not a step. It exists
@@ -51,6 +88,22 @@ CI now runs the Worker job on Node 20 **and** 22 for exactly that reason. If you
 are adding tooling, run it on the older one before believing it works: the
 failure mode is a confident CommonJS error message about a file that has never
 been CommonJS.
+
+Adding the second suite walked straight into the same trap, and the way out is
+narrower than it looks. **Leave the glob unquoted** and let the shell expand it:
+
+| | Node 20 | Node 22 |
+|---|---|---|
+| `node --test "worker/tests/*.test.mjs"` | `Could not find` | passes |
+| `node --test worker/tests/` | passes | `Cannot find module` |
+| `node --test worker/tests/*.test.mjs` | passes | passes |
+
+Quoted, the glob reaches Node, which only learned to expand one in 22. As a
+directory it reaches Node 20's file search, which 22 no longer does — it treats
+the argument as a file and tries to import a directory. Unquoted, the shell
+expands it before Node sees anything and both versions get a list of files.
+Either wrong form is green on one job and red on the other, which is why the
+matrix exists.
 
 ### A deliberate deviation from nova3
 

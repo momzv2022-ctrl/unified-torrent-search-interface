@@ -3,401 +3,592 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Set up your own search — Unified Torrent Search Interface</title>
-<meta name="description" content="Copy one file into a free Cloudflare account and get your own metasearch over public torrent indexes. No terminal, no GitHub account, works on a phone.">
-<meta name="color-scheme" content="light dark">
+<title>Your own torrent search in 3 minutes. Free.</title>
+<meta name="description" content="Deploy one readable file to your own free Cloudflare account and search several public torrent indexes at once, from a URL only you know. No card, nothing installed, works on a phone.">
+<meta name="color-scheme" content="light">
 <style>
-/* Built for a phone first, then allowed to widen. Nothing is loaded from
-   anywhere else: no fonts, no scripts, no analytics, no images. */
+/* Light, quiet, and loaded from nowhere else: no fonts, no scripts, no
+   analytics, no images. Built for a phone first, then allowed to widen. */
 :root {
-  --bg: #fbfaf8;
-  --panel: #ffffff;
-  --ink: #17171a;
-  --muted: #5b5b66;
-  --line: #e0dedb;
-  --accent: #1f5c3d;
-  --accent-ink: #ffffff;
-  --warn-bg: #fdf6e3;
-  --warn-line: #e4d5a8;
-  --code-bg: #f4f2ef;
-  --radius: 14px;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14161a;
-    --panel: #1c1f25;
-    --ink: #eceef2;
-    --muted: #a3a8b4;
-    --line: #2e333c;
-    --accent: #4ea87a;
-    --accent-ink: #10241a;
-    --warn-bg: #2a2418;
-    --warn-line: #4a4028;
-    --code-bg: #0f1115;
-  }
+  --bg: #ffffff;
+  --ink: #111111;
+  --muted: #666666;
+  --line: #e5e5e5;
+  --soft: #fafafa;
+  --code: #f6f6f6;
+  --accent: #f6821f;      /* Cloudflare orange, on the deploy button */
+  /* The same orange, taken down to 38% lightness. White on #f6821f measures
+     2.58:1, which is under WCAG AA's 4.5 for body text and under the relaxed 3
+     for large text as well; this is 4.61:1. Same hue and saturation, so it
+     still reads as Cloudflare's orange rather than some other colour. */
+  --accent-deep: #ba5a08;
+  --ok: #17603a;
+  --bad: #a3211a;
+  --radius: 10px;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
-  padding: 1.1rem 1rem 5rem;
+  padding: 2rem 1.15rem 6rem;
   background: var(--bg);
   color: var(--ink);
-  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
 }
-main { max-width: 42rem; margin: 0 auto; }
-h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 .4rem; letter-spacing: -0.01em; }
-h2 { font-size: 1.15rem; margin: 2.2rem 0 .6rem; letter-spacing: -0.01em; }
-h3 { font-size: 1rem; margin: 1.4rem 0 .3rem; }
-p, li { margin: .6rem 0; }
-a { color: var(--accent); }
-.lede { color: var(--muted); font-size: 1.02rem; margin-bottom: 1.6rem; }
+main { max-width: 40rem; margin: 0 auto; }
 
+h1 {
+  font-size: clamp(1.65rem, 6vw, 2.1rem);
+  line-height: 1.2;
+  letter-spacing: -0.022em;
+  margin: 0 0 .55rem;
+  font-weight: 700;
+}
+h2 {
+  font-size: 1.28rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  margin: 3rem 0 .5rem;
+  font-weight: 650;
+}
+h3 {
+  font-size: 1.02rem;
+  letter-spacing: -0.008em;
+  margin: 1.9rem 0 .35rem;
+  font-weight: 650;
+}
+p { margin: .7rem 0; }
+.lede { color: var(--muted); font-size: 1.06rem; margin: 0 0 1.1rem; }
+
+/* The five things somebody wants to know before they read a word of the rest.
+   A row, so they are counted at a glance rather than read, which is also why
+   each one is two or three words: five long ones would be a paragraph wearing
+   borders. They wrap rather than scroll. */
+ul.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.8rem;
+}
+ul.facts li {
+  margin: 0;
+  padding: .28rem .6rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: .87rem;
+  font-weight: 550;
+  color: var(--muted);
+  white-space: nowrap;
+}
+ul.facts li.free { border-color: var(--ink); color: var(--ink); }
+.note { color: var(--muted); font-size: .935rem; }
+.note code, p code { color: var(--ink); }
+a { color: var(--ink); text-underline-offset: 2px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-color: var(--muted); }
+hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
+
+/* ---- the verify banner, first thing under the title -------------------- */
+.verify-first {
+  display: block;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius);
+  padding: .95rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  margin: 0 0 .7rem;
+}
+.verify-first strong { display: block; font-size: 1.04rem; letter-spacing: -0.01em; }
+.verify-first span { display: block; color: var(--muted); font-size: .93rem; margin-top: .15rem; }
+.verify-first:hover { background: var(--soft); }
+
+/* ---- the demo -----------------------------------------------------------
+   A facade, not a player. It is an ordinary link until it is pressed, so the
+   page loads nothing from anywhere else and anyone without JavaScript still
+   gets the video. Pressing it swaps in the real embed, which is the moment the
+   reader chose YouTube. There is no thumbnail either: a poster image from
+   ytimg is a request to Google, which is the thing being avoided. */
+a.video {
+  display: block;
+  border: 1px solid var(--accent-deep);
+  border-radius: var(--radius);
+  background: var(--accent-deep);
+  padding: 1.5rem 1rem;
+  margin: 0 0 2rem;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+}
+a.video:hover .play { transform: scale(1.04); }
+.play {
+  width: 3.3rem;
+  height: 3.3rem;
+  margin: 0 auto .75rem;
+  border-radius: 50%;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  transition: transform .12s ease;
+}
+.play::after {
+  content: "";
+  border-style: solid;
+  border-width: .5rem 0 .5rem .82rem;
+  border-color: transparent transparent transparent var(--accent-deep);
+  margin-left: .17rem;
+}
+.video-title { display: block; font-weight: 650; letter-spacing: -.01em; }
+/* Not `opacity`, which would take this back under the line it was moved to
+   clear. Pure white, one step smaller, is enough of a step down. */
+.video-note { display: block; font-size: .9rem; margin-top: .3rem; }
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin: 0 0 2rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+}
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+/* ---- cards and lists --------------------------------------------------- */
 .card {
-  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1rem;
   margin: 1rem 0;
+  background: var(--bg);
 }
-.card.warn { background: var(--warn-bg); border-color: var(--warn-line); }
+.card.soft { background: var(--soft); }
+ul.plain { list-style: none; padding: 0; margin: .6rem 0; }
+ul.plain li { position: relative; padding-left: 1.35rem; margin: .5rem 0; }
+ul.plain li::before {
+  content: "";
+  position: absolute; left: .2rem; top: .72em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--muted);
+}
 
-button {
-  font: inherit;
-  font-weight: 600;
-  width: 100%;
-  min-height: 3.2rem;          /* comfortably tappable */
-  padding: .8rem 1rem;
-  border: 0;
-  border-radius: 11px;
-  background: var(--accent);
-  color: var(--accent-ink);
-  cursor: pointer;
-}
-button:active { transform: translateY(1px); }
-button.secondary, a.button.secondary {
-  background: transparent;
-  color: var(--ink);
-  border: 1px solid var(--line);
-}
-button[disabled], a.button[aria-disabled="true"] { opacity: .55; cursor: default; }
-
-/* The deploy and playground links are anchors rather than buttons so they behave
-   like links: long-press to open in a new tab, middle-click, the lot. */
-a.button {
+/* ---- buttons ----------------------------------------------------------- */
+button, a.btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: .4rem;
+  width: 100%;
+  min-height: 3.15rem;
+  padding: .8rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  letter-spacing: -0.005em;
   text-align: center;
   text-decoration: none;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  cursor: pointer;
+}
+button.ghost, a.btn.ghost { background: var(--bg); color: var(--ink); border-color: var(--line); }
+button.small { width: auto; min-height: 2.3rem; padding: .35rem .7rem; font-size: .87rem;
+  font-weight: 500; color: var(--muted); margin-top: .55rem; }
+button.ghost:hover, a.btn.ghost:hover { border-color: var(--muted); }
+button:active, a.btn:active { transform: translateY(1px); }
+button[disabled], a.btn[aria-disabled="true"] { opacity: .45; cursor: default; }
+a.btn.deploy { border-color: var(--accent); background: var(--accent); color: #fff; font-size: 1.05rem; }
+.btn-row { display: flex; gap: .5rem; }
+.btn-row > * { width: auto; flex: 1; }
+
+/* ---- the steps --------------------------------------------------------- */
+ol.steps { list-style: none; padding: 0; margin: .5rem 0 0; counter-reset: step; }
+ol.steps > li { border: 1px solid var(--line); border-radius: var(--radius); margin: .6rem 0; overflow: hidden; }
+ol.steps > li.current { border-color: var(--ink); }
+ol.steps summary {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  padding: .95rem 1rem;
+  cursor: pointer;
   font-weight: 600;
-  min-height: 3.2rem;
-  padding: .8rem 1rem;
-  border-radius: 11px;
-  background: var(--accent);
-  color: var(--accent-ink);
+  letter-spacing: -0.01em;
+  list-style: none;
 }
-a.button:active { transform: translateY(1px); }
-
-input[type="text"] {
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 3.2rem;          /* comfortably tappable, same as the buttons */
-  padding: .8rem;
-  margin: .2rem 0 .6rem;
-  font: 400 1rem/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  color: var(--ink);
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: 11px;
-}
-
-.key {
-  font: 600 clamp(1.25rem, 6.5vw, 1.9rem)/1.35 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  letter-spacing: .06em;
-  background: var(--code-bg);
-  border: 1px solid var(--line);
-  border-radius: 11px;
-  padding: .8rem .7rem;
-  margin: .2rem 0 .8rem;
-  text-align: center;
-  user-select: all;
-  -webkit-user-select: all;
-  /* Wrap at the hyphens first, so a group of four never splits across lines and
-     the key stays transcribable; break inside a group only as a last resort. */
-  word-break: normal;
-  overflow-wrap: break-word;
-}
-
-ol.steps { padding-left: 0; list-style: none; counter-reset: step; margin: 0; }
-ol.steps > li {
-  counter-increment: step;
-  position: relative;
-  padding: 0 0 0 2.6rem;
-  margin: 1.5rem 0;
-}
-ol.steps > li::before {
-  content: counter(step);
-  position: absolute;
-  left: 0; top: .05rem;
-  width: 1.9rem; height: 1.9rem;
+ol.steps summary::-webkit-details-marker { display: none; }
+.num {
+  flex: 0 0 auto;
+  width: 1.65rem; height: 1.65rem;
   display: grid; place-items: center;
   border-radius: 50%;
-  background: var(--accent);
-  color: var(--accent-ink);
-  font-weight: 700; font-size: .95rem;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: .85rem; font-weight: 600;
 }
-ol.steps > li > strong { display: block; margin-bottom: .1rem; }
+li.current .num { background: var(--ink); border-color: var(--ink); color: #fff; }
+li.done .num { background: var(--bg); border-color: var(--ok); color: var(--ok); }
+.step-title { flex: 1 1 auto; }
+.state { flex: 0 0 auto; font-size: .82rem; font-weight: 600; color: var(--ok); }
+.step-body { padding: 0 1rem 1.1rem; border-top: 1px solid var(--line); }
+.step-body > :first-child { margin-top: .9rem; }
+
+/* ---- values you copy ---------------------------------------------------- */
+.field { margin: 1rem 0 0; }
+.field label { display: block; font-size: .82rem; font-weight: 650; letter-spacing: .01em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
+.value {
+  font: 500 1rem/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--code);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .7rem .75rem;
+  user-select: all;
+  -webkit-user-select: all;
+  word-break: normal;
+  overflow-wrap: break-word;
+  min-height: 2.9rem;
+}
+/* The key is the one string on this page people copy by hand, and the one thing
+   worth a pinch-zoom if it were too small. It is not. */
+#key { font-size: 1.06rem; letter-spacing: .015em; }
+input[type="text"] {
+  width: 100%;
+  min-height: 3rem;
+  padding: .7rem .75rem;
+  font: 400 1rem/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+input[type="text"]:focus { outline: 2px solid var(--ink); outline-offset: -1px; }
 
 code, kbd {
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-size: .92em;
-  background: var(--code-bg);
-  padding: .12em .35em;
-  border-radius: 5px;
+  font-size: .9em;
+  background: var(--code);
+  padding: .1em .32em;
+  border-radius: 4px;
 }
 kbd { border: 1px solid var(--line); font-weight: 600; }
-
 pre {
-  background: var(--code-bg);
+  background: var(--code);
   border: 1px solid var(--line);
-  border-radius: 11px;
+  border-radius: 8px;
   padding: .8rem;
-  margin: .6rem 0;
-  max-height: 24rem;
-  overflow: auto;              /* the code scrolls, the page never does */
-  font-size: .8rem;
-  line-height: 1.45;
+  margin: .7rem 0;
+  max-height: 22rem;
+  overflow: auto;
+  font-size: .78rem;
+  line-height: 1.5;
 }
-details { margin: .8rem 0; }
-summary { cursor: pointer; font-weight: 600; padding: .5rem 0; min-height: 2.6rem; }
+pre.out { background: #0f1115; border-color: #0f1115; color: #e6e9ef; }
+.hash { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .76rem; word-break: break-all; color: var(--muted); }
 
-.hash { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .78rem; word-break: break-all; color: var(--muted); }
-.note { color: var(--muted); font-size: .93rem; }
-footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
-.status { min-height: 1.4rem; font-size: .93rem; font-weight: 600; color: var(--accent); text-align: center; margin-top: .5rem; }
-table { width: 100%; border-collapse: collapse; font-size: .93rem; }
-td, th { text-align: left; padding: .4rem .5rem .4rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+details.more { border-top: 1px solid var(--line); }
+details.more:first-of-type { border-top: 0; }
+details.more > summary { cursor: pointer; font-weight: 600; padding: .85rem 0; letter-spacing: -0.008em; }
+details.more > summary::marker { color: var(--muted); }
+
+.status { min-height: 1.35rem; margin-top: .5rem; font-size: .9rem; font-weight: 600; color: var(--ok); }
+.status.bad { color: var(--bad); }
+table { width: 100%; border-collapse: collapse; font-size: .93rem; margin: .5rem 0; }
+th, td { text-align: left; padding: .55rem .6rem .55rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { width: 7.5rem; font-weight: 650; }
+footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .89rem; }
 </style>
 </head>
 <body>
 <main>
 
-<h1>Set up your own search</h1>
+<h1>Your own torrent search in 3 minutes. Free.</h1>
 <p class="lede">
-  This page hands you one file and a password. You paste them into a free
-  Cloudflare account and you have your own search across several public torrent
-  indexes, at a web address only you know. No terminal, no GitHub account, and
-  it works on a phone.
+  One readable file goes into a Cloudflare account you control, and you have a
+  private search across several public indexes at a URL only you know.
 </p>
+<ul class="facts">
+  <li class="free">Free</li>
+  <li>MIT licensed</li>
+  <li>No card or domain</li>
+  <li>Nothing installed</li>
+  <li>Works on a phone</li>
+</ul>
 
-<h2>1 &middot; Your key</h2>
-<div class="card">
-  <p style="margin-top:0">
-    Made just now, in this browser, from your device's own random numbers. It has
-    not been sent anywhere and nobody else has it &mdash; including us.
-  </p>
-  <div class="key" id="key" aria-label="Your new API key">generating…</div>
-  <button id="copy-key" class="secondary" type="button">Copy just the key</button>
-  <div class="status" id="key-status" role="status" aria-live="polite"></div>
+<a class="verify-first" href="#verify">
+  <strong>Do not trust this. Verify it before you deploy.</strong>
+  <span>Read the file, check it matches what was published, and see what it can and cannot reach. Written for people who read code and people who do not.</span>
+</a>
+<a class="video" id="watch" data-video="R9z3e6vYVNg"
+   href="https://youtu.be/R9z3e6vYVNg" target="_blank" rel="noopener">
+  <span class="play" aria-hidden="true"></span>
+  <span class="video-title">Want to see it working first?</span>
+  <span class="video-note">
+    The whole setup, start to finish. Press play and YouTube takes it from
+    there. Nothing loads until you do.
+  </span>
+</a>
+
+<h2>Before you start</h2>
+<div class="card soft">
+  <ul class="plain">
+    <li><strong>A Cloudflare account.</strong> Free. An email address and a password. No card, no domain.</li>
+    <li><strong>About three minutes</strong>, and a browser you can open a second tab in.</li>
+    <li><strong>Keep this page open.</strong> Every step opens Cloudflare in a new tab, so you can come back here.</li>
+  </ul>
   <p class="note" style="margin-bottom:0">
-    Your web address is the other half, and this page cannot work it out: it is
-    <code><em>name</em>.<em>your-account</em>.workers.dev</code>, Cloudflare picks
-    the account part and adds words of its own to the name. It shows you the
-    finished thing when you deploy &mdash; step 3 has a box to paste it into.
-  </p>
-</div>
-<div class="card warn">
-  <p style="margin-top:0"><strong>Save it somewhere now.</strong> Your password
-  manager, your notes app, anywhere you will still have it next week. You will
-  need it every time you point an app at your search.</p>
-  <p class="note" style="margin-bottom:0">Lost it later? It is not gone. The key
-  is written into the file you are about to copy, so it will be sitting in your
-  own Worker's code &mdash; open the Worker in Cloudflare, press <strong>Edit
-  code</strong>, and read the line near the top that starts
-  <code>const API_KEY</code>. That is also why this page does not put your key in
-  its own web address: a bookmark that contains a password is a password you can
-  leak by sharing a link.</p>
-</div>
-
-<h2>2 &middot; Deploy it</h2>
-<div class="card">
-  <p style="margin-top:0">
-    This link opens Cloudflare's deploy screen with the program already loaded,
-    your key already in it, and a name already filled in. Nothing to copy,
-    nothing to paste, and no editor in the way.
-  </p>
-  <!-- A new tab, deliberately. This page is holding a key that exists nowhere
-       else yet, and navigating away from it before it is saved is the one way
-       to lose it. -->
-  <a class="button" id="open-deploy" href="#" target="_blank" rel="noopener">
-    Deploy it &nearr;
-  </a>
-  <div class="status" id="link-status" role="status" aria-live="polite">preparing the link…</div>
-  <p class="note" style="margin-bottom:0">
-    It opens in a new tab, so this page &mdash; and your key &mdash; stays put.
-    <strong>The link contains your key</strong>, so treat it like a password: do
-    not post it or send it to anyone. The part after the <code>#</code> never
-    leaves your browser &mdash; it is not sent to Cloudflare when the page loads
-    &mdash; but anyone you hand the whole link to gets your key with it.
+    You do not need to prepare anything else. Your key is being made in this
+    browser right now, and both your key and your URL are shown at the end, in
+    step 4.
   </p>
 </div>
 
-<p>Then, on the page that opens:</p>
+<h2>Deploy it</h2>
+<p class="note" style="margin-top:0">One step at a time. Finish one, press the button at the bottom of it, and the next one opens.</p>
 
-<ol class="steps">
-  <li>
-    <strong>Sign in, or make a free account</strong>
-    An email address and a password &mdash; no domain and no card. The program is
-    shown under <em>Code preview</em>, so you can read what you are about to run.
+<ol class="steps" id="steps">
+
+  <li class="step current" id="step-1">
+    <details open>
+      <summary><span class="num">1</span><span class="step-title">Sign in to Cloudflare</span><span class="state"></span></summary>
+      <div class="step-body">
+        <p>
+          Open Cloudflare in a new tab and sign in. If you do not have an account,
+          the same link creates one, and it is free.
+        </p>
+        <a class="btn ghost" href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Open Cloudflare in a new tab</a>
+        <p class="note">
+          <strong>Do this before step 2, not after.</strong> If you are signed out
+          when you press Deploy, Cloudflare sends you to a login page first, and
+          the file does not survive that trip. You would arrive at an empty
+          editor and wonder what went wrong.
+        </p>
+        <button class="ghost next" data-next="step-2" type="button">I am signed in, open step 2</button>
+      </div>
+    </details>
   </li>
-  <li>
-    <strong>Take the address it shows you</strong>
-    Under the name it says <em>Your Worker will be deployed to:</em> and then an
-    address. <strong>That address is the other half of your search</strong> —
-    save it next to your key.
-    <p class="note">The name is filled in already and Cloudflare may lengthen it,
-    which is fine and makes it harder to guess. Change it if you like; whatever
-    it ends up as, the address on that line is the real one. Anyone who finds it
-    still needs your key, but there is no reason to make it easy.</p>
+
+  <li class="step" id="step-2">
+    <details>
+      <summary><span class="num">2</span><span class="step-title">Deploy it to your account</span><span class="state"></span></summary>
+      <div class="step-body">
+        <p>
+          This opens Cloudflare's deploy screen in a new tab with the file already
+          loaded and your key already in it. Nothing to copy, nothing to paste.
+        </p>
+        <!-- A new tab on purpose. This page is holding a key that exists nowhere
+             else yet, and leaving the page before it is saved loses it. -->
+        <a class="btn deploy" id="open-deploy" href="#" target="_blank" rel="noopener">Deploy to Cloudflare for free</a>
+        <div class="status" id="link-status" role="status" aria-live="polite">building your link</div>
+        <p class="note">
+          On that screen the file is shown under <em>Code preview</em>, so you can
+          read it before you run it, and a name is filled in for you. Press
+          <strong>Deploy</strong>. Cloudflare may add words to the name, which is
+          fine.
+        </p>
+        <p class="note">
+          The link has your key inside it, so treat it like a password and do not
+          send it to anyone.
+        </p>
+        <button class="ghost next" data-next="step-3" type="button">I pressed Deploy, open step 3</button>
+      </div>
+    </details>
   </li>
-  <li>
-    <strong>Press Deploy, then check it</strong>
-    Open <code>https://your-address.workers.dev/healthz</code> in a browser. No key
-    needed for that one. You want to see <code>"status":"ok"</code>.
+
+  <li class="step" id="step-3">
+    <details>
+      <summary><span class="num">3</span><span class="step-title">Open your new URL</span><span class="state"></span></summary>
+      <div class="step-body">
+        <p>
+          When the deploy finishes, Cloudflare shows your URL as a link. It ends in
+          <code>.workers.dev</code>. Open it.
+        </p>
+        <p>
+          Your Worker answers with a small page of its own that says it is live,
+          and it has a <strong>Finish setup</strong> button. Press that button.
+        </p>
+        <p class="note">
+          It brings your URL back to this page, so you never have to read a long
+          web address off one screen and type it into another. Nothing about your
+          Worker is sent to any server on the way: the URL travels in the part of
+          a link after the <code>#</code>, which browsers keep to themselves.
+        </p>
+        <button class="ghost next" data-next="step-4" type="button">Open step 4</button>
+      </div>
+    </details>
+  </li>
+
+  <li class="step" id="step-4">
+    <details>
+      <summary><span class="num">4</span><span class="step-title">Your URL and key</span><span class="state"></span></summary>
+      <div class="step-body">
+
+        <div class="card soft" id="returned" hidden>
+          <p style="margin:0"><strong>Your Worker sent its URL back.</strong> Both
+          halves are below. Copy them somewhere you will still have next week.</p>
+        </div>
+
+        <div class="card soft" id="key-missing" hidden>
+          <p style="margin-top:0"><strong>This browser no longer has the key.</strong>
+          Your URL arrived but the key that went into it did not. Saved keys are
+          dropped after a week, and a different browser never had it.</p>
+          <p style="margin-bottom:0">It is not lost. Open that Worker in
+          Cloudflare, press <strong>Edit code</strong>, and read the line near the
+          top that starts <code>const API_KEY</code>. The key shown below is a new
+          one and belongs to no Worker yet.</p>
+        </div>
+
+        <div class="field">
+          <label for="url">Your URL</label>
+          <!-- Shown as text once it is known, because it is long and an input box
+               hides the end of it, and this is a value people have to read. The
+               box comes back if they want to change it. -->
+          <div class="value" id="url-shown" hidden></div>
+          <input id="url" type="text" inputmode="url" autocomplete="off" spellcheck="false"
+                 placeholder="your-worker.your-account.workers.dev">
+          <div class="status" id="url-status" role="status" aria-live="polite"></div>
+          <button class="ghost small" id="edit-url" type="button" hidden>Use a different URL</button>
+        </div>
+
+        <div class="field">
+          <label for="key">Your key</label>
+          <div class="value" id="key">making one</div>
+        </div>
+
+        <div class="btn-row" style="margin-top:.9rem">
+          <button id="copy-both" type="button">Copy both</button>
+          <button id="copy-key" class="ghost" type="button">Copy key</button>
+        </div>
+        <div class="status" id="key-status" role="status" aria-live="polite"></div>
+
+        <button class="ghost" id="run-test" type="button" style="margin-top:.6rem">Test your URL and key</button>
+        <div class="status" id="test-status" role="status" aria-live="polite"></div>
+        <pre class="out" id="test-output" hidden></pre>
+
+        <details class="more" id="build-on-it" hidden>
+          <summary>Build something on it</summary>
+          <p class="note">
+            That answer is the whole API. Three routes, one header, JSON out.
+          </p>
+          <table>
+            <tr><th><code>/api/v1/search</code></th><td>The search. Takes <code>q</code>, and optionally <code>cat</code>, <code>limit</code>, <code>offset</code>, <code>sort</code>, <code>min_seeders</code>, <code>engines</code>. Returns <code>torrents</code> with names, sizes, seeders, leechers and <code>magnet</code> links.</td></tr>
+            <tr><th><code>/api/v1/engines</code></th><td>Which indexes this Worker runs. Add <code>?probe=1</code> and it asks each one and reports what came back.</td></tr>
+            <tr><th><code>/healthz</code></th><td>Whether it is well, and which indexes are answering. Needs no key.</td></tr>
+          </table>
+          <p class="note" style="margin-bottom:0">
+            Send the key as an <code>X-API-Key</code> header on the first two.
+            Everything is GET and returns JSON, so a fetch call is the whole
+            integration. The
+            <a id="api-link" href="https://github.com/momzv2022-ctrl/unified-torrent-search-interface/blob/main/docs/api.md" rel="noopener">full reference</a>
+            lists every field.
+          </p>
+        </details>
+
+        <details class="more">
+          <summary>Run it from a terminal</summary>
+          <pre><code id="curl">curl -H "X-API-Key: YOUR-KEY" \
+  "https://your-url.workers.dev/api/v1/search?q=big+buck+bunny&amp;limit=5"</code></pre>
+          <button id="copy-curl" class="ghost" type="button">Copy the command</button>
+          <div class="status" id="curl-status" role="status" aria-live="polite"></div>
+        </details>
+
+      </div>
+    </details>
   </li>
 </ol>
 
 <div class="card">
-  <details>
-    <summary>Rather watch it run before you deploy anything?</summary>
+  <details class="more">
+    <summary>The Deploy button did not work</summary>
     <p class="note">
-      This opens the same program in Cloudflare's playground instead: an editor
-      with a live preview beside it, where you can type <code>/healthz</code> in
-      the preview's address box and watch it answer. It has its own
-      <em>Deploy</em> button that lands on the very screen above, so nothing is
-      lost by starting here &mdash; it is one more page, and one more page that
-      can have a bad day.
+      The link is long, because the whole file is inside it. This route works in
+      every browser and ends at exactly the same Worker.
     </p>
-    <a class="button secondary" id="open-playground" href="#" target="_blank" rel="noopener">
-      Open the playground instead &nearr;
-    </a>
+    <button id="copy-code" type="button">Copy the file</button>
+    <div class="status" id="code-status" role="status" aria-live="polite"></div>
+    <ol class="plain" style="counter-reset:none">
+      <li><strong>Make an empty Worker.</strong> At <a href="https://dash.cloudflare.com" rel="noopener">dash.cloudflare.com</a>, find <em>Workers &amp; Pages</em>, which newer accounts call <em>Compute</em>. Then <em>Create</em>, the <em>Workers</em> tab, <em>Start with Hello World</em>. Name it, and press <em>Deploy</em>.</li>
+      <li><strong>Replace the code.</strong> Press <em>Edit code</em>, click inside the editor, select everything with <kbd>Ctrl</kbd>+<kbd>A</kbd> or <kbd>&#8984;</kbd>+<kbd>A</kbd>, paste, and press <em>Deploy</em> again.</li>
+      <li><strong>Carry on from step 3.</strong></li>
+    </ol>
+  </details>
+  <details class="more">
+    <summary>Run it before you deploy it</summary>
+    <p class="note">
+      The same file in Cloudflare's playground: an editor with a live preview
+      beside it, where you can type <code>/healthz</code> and watch it answer
+      before anything reaches your account.
+    </p>
+    <a class="btn ghost" id="open-playground" href="#" target="_blank" rel="noopener">Open the playground</a>
     <div class="status" id="playground-status" role="status" aria-live="polite"></div>
   </details>
 </div>
 
-<div class="card">
-  <details>
-    <summary>If that link will not open &mdash; copy and paste instead</summary>
-    <p class="note">
-      The link is long, because the whole program is inside it. Most browsers are
-      fine with that; if yours is not, or nothing happens when you tap it, this
-      route works everywhere and gets you to exactly the same place.
-    </p>
-    <button id="copy-code" type="button">Copy the program</button>
-    <div class="status" id="code-status" role="status" aria-live="polite"></div>
-    <ol class="steps">
-      <li>
-        <strong>Sign in at <a href="https://dash.cloudflare.com" rel="noopener">dash.cloudflare.com</a></strong>
-        A free account is an email address and a password. No domain, no card.
-      </li>
-      <li>
-        <strong>Create an empty Worker</strong>
-        In the sidebar find <em>Workers &amp; Pages</em> (newer accounts call it
-        <em>Compute</em>), then <em>Create</em>, then the <em>Workers</em> tab,
-        then <em>Start with Hello World</em>. Rename it &mdash; the name becomes
-        your web address &mdash; and press <em>Deploy</em>.
-      </li>
-      <li>
-        <strong>Replace the code with yours</strong>
-        Press <em>Edit code</em>. Click once inside the editor, select everything
-        (<kbd>Ctrl</kbd>+<kbd>A</kbd>, or <kbd>&#8984;</kbd>+<kbd>A</kbd> on a
-        Mac; on a phone, tap and hold and choose <em>Select All</em>), paste, and
-        press <em>Deploy</em> again.
-      </li>
-    </ol>
-  </details>
-  <details>
-    <summary>Show me the program</summary>
-    <p class="note">
-      About <span id="size">—</span>, no dependencies, and nothing hidden. This is
-      the whole thing, exactly as it will run.
-    </p>
-    <pre><code id="source">loading…</code></pre>
-  </details>
-</div>
+<hr>
 
-<h2>3 &middot; Use it</h2>
-<p>Give the address and the key to any client that speaks
-<a href="https://github.com/raul2hot/torrent-stream-protocol" rel="noopener">Torrent Stream Protocol</a>,
-or ask it a question directly.</p>
-
-<div class="card">
-  <p style="margin-top:0" class="note">
-    <label for="address">Paste the address Cloudflare gave you</label> &mdash; the
-    one from <em>Your Worker will be deployed to:</em> &mdash; and everything
-    below fills itself in, key and all. It stays in this browser.
-  </p>
-  <input id="address" type="text" inputmode="url" autocomplete="off"
-         spellcheck="false" placeholder="your-worker.your-account.workers.dev">
-  <div class="status" id="address-status" role="status" aria-live="polite"></div>
-  <p class="note" style="margin-bottom:.2rem">Your search, ready to run:</p>
-  <pre><code id="curl">curl -H "X-API-Key: YOUR-KEY" \
-  "https://your-address.workers.dev/api/v1/search?q=big+buck+bunny&amp;limit=5"</code></pre>
-  <button id="copy-curl" class="secondary" type="button">Copy the command</button>
-  <button id="copy-both" class="secondary" type="button">Copy address and key</button>
-  <div class="status" id="curl-status" role="status" aria-live="polite"></div>
-</div>
-<p class="note">
-  Two more addresses worth knowing. <code>/healthz</code> tells you which indexes
-  are answering and which are failing, and needs no key.
-  <code>/api/v1/engines?probe=1</code> tries every index once from your Worker and
-  reports what came back &mdash; that is the honest answer to "which of these
-  actually work for me", because it depends on your Worker's network and not on
-  the software.
+<h2 id="verify">Do not trust this. Verify it.</h2>
+<p>
+  A stranger on the internet is asking you to put their code into your cloud
+  account. Being suspicious of that is correct. Everything you need to check it
+  is below, and all of it can be done before you deploy anything.
 </p>
 
-<h2>Checking you got what we published</h2>
+<h3>If you read code</h3>
+<ul class="plain">
+  <li><strong>It is one file, and you can read all of it.</strong> No dependencies, no build step, no minifier, no bundler. What you deploy is what you read. About <span id="size">a few hundred KB</span>, version <span id="version">unknown</span>.</li>
+  <li><strong>Check it is what was published.</strong> Its SHA&#8209;256, before your key is written in, is below. The identical file is served from this site at <a id="raw-link" href="worker.js" download>worker.js</a>, and a public GitHub Actions run built it from <a id="source-link" href="https://github.com/momzv2022-ctrl/unified-torrent-search-interface/blob/main/worker/src/worker.js" rel="noopener">worker/src/worker.js</a>, which you can read in the repository. Download it and run <code>shasum -a 256 worker.js</code>.</li>
+  <li><strong>Search the file for <code>fetch(</code>.</strong> Every outbound request goes to a torrent index in the engine list, or to this project's own version and feed files on GitHub Pages. There is no other host in there, and no telemetry.</li>
+  <li><strong>Your key never leaves your browser.</strong> It comes from <code>crypto.getRandomValues</code>, gets written into the copy of the file that goes into the deploy link, and sits after the <code>#</code>, which browsers do not send to servers. This page makes no network requests at all. Open your browser's network tab and watch.</li>
+</ul>
 <div class="card">
-  <p style="margin-top:0" class="note">
-    The file above is served from this page. Its SHA-256, before your key is
-    added, is:
-  </p>
-  <p class="hash" id="sha">—</p>
-  <p class="note" style="margin-bottom:0">
-    Built by a public GitHub Actions run from
-    <a id="source-link" href="https://github.com/momzv2022-ctrl/unified-torrent-search-interface/blob/main/worker/src/worker.js" rel="noopener">worker/src/worker.js</a>,
-    which you can read there and compare. You can also download
-    <a id="raw-link" href="worker.js" download>worker.js</a> and run
-    <code>shasum -a 256 worker.js</code> yourself. Version <span id="version">—</span>.
-  </p>
+  <p class="note" style="margin-top:0">SHA&#8209;256 of the file, before your key is added</p>
+  <p class="hash" id="sha" style="margin:0">unknown</p>
 </div>
+<details class="more" style="border-top:1px solid var(--line)">
+  <summary>Show me the whole file</summary>
+  <pre><code id="source">loading</code></pre>
+</details>
 
-<h2>What this is, and is not</h2>
+<h3>If you do not read code</h3>
+<ul class="plain">
+  <li><strong>Nothing is installed on your computer.</strong> There is no app, no extension, and no download. You are pasting one file into a website you control.</li>
+  <li><strong>It goes into an account you own and can wipe.</strong> You create the Cloudflare account, you can open the file inside it and read it, and you can delete the whole thing with one button whenever you like. See below.</li>
+  <li><strong>It cannot see anything of yours.</strong> A Cloudflare Worker is a small program that only answers web requests sent to its own URL. It has no access to your computer, your files, your other accounts, or anything else in your Cloudflare account.</li>
+  <li><strong>It downloads nothing.</strong> It asks public torrent sites the same question you would type into their search boxes, and hands you back the list. The links it returns are opened by whatever torrent app you already have, if you choose to open them.</li>
+  <li><strong>There is nothing to bill you for.</strong> The free plan covers 100,000 requests a day and no card is involved.</li>
+  <li><strong>Nobody else gets your URL.</strong> There is no public instance of this and no directory of other people's. The only one that exists is the one you make, and it needs your key to answer anything.</li>
+</ul>
+
+<h3>How to delete it</h3>
+<p class="note">
+  In Cloudflare, open <em>Workers &amp; Pages</em>, click your Worker, then
+  <em>Settings</em>, then <em>Delete</em>. It is gone immediately and the URL
+  stops answering. Deleting the Cloudflare account itself removes everything at
+  once.
+</p>
+
+<h3>What it does not promise</h3>
 <table>
-  <tr><th>It does</th><td>Ask several public indexes the same question, merge the answers, and hand back names, sizes, swarm counts and <code>magnet:</code> links.</td></tr>
-  <tr><th>It does not</th><td>Host, store, or transfer any file. It is not a BitTorrent client and it downloads nothing. The links go to whatever torrent app you already have.</td></tr>
-  <tr><th>It keeps</th><td>No search log. Cloudflare's request logging is switched off in this file, on purpose, so your queries are not written into a durable log you would then have to trust.</td></tr>
-  <tr><th>It is not</th><td>Anonymity. The indexes see the query, your network carries it, and on this setup Cloudflare is your network and can see the traffic. "No log kept here" is a true statement about logging and nothing more.</td></tr>
+  <tr><th>Not anonymity</th><td>The indexes see your query and Cloudflare carries it. No search log is kept and request logging is switched off in the file on purpose, but that is a statement about logging and nothing more.</td></tr>
+  <tr><th>Not a client</th><td>It hosts nothing, stores nothing and transfers no file. It returns names, sizes, swarm counts and links.</td></tr>
+  <tr><th>Not perfect</th><td>Public indexes move domain, rate limit, and go down. <code>/healthz</code> tells you which ones are answering right now and which are not.</td></tr>
 </table>
 
-<h3>Some things it is good at</h3>
-<p class="note">
-  Linux and BSD installation images, Internet Archive material, public-domain
-  film, Creative Commons music and video, game mods, and the large scientific and
-  open datasets that are distributed over BitTorrent because it is the cheapest
-  way to move a terabyte. The examples on this page are
-  <em>Big Buck Bunny</em> and <em>Sintel</em>, both released by the Blender
-  Foundation under Creative Commons, and <em>Ubuntu</em>.
-</p>
-
-<h3>Your responsibility</h3>
+<h2>Your responsibility, and the licence</h2>
 <p class="note">
   Laws about what you may download differ from country to country, and so do the
-  terms of the sites this queries. Complying with both is yours to do. This is a
-  search tool, published under the MIT licence with no warranty of any kind, and
-  nothing here is legal advice.
+  terms of the sites this queries. Complying with both is yours to do. Plenty of
+  what moves over BitTorrent is meant to, including Linux and BSD images,
+  Internet Archive material, public domain film, Creative Commons music and
+  video, and large open scientific datasets, and the examples used here are
+  <em>Big Buck Bunny</em> and <em>Ubuntu</em> for that reason.
+</p>
+<p class="note">
+  This software is published under the MIT licence. That means, in the words of
+  the licence itself, it is provided <strong>without warranty of any kind</strong>,
+  express or implied, and <strong>the authors are not liable</strong> for any
+  claim, damages or other liability arising from it or from its use. Nothing on
+  this page is legal advice. You deploy it, you run it, and it is yours.
 </p>
 
 <footer>
@@ -405,23 +596,21 @@ or ask it a question directly.</p>
     <a href="https://github.com/momzv2022-ctrl/unified-torrent-search-interface" rel="noopener">Source and documentation on GitHub</a>
     &middot; MIT licence
   </p>
-  <p>
-    There is no public instance of this and there is no list of other people's.
-    The only address that exists is the one you just made.
-  </p>
+  <p>There is no public instance of this and there is no list of other people's. The only URL that exists is the one you make.</p>
 </footer>
 
 </main>
 
 <script>
-// Putting a program into a playground URL. This is worker/tools/playground.js
+// Putting a program into a Cloudflare link. This is worker/tools/playground.js
 // from the repository, inlined here unchanged so there is one implementation
 // rather than two that can drift.
 __PLAYGROUND_LIB__
 </script>
 <script>
 // Everything below runs in your browser and talks to nothing. There is no
-// network request on this page at all — no analytics, no fonts, no beacon.
+// network request on this page at all: no analytics, no fonts, no beacon. The
+// one request it can make is the test in step 4, and only when you press it.
 (function () {
   "use strict";
 
@@ -429,16 +618,17 @@ __PLAYGROUND_LIB__
   var SHA256 = "__SHA256__";
   var VERSION = "__VERSION__";
 
+  var byId = function (id) { return document.getElementById(id); };
+
   /* ---- the key ------------------------------------------------------------
-     24 characters from a 31-letter alphabet is a shade under 119 bits, which is
+     24 characters from a 31 letter alphabet is a shade under 119 bits, which is
      not guessable by anything. The alphabet leaves out 0/O/1/I/l so nobody has
      to squint at it, and the groups of four are there for the same reason: this
      is a value people copy by hand more often than they expect to.
 
      Bytes at or above 248 are thrown away rather than folded with `%`, because
      256 is not a multiple of 31 and the fold would make the first eight letters
-     of the alphabet turn up about 3% more often than the rest. It costs one
-     extra random byte in thirty and removes the question entirely. */
+     of the alphabet turn up about 3% more often than the rest. */
   var ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
   var CEILING = 256 - (256 % ALPHABET.length); // 248
   function mintKey() {
@@ -457,81 +647,122 @@ __PLAYGROUND_LIB__
     return out;
   }
 
-  var key = mintKey();
-  document.getElementById("key").textContent = key;
-  document.getElementById("version").textContent = VERSION;
-  document.getElementById("sha").textContent = SHA256;
+  /* ---- remembering it -----------------------------------------------------
+     The URL half can only come from Cloudflare, so the deployed Worker sends it
+     back as `#url=`. For that to be worth anything this page has to still know
+     the key, which means storing it, and a password in localStorage is a real
+     thing to weigh rather than a free win.
 
-  /* The one edit this page makes to the program: it fills in the line the
-     file ships empty. Anchored to the exact committed text, so a file that
-     has drifted fails loudly here rather than deploying without a key. */
+     Two rules keep it in proportion. A stored key is reused on later visits, so
+     the key on screen is always the key inside the file this page is offering,
+     and a reload can never show you a key that opens nothing. And it is dropped
+     after a week.
+
+     Losing it is not losing the key. The key is on the `const API_KEY` line of
+     your own Worker, which is the copy that matters. */
+  var STORE = "utsi.key.v1";
+  var REMEMBER_MS = 7 * 24 * 60 * 60 * 1000;
+
+  function rememberedKey() {
+    try {
+      var raw = localStorage.getItem(STORE);
+      if (!raw) return null;
+      var saved = JSON.parse(raw);
+      if (!saved || typeof saved.key !== "string" || !saved.at) return null;
+      if (Date.now() - saved.at > REMEMBER_MS) { localStorage.removeItem(STORE); return null; }
+      return saved.key;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  function rememberKey(value) {
+    try { localStorage.setItem(STORE, JSON.stringify({ key: value, at: Date.now() })); } catch (error) {}
+  }
+
+  /* The URL the Worker hands back. A fragment, so it reached this page without
+     passing through any server on the way. `addr` is the name the first version
+     used and is still accepted, because Workers deployed then are still out
+     there sending it. */
+  function urlFromFragment() {
+    var found = /(?:^|[#&])(?:url|addr)=([^&]*)/.exec(location.hash || "");
+    if (!found) return "";
+    var decoded = "";
+    try { decoded = decodeURIComponent(found[1]); } catch (error) { decoded = found[1]; }
+    return cleanUrl(decoded);
+  }
+
+  var returnedUrl = urlFromFragment();
+  var savedKey = rememberedKey();
+  var key = savedKey || mintKey();
+
+  byId("key").textContent = key;
+  byId("version").textContent = VERSION;
+  byId("sha").textContent = SHA256;
+
+  /* The one edit this page makes to the file: it fills in the line the artifact
+     ships empty. Anchored to the exact committed text, so a file that has
+     drifted fails loudly here rather than deploying without a key. */
   var EMPTY = 'const API_KEY = "";';
   if (SOURCE.indexOf(EMPTY) === -1) {
-    document.getElementById("code-status").textContent =
-      "This page could not find the key line in the program. Do not use it — report this.";
-    document.getElementById("copy-code").disabled = true;
+    byId("code-status").textContent =
+      "This page could not find the key line in the file. Do not use it, and please report this.";
+    byId("copy-code").disabled = true;
   }
   var program = SOURCE.replace(EMPTY, 'const API_KEY = "' + key + '";');
 
-  document.getElementById("source").textContent = program;
-  document.getElementById("size").textContent = Math.round(program.length / 1024) + " KB";
+  byId("source").textContent = program;
+  byId("size").textContent = Math.round(program.length / 1024) + " KB";
+  byId("raw-link").href = location.href.replace(/[^/]*$/, "") + "worker.js";
 
-  var here = location.href.replace(/[^/]*$/, "");
-  document.getElementById("raw-link").href = here + "worker.js";
-
-  /* ---- the playground link ------------------------------------------------
-     Compressing 110 KB takes a fraction of a second, but a fraction of a second
+  /* ---- the links ----------------------------------------------------------
+     Compressing 170 KB takes a fraction of a second, and a fraction of a second
      is long enough to make a phone feel broken, so the page paints first and the
-     link arrives a moment later. */
-  var workerName = "";
-  var deploy = document.getElementById("open-deploy");
-  var playground = document.getElementById("open-playground");
-  var linkStatus = document.getElementById("link-status");
+     links arrive a moment later. */
+  var deploy = byId("open-deploy");
+  var playground = byId("open-playground");
+  var linkStatus = byId("link-status");
   deploy.setAttribute("aria-disabled", "true");
   playground.setAttribute("aria-disabled", "true");
 
   setTimeout(function () {
     try {
-      // One compression, two destinations — see bothLinks().
+      // One compression, two destinations.
       var links = bothLinks(program);
-      // The name is generated in there; show it rather than leaving it buried in
-      // a 72 KB URL, since it is the first half of the address and the thing to
-      // type back if Cloudflare's suggestion is not wanted.
-      workerName = links.name;
       deploy.href = links.deploy;
       playground.href = links.playground;
       deploy.removeAttribute("aria-disabled");
       playground.removeAttribute("aria-disabled");
       linkStatus.textContent = "";
-      // Chrome, Firefox and Edge take a URL this long without complaint;
-      // Safari gives up around 80,000 characters, and since 0.4.0 the program
-      // is big enough that the link passes that. Not a guess and not hidden:
-      // the copy-and-paste route below gets to exactly the same place, and
-      // Safari users are told so before they tap.
-      if (links.deploy.length > 78000) {
-        linkStatus.textContent =
-          "In Safari this link is too long to open — use “copy and paste instead” below. " +
-          "Chrome, Firefox and Edge open it fine.";
+      // Chrome, Firefox and Edge take a URL this long without complaint. Safari
+      // gives up around 80,000 characters and the file has been bigger than that
+      // since 0.4.0. Only Safari is told, because warning everyone about a limit
+      // that binds one browser is noise.
+      var isSafari = /^((?!chrome|chromium|android|crios|fxios|edg).)*safari/i.test(navigator.userAgent);
+      if (isSafari && links.deploy.length > 78000) {
+        linkStatus.className = "status bad";
+        linkStatus.textContent = "Safari cannot open a link this long. Use “The Deploy button did not work” below.";
       }
     } catch (error) {
-      deploy.setAttribute("aria-disabled", "true");
-      playground.setAttribute("aria-disabled", "true");
-      linkStatus.textContent = "Could not build the link — use “copy and paste instead” below.";
+      linkStatus.className = "status bad";
+      linkStatus.textContent = "Could not build the link. Use “The Deploy button did not work” below.";
     }
   }, 0);
 
   /* ---- copying ------------------------------------------------------------
      The modern API needs a secure context and a real tap, and has both here.
-     The fallback is for older mobile browsers; if even that fails, the program
-     is on the page and can be selected by hand. */
+     The fallback is for older mobile browsers. If even that fails, everything on
+     this page can be selected by hand. */
   function copy(text, statusId, done) {
-    var status = document.getElementById(statusId);
+    var status = byId(statusId);
     function ok() {
+      status.className = "status";
       status.textContent = done;
       setTimeout(function () { status.textContent = ""; }, 4000);
     }
     function fail() {
-      status.textContent = "Could not copy automatically — open “Show me the program” and copy it by hand.";
+      status.className = "status bad";
+      status.textContent = "Could not copy automatically. Select it by hand.";
     }
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(ok, function () { legacy(text) ? ok() : fail(); });
@@ -550,63 +781,254 @@ __PLAYGROUND_LIB__
     area.select();
     area.setSelectionRange(0, text.length);
     var worked = false;
-    try { worked = document.execCommand("copy"); } catch (e) { worked = false; }
+    try { worked = document.execCommand("copy"); } catch (error) { worked = false; }
     document.body.removeChild(area);
     return worked;
   }
 
-  document.getElementById("copy-key").addEventListener("click", function () {
-    copy(key, "key-status", "Key copied. Save it somewhere now.");
-  });
-  document.getElementById("copy-code").addEventListener("click", function () {
-    copy(program, "code-status", "Copied — now paste it into your Worker (step 4).");
-  });
-  /* ---- filling in the address --------------------------------------------
-     The one thing this page cannot work out. The name is ours, but the account
-     part of `name.account.workers.dev` is Cloudflare's and it may lengthen the
-     name too, so the finished address has to come back from the deploy screen.
-     Paste it here and the command below stops saying YOUR-KEY at people. */
-  var addressInput = document.getElementById("address");
-  var curlBlock = document.getElementById("curl");
-  var addressStatus = document.getElementById("address-status");
+  /* ---- the demo -----------------------------------------------------------
+     Click to load. Until somebody presses it this is a link and the page has
+     reached nothing, which is the claim the verify section makes and the page
+     checker enforces. Pressing it is consent, and only then does an iframe from
+     `youtube-nocookie.com` appear. Modified clicks are left alone so opening it
+     in a new tab still works, and with no JavaScript at all it stays what it
+     looks like: a link to the video. */
+  var watch = byId("watch");
+  watch.addEventListener("click", function (event) {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
 
-  function cleanAddress(typed) {
+    var player = document.createElement("iframe");
+    player.src =
+      "https://www.youtube-nocookie.com/embed/" +
+      encodeURIComponent(watch.getAttribute("data-video")) +
+      "?autoplay=1&rel=0";
+    player.title = "Setting up a search, start to finish";
+    player.setAttribute("allow", "accelerometer; autoplay; encrypted-media; picture-in-picture; web-share");
+    player.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+    player.setAttribute("allowfullscreen", "");
+
+    var frame = document.createElement("div");
+    frame.className = "video-frame";
+    frame.appendChild(player);
+    watch.parentNode.replaceChild(frame, watch);
+  });
+
+  /* ---- the URL ------------------------------------------------------------ */
+  var urlInput = byId("url");
+  var urlShown = byId("url-shown");
+  var editUrl = byId("edit-url");
+  var urlStatus = byId("url-status");
+  var curlBlock = byId("curl");
+
+  function cleanUrl(typed) {
     // People paste whole URLs, with and without a scheme, with and without a
-    // trailing slash or a path. Take the host and nothing else.
+    // trailing slash or a path. Take the host and nothing else. A port is
+    // allowed because a Worker behind a proxy, or the local preview server, has
+    // one, and a box that rejects the URL in front of the reader is worse than
+    // no box.
+    //
+    // The pattern is in here rather than in a `var` above, because this runs
+    // while the page is still deciding which key to show, which is before any
+    // `var` in this script has been assigned.
+    var shape = /^(?:localhost|[a-z0-9-]+(?:\.[a-z0-9-]+)+)(?::\d{1,5})?$/i;
     var text = String(typed || "").trim().replace(/^https?:\/\//i, "").replace(/\/.*$/, "");
-    return /^[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(text) ? text : "";
+    return shape.test(text) ? text : "";
   }
 
-  function commandFor(host) {
-    return (
-      'curl -H "X-API-Key: ' + (key || "YOUR-KEY") + '" \\\n' +
-      '  "https://' + (host || "your-address.workers.dev") +
-      '/api/v1/search?q=big+buck+bunny&limit=5"'
+  // Everything Cloudflare hands out is https. A loopback URL is not, and giving
+  // somebody a command that cannot connect is a poor way to end a setup.
+  function schemeFor(host) {
+    return /^(?:localhost|127\.0\.0\.1|\[::1\])(?::|$)/i.test(host) ? "http" : "https";
+  }
+
+  function origin(host) {
+    return schemeFor(host) + "://" + host;
+  }
+
+  function refresh() {
+    var host = cleanUrl(urlInput.value);
+    curlBlock.textContent =
+      'curl -H "X-API-Key: ' + key + '" \\\n' +
+      '  "' + (host ? origin(host) : "https://your-url.workers.dev") +
+      '/api/v1/search?q=big+buck+bunny&limit=5"';
+    urlStatus.className = "status";
+    if (!urlInput.value.trim()) urlStatus.textContent = "";
+    else if (host) urlStatus.textContent = "Looks right.";
+    else {
+      urlStatus.className = "status bad";
+      urlStatus.textContent = "That does not look like a URL yet.";
+    }
+  }
+
+  urlInput.addEventListener("input", refresh);
+  refresh();
+
+  // Reading beats editing, once there is something to read.
+  function showUrlAsText(host) {
+    urlShown.textContent = origin(host);
+    urlShown.hidden = false;
+    urlInput.hidden = true;
+    editUrl.hidden = false;
+    // "Looks right" is for someone typing. There is nothing to reassure here.
+    urlStatus.textContent = "";
+  }
+
+  editUrl.addEventListener("click", function () {
+    urlShown.hidden = true;
+    urlInput.hidden = false;
+    editUrl.hidden = true;
+    urlInput.focus();
+  });
+
+  byId("copy-key").addEventListener("click", function () {
+    rememberKey(key);
+    copy(key, "key-status", "Key copied.");
+  });
+  byId("copy-both").addEventListener("click", function () {
+    var host = cleanUrl(urlInput.value);
+    rememberKey(key);
+    copy(
+      "url: " + (host ? origin(host) : "https://your-url.workers.dev") + "\nkey: " + key + "\n",
+      "key-status",
+      host ? "URL and key copied. Save them together." : "Copied, but fill in your URL first.",
     );
-  }
-
-  function refreshCommand() {
-    var host = cleanAddress(addressInput.value);
-    curlBlock.textContent = commandFor(host);
-    if (!addressInput.value.trim()) addressStatus.textContent = "";
-    else if (host) addressStatus.textContent = "Filled in below, with your key.";
-    else addressStatus.textContent = "That does not look like an address yet.";
-  }
-
-  addressInput.addEventListener("input", refreshCommand);
-  refreshCommand();
-
-  document.getElementById("copy-curl").addEventListener("click", function () {
+  });
+  byId("copy-curl").addEventListener("click", function () {
     copy(curlBlock.textContent, "curl-status", "Command copied.");
   });
-  document.getElementById("copy-both").addEventListener("click", function () {
-    var host = cleanAddress(addressInput.value);
-    copy(
-      "address: https://" + (host || "your-address.workers.dev") + "\nkey:     " + key + "\n",
-      "curl-status",
-      host ? "Address and key copied — save them together." : "Copied, but paste your address first.",
-    );
+  byId("copy-code").addEventListener("click", function () {
+    rememberKey(key);
+    copy(program, "code-status", "Copied. Paste it into your new Worker.");
   });
+  // Pressing Deploy is the moment this key stops being hypothetical.
+  deploy.addEventListener("click", function () { rememberKey(key); });
+
+  /* ---- the test -----------------------------------------------------------
+     A real search against the Worker that was just deployed, with the key, and
+     the answer printed. It is the only request this page ever makes, and it goes
+     to the reader's own Worker.
+
+     It works because the artifact trusts exactly one origin without being
+     configured to: this page's. Anything else on the internet asking the same
+     question gets no CORS headers and the browser refuses to show it the
+     answer. */
+  var testButton = byId("run-test");
+  var testStatus = byId("test-status");
+  var testOutput = byId("test-output");
+  var buildOnIt = byId("build-on-it");
+
+  testButton.addEventListener("click", function () {
+    var host = cleanUrl(urlInput.value);
+    testOutput.hidden = true;
+    if (!host) {
+      testStatus.className = "status bad";
+      testStatus.textContent = "Fill in your URL first.";
+      return;
+    }
+    testStatus.className = "status";
+    testStatus.textContent = "Asking your Worker for Big Buck Bunny";
+    testButton.disabled = true;
+
+    fetch(origin(host) + "/api/v1/search?q=big+buck+bunny&limit=3", {
+      headers: { "X-API-Key": key },
+    })
+      .then(function (response) {
+        return response.text().then(function (body) {
+          var parsed = null;
+          try { parsed = JSON.parse(body); } catch (error) { parsed = null; }
+          return { status: response.status, parsed: parsed, body: body };
+        });
+      })
+      .then(function (answer) {
+        testButton.disabled = false;
+        testOutput.hidden = false;
+        testOutput.textContent = answer.parsed
+          ? JSON.stringify(answer.parsed, null, 2)
+          : answer.body.slice(0, 2000);
+
+        if (answer.status === 200 && answer.parsed) {
+          var found = answer.parsed.count || 0;
+          var engines = (answer.parsed.engines || []).length;
+          testStatus.className = "status";
+          testStatus.textContent =
+            "It works. " + found + (found === 1 ? " result" : " results") +
+            " from " + engines + (engines === 1 ? " index" : " indexes") +
+            " in " + (answer.parsed.took_ms || 0) + " ms.";
+          buildOnIt.hidden = false;
+          rememberKey(key);
+          return;
+        }
+        testStatus.className = "status bad";
+        if (answer.status === 401 || answer.status === 403) {
+          testStatus.textContent =
+            "Your URL is live, but it refused this key. The key inside that Worker is a different one. " +
+            "Open it in Cloudflare, press Edit code, and read the line starting const API_KEY.";
+        } else if (answer.status === 404) {
+          testStatus.textContent = "Something answered, but it is not this program. Check the URL.";
+        } else {
+          testStatus.textContent = "Your Worker answered " + answer.status + ".";
+        }
+      })
+      .catch(function () {
+        testButton.disabled = false;
+        testStatus.className = "status bad";
+        testStatus.textContent =
+          "Could not reach it. Check the URL is right and the deploy finished. " +
+          "If you changed UTSI_CORS_ORIGINS, this test needs this page's origin in it.";
+      });
+  });
+
+  /* ---- the steps ----------------------------------------------------------
+     One open at a time, on purpose. Every step here sends somebody to another
+     tab, and the way that goes wrong is losing your place: you come back, see
+     four open panels, and cannot tell which one you were on. */
+  var steps = [].slice.call(document.querySelectorAll("#steps > li.step"));
+
+  function open(id) {
+    steps.forEach(function (step) {
+      var isTarget = step.id === id;
+      step.querySelector("details").open = isTarget;
+      step.classList.toggle("current", isTarget);
+    });
+  }
+
+  function markDone(step) {
+    step.classList.add("done");
+    step.classList.remove("current");
+    step.querySelector(".state").textContent = "done";
+  }
+
+  steps.forEach(function (step) {
+    var details = step.querySelector("details");
+    details.addEventListener("toggle", function () {
+      if (!details.open) return;
+      steps.forEach(function (other) {
+        if (other !== step) other.querySelector("details").open = false;
+        other.classList.toggle("current", other === step);
+      });
+    });
+    var next = step.querySelector(".next");
+    if (!next) return;
+    next.addEventListener("click", function () {
+      markDone(step);
+      open(next.getAttribute("data-next"));
+      step.nextElementSibling.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+
+  /* Coming back from your own Worker: skip to the end, where the answer is. */
+  if (returnedUrl) {
+    urlInput.value = returnedUrl;
+    refresh();
+    showUrlAsText(returnedUrl);
+    byId(savedKey ? "returned" : "key-missing").hidden = false;
+    steps.forEach(function (step) {
+      if (step.id !== "step-4") markDone(step);
+    });
+    open("step-4");
+    byId("step-4").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 })();
 </script>
 </body>

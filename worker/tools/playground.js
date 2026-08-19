@@ -186,13 +186,32 @@ export function playgroundPayload(modules, metadata, boundary) {
 }
 
 /**
+ * The compatibility settings a live playground link was observed to carry.
+ *
+ * Read off the playground's own Deploy button on **2026-08-18**: it sends the
+ * day's date and `nodejs_compat`. Both are copied here for the same reason the
+ * boundary is shaped like WebKit's — the fewer things that differ from a link
+ * the playground made itself, the fewer things there are for the deploy screen
+ * to be picky about.
+ *
+ * The date is **pinned rather than computed from the clock**, which is the one
+ * place this deliberately does not match. A compatibility date exists to hold
+ * runtime behaviour still; a date taken from `Date.now()` in the reader's
+ * browser would make two people deploying the same file get two different
+ * runtimes, and a device with a wrong clock get one Cloudflare rejects. So it
+ * moves when someone re-checks the live link and moves it — see
+ * `docs/deploy-link.md`.
+ */
+export const COMPATIBILITY_DATE = "2026-08-18";
+export const COMPATIBILITY_FLAGS = ["nodejs_compat"];
+
+/**
  * A playground URL for one ES-module Worker.
  *
- * The module is called `index.js` and the compatibility date is pinned, both
- * because they are what a playground link was observed to contain. Nothing here
- * has been tested against the live playground — see `docs/deploy-link.md` —
- * so every avoidable difference from the observed shape is one avoidable way to
- * be wrong.
+ * The module is called `index.js` and the compatibility settings are the ones
+ * above, both because they are what a playground link was observed to contain.
+ * Every avoidable difference from the observed shape is one avoidable way to be
+ * wrong — see `docs/deploy-link.md`.
  */
 export function playgroundLink(source, options = {}) {
   return "https://workers.cloudflare.com/playground#" + encodedWorker(source, options);
@@ -204,8 +223,8 @@ function encodedWorker(source, options) {
   const payload = playgroundPayload(
     [{ name: "index.js", content: source, type: "application/javascript+module" }],
     {
-      compatibility_date: options.compatibilityDate || "2026-08-01",
-      compatibility_flags: [],
+      compatibility_date: options.compatibilityDate || COMPATIBILITY_DATE,
+      compatibility_flags: options.compatibilityFlags || [...COMPATIBILITY_FLAGS],
       main_module: "index.js",
     },
     boundary,

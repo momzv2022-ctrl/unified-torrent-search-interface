@@ -48,12 +48,31 @@ const API_KEY = "";
 
 // Bumped when the behaviour changes. `/healthz` reports it, and compares it
 // with the version the project publishes, so a Worker can tell you it is old.
-const VERSION = "0.4.0";
+const VERSION = "0.4.1";
 
 // Where `/healthz` looks for "is there a newer version". Reached from
 // `/healthz` only, never from a search, and never fatal: if it does not answer
 // the update field is simply absent. `UTSI_UPDATE_CHECK=0` turns it off.
 const UPDATE_FEED = "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/version.json";
+
+// Where the setup page lives. A deployed Worker knows its own address and the
+// setup page does not — that is the whole gap this constant closes: the page
+// served at `/` links back here with `#addr=<this host>` on the end, so the
+// page that minted the key can put the two halves together without anyone
+// transcribing a hostname. The address rides in the fragment, which browsers
+// never send to a server, so it reaches that page and nowhere else.
+const SETUP_PAGE = "https://momzv2022-ctrl.github.io/unified-torrent-search-interface/";
+
+// The one origin this Worker answers cross-origin requests from without being
+// configured to. It is the setup page above, and it is here so that page can
+// run a real search against your Worker right after you deploy it and show you
+// the result, rather than asking you to take "it works" on faith.
+//
+// Narrow on purpose. It is an origin, so scheme and host and nothing else, and
+// a `github.io` origin belongs to one account. A caller from it still needs the
+// key, which only you have. UTSI_CORS_ORIGINS adds more; nothing removes this
+// one short of editing the line.
+const SETUP_ORIGIN = new URL(SETUP_PAGE).origin;
 
 // Where the engine feed lives (see "THE FEED" below). The feed is how a pasted
 // Worker keeps its engine addresses and definitions current without ever being
@@ -492,8 +511,10 @@ function readSettings(env) {
     browseQueries: envList(env, "UTSI_BROWSE_QUERIES", BROWSE_TERMS.video),
 
     // Named origins only, by design. A wildcard would let any page spend
-    // someone else's instance.
-    corsOrigins: envList(env, "UTSI_CORS_ORIGINS"),
+    // someone else's instance. One name is compiled in: the setup page, so it
+    // can run a real search against a Worker the moment it is deployed and show
+    // the answer. See SETUP_ORIGIN.
+    corsOrigins: [SETUP_ORIGIN, ...envList(env, "UTSI_CORS_ORIGINS")],
     banner: envFlag(env, "UTSI_BANNER", true),
     updateCheck: envFlag(env, "UTSI_UPDATE_CHECK", true),
 
@@ -3891,6 +3912,136 @@ const BANNER = `Unified Torrent Search Interface
 https://github.com/momzv2022-ctrl/unified-torrent-search-interface
 `;
 
+/** Escape for HTML text and double-quoted attributes. */
+function escapeHtml(text) {
+  return String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+}
+
+/**
+ * The one page this Worker serves, and the reason it serves any.
+ *
+ * A Worker knows its own address; the setup page that minted the key does not,
+ * and cannot — Cloudflare invents the account part and lengthens the name. So
+ * for a long time the last step of setup was "read the address off Cloudflare's
+ * screen and type it back into the other tab", which is the step people got
+ * wrong. This page removes it: it is the address, and it carries a link back to
+ * the setup page with the address in the fragment.
+ *
+ * **It never shows the key.** Anyone who can reach this page can read every word
+ * on it, and every `*.workers.dev` hostname appears in public certificate
+ * transparency logs within minutes of being created. So the address — which is
+ * not a secret, since the key is what guards the API — is here, and the key
+ * stays where it already is: in this Worker's code, and in the browser that made
+ * it.
+ */
+function landingPage(host) {
+  const url = escapeHtml(host);
+  const back = escapeHtml(SETUP_PAGE + "#url=" + encodeURIComponent(host));
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
+<title>Your search is live</title>
+<style>
+:root { --bg:#fff; --ink:#111; --muted:#666; --line:#e5e5e5; --soft:#fafafa; --code:#f6f6f6; }
+* { box-sizing:border-box; }
+body { margin:0; padding:2rem 1.15rem 5rem; background:var(--bg); color:var(--ink);
+  font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+main { max-width:34rem; margin:0 auto; }
+h1 { font-size:1.6rem; line-height:1.2; letter-spacing:-.022em; margin:0 0 .5rem; font-weight:700; }
+h2 { font-size:1rem; margin:2rem 0 .3rem; font-weight:650; letter-spacing:-.008em; }
+p { margin:.7rem 0; }
+a { color:var(--ink); text-underline-offset:2px; }
+.lede { color:var(--muted); margin-bottom:1.4rem; }
+.note { color:var(--muted); font-size:.935rem; }
+.card { border:1px solid var(--line); border-radius:10px; padding:1rem; margin:1.1rem 0; }
+label { display:block; font-size:.82rem; font-weight:650; letter-spacing:.01em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:.3rem; }
+.value { font:500 .98rem/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  background:var(--code); border:1px solid var(--line); border-radius:8px; padding:.7rem .75rem;
+  user-select:all; -webkit-user-select:all; margin-bottom:.9rem; }
+a.btn, button { display:flex; align-items:center; justify-content:center; width:100%;
+  min-height:3.15rem; padding:.8rem 1rem; font:inherit; font-weight:600; letter-spacing:-.005em;
+  text-align:center; text-decoration:none; border:1px solid var(--ink); border-radius:8px;
+  background:var(--ink); color:#fff; cursor:pointer; }
+button.ghost { background:var(--bg); color:var(--ink); border-color:var(--line); margin-top:.5rem; }
+a.btn:active, button:active { transform:translateY(1px); }
+code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.9em;
+  background:var(--code); padding:.1em .32em; border-radius:4px; }
+.status { min-height:1.35rem; margin-top:.5rem; font-size:.9rem; font-weight:600; text-align:center; }
+footer { margin-top:2.8rem; padding-top:1.2rem; border-top:1px solid var(--line);
+  color:var(--muted); font-size:.89rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Your search is live</h1>
+<p class="lede">
+  This is the half only Cloudflare could tell you: your URL. The other half is
+  your key, and the page that made it still has it.
+</p>
+
+<div class="card">
+  <label>Your URL</label>
+  <div class="value" id="url">${url}</div>
+  <a class="btn" href="${back}">Finish setup</a>
+  <button class="ghost" id="copy" type="button">Copy the URL</button>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+  <p class="note" style="margin-bottom:0">
+    Finish setup opens the page you started on, with this URL already in it, so
+    it can show you the URL and the key together and let you test them. The URL
+    travels after the <code>#</code>, which your browser never sends to a server.
+  </p>
+</div>
+
+<h2>If that page no longer has your key</h2>
+<p class="note">
+  It is not lost. Open this Worker in the Cloudflare dashboard, press
+  <strong>Edit code</strong>, and read the line near the top that starts
+  <code>const API_KEY</code>. You can also replace it from Settings, Variables
+  and Secrets, as <code>UTSI_API_KEY</code>, which wins over the line in the file.
+</p>
+
+<h2>Two more URLs worth knowing</h2>
+<p class="note">
+  <a href="/healthz">/healthz</a> says which indexes are answering and what
+  broke. It needs no key.<br>
+  <code>/api/v1/search?q=&hellip;</code> is the search itself, with your key in
+  an <code>X-API-Key</code> header.
+</p>
+
+<footer>
+  Unified Torrent Search Interface ${VERSION} &middot;
+  <a href="https://github.com/momzv2022-ctrl/unified-torrent-search-interface" rel="noopener">source and documentation</a>
+  <p style="margin:.5rem 0 0">
+    This URL is yours alone. There is no public instance of this and no list of
+    other people's. MIT licence, no warranty, no liability.
+  </p>
+</footer>
+
+</main>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var status = document.getElementById("status");
+  var text = location.protocol + "//" + location.host;
+  function done() { status.textContent = "URL copied."; setTimeout(function () { status.textContent = ""; }, 4000); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done, function () { status.textContent = "Could not copy. Select it by hand."; });
+    return;
+  }
+  status.textContent = "Could not copy. Select it by hand.";
+});
+</script>
+</body>
+</html>
+`;
+}
+
 /** Named origins only. A wildcard would let any page spend this instance. */
 function corsHeaders(settings, origin) {
   if (!origin || !settings.corsOrigins.includes(origin)) return {};
@@ -3983,9 +4134,18 @@ async function handle(method, url, headers, http, settings) {
 
   if (path === "/healthz") return reply(200, await healthz(http, settings), cors);
 
+  // Nothing here is worth a search engine's time, and a list of live instances
+  // is the one thing this project does not want to exist.
+  if (path === "/robots.txt") return reply(200, null, cors, "User-agent: *\nDisallow: /\n");
+
   if (path === "/") {
     if (!settings.banner) return error(404, "not_found", "No route here. Try /api/v1/search.", cors);
-    return reply(200, null, cors, BANNER);
+    // A browser gets the page that closes the setup loop; anything else — curl,
+    // a client, a monitor — gets the plain text it has always got.
+    const wantsHtml = (headers.get("accept") || "").includes("text/html");
+    if (!wantsHtml) return reply(200, null, cors, BANNER);
+    return reply(200, null, { ...cors, "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" },
+      landingPage(parsed.host));
   }
 
   if (path === "/api/v1/engines") {

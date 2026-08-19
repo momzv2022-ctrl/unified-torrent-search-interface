@@ -53,7 +53,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Tests (offline — the network is a table of fixtures)
-        run: node --test worker/tests/worker.test.mjs
+        run: node --test worker/tests/*.test.mjs
       - name: The playground-link encoder still matches lz-string
         run: node worker/tools/playground-link.mjs --self-test
       - name: A deploy link for the real Worker is generated, and fits in a URL

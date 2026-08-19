@@ -1,53 +1,75 @@
 # Unified Torrent Search Interface
 
-**Search several public torrent indexes at once, through one web address that
-only you know.** It asks them all the same question, merges the answers into one
-list, and hands back names, sizes, swarm counts and `magnet:` links.
+**Search several public torrent indexes at once, from a URL only you know.** It
+asks them all the same question, merges the answers into one list, and hands back
+names, sizes, swarm counts and `magnet:` links.
+
+Three minutes to set up. Free, MIT licensed, no card, no domain, nothing
+installed, and it works on a phone.
 
 ---
 
 ## Get it running
 
-### The quick way — a free Cloudflare account, about two minutes
+### The quick way: a free Cloudflare account, three minutes
 
 Nothing to install, no terminal, no GitHub account. It works on a phone.
 
 **[→ Open the setup page](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/)**
 
-That page mints you a key and a worker name, and hands you **one link**. The link
-opens Cloudflare's deploy screen with the program already loaded, your key
-already in it and the name already filled in — nothing to copy, nothing to
-paste. Then:
+Want to see it working first? [Here is the whole
+setup](https://youtu.be/R9z3e6vYVNg), start to finish.
 
-1. **Sign in, or make a free account** — an email address and a password, no
-   domain and no card. The program is there under *Code preview*, so you can read
-   what you are about to run.
-2. **Take the address it shows you.** Under the name it says *Your Worker will be
-   deployed to:* and then an address. That address is the other half of your
-   search — save it next to your key.
-3. **Press Deploy, then check it.** Open
-   `https://your-address.workers.dev/healthz` in a browser. You want
-   `"status":"ok"`. No key needed for that one.
+**Read it before you run it.** That page leads with the verification, not the
+button: what the file is, how to check it is the same file this repository
+published, what it can and cannot reach, and how to delete the whole thing. A
+stranger asking you to put their code in your cloud account deserves suspicion,
+and everything you need to settle it can be done before you deploy anything.
 
-If you would rather watch it run first, the setup page also offers the same
-program in Cloudflare's playground — an editor with a live preview, where you can
-type `/healthz` and see it answer before committing to anything. Its *Deploy*
-button lands on the very screen above.
+Then four steps, one at a time:
 
-Save the key when the page gives it to you, and treat the link like a password:
-it has your key inside it. If you lose the key it is not gone — open your Worker,
-press *Edit code*, and read the line near the top that starts `const API_KEY`.
+1. **Sign in to Cloudflare.** A free account is an email address and a password.
+   No card and no domain. Do this first, because the deploy link carries the
+   whole file in the part of a URL after the `#`, and a sign-in page in the
+   middle of that journey is the one thing known to drop it. You would arrive
+   signed in at an empty editor with nothing to show for the trip.
+2. **Deploy to Cloudflare for free.** One link opens the deploy screen with the
+   file already loaded and your key already in it. It is there under *Code
+   preview*, so you can read what you are about to run. Press *Deploy*.
+3. **Open the URL Cloudflare gives you.** You do not have to write it down. Your
+   Worker answers it with a small page of its own that says it is live and
+   carries a **Finish setup** button.
+4. **Press Finish setup.** That brings you back with your URL and your key side
+   by side, both with copy buttons, and a **Test your URL and key** button that
+   runs a real search and prints the answer.
 
-> The link is long, because the whole program is inside it. If your browser will
-> not open it, the setup page has a **Copy the program** button and the four
-> dashboard steps that do the same job. Nobody gets stranded.
+Step 3 is the one this project spent a long time getting wrong. The URL is
+`name.your-account.workers.dev`, Cloudflare picks the account part and lengthens
+the name, and no page anywhere can guess it. So for a while the last instruction
+was "read it off Cloudflare's screen and type it into the other tab", which is
+exactly where setups died. Now the Worker says it, and the URL travels in a
+fragment, which browsers do not send to servers, so it goes from your Worker to
+that page and nowhere else.
+
+Your key is made in your browser and never sent anywhere. It goes into the copy
+of the file that goes into the link, which is why the link is worth treating like
+a password. If you lose the key it is not gone: open your Worker, press *Edit
+code*, and read the line near the top that starts `const API_KEY`. The setup page
+keeps a copy in your browser for a week so it can pair the two halves, and it
+saves one only when you act on it, never merely for visiting.
+
+> The link is long, because the whole file is inside it. Chrome, Firefox and Edge
+> open it. Safari's URL ceiling is lower than the file is big, and the page says
+> so before you tap. Either way there is a **Copy the file** button and the
+> dashboard steps that do the same job, and they end at exactly the same deployed
+> Worker. Nobody gets stranded.
 
 Cloudflare's free plan covers 100,000 requests a day, forever. The Worker
 searches a handful of indexes with a real API, plus one meta-index that covers
-dozens of trackers. What that leaves out — and how to get it back — is in
+dozens of trackers. What that leaves out, and how to get it back, is in
 [docs/cloudflare.md](docs/cloudflare.md).
 
-### The full way — on a machine of your own
+### The full way: on a machine of your own
 
 This is the version that searches around a hundred sites, by running
 qBittorrent's own search plugins in a sandbox. You need **Python 3.11 or newer**
@@ -92,8 +114,13 @@ hundred plugins *and* an address that stays up when the machine sleeps. Set
 
 **In a browser.** The local server serves a page: open the address, paste the key
 once, search. Results are cards with a **Get** button, which is an ordinary
-`magnet:` link — it hands off to whatever torrent app you already have. The
-Cloudflare Worker has no page, by design; it is an API.
+`magnet:` link — it hands off to whatever torrent app you already have.
+
+The Cloudflare Worker is an API and has no search page. It answers its own URL
+with one small page, and that page exists for a single reason: to tell you the
+URL and hand it back to the setup page. It never shows the key. Every
+`*.workers.dev` hostname turns up in the public certificate transparency logs
+within minutes, so a page anyone may find is no place for a secret.
 
 **From an app.** It speaks
 [Torrent Stream Protocol](https://github.com/raul2hot/torrent-stream-protocol),

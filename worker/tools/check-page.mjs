@@ -5,18 +5,21 @@
  *     node worker/tools/build.mjs
  *     node worker/tools/check-page.mjs
  *
- * "Mobile-first" is not a design opinion here, it is five assertions:
+ * "Mobile-first" is not a design opinion here, it is six assertions:
  *
  *   1. the page never scrolls sideways, at 320 CSS pixels wide;
- *   2. wide things — the program, the curl line — scroll inside their own box;
+ *   2. wide things, the file and the curl line, scroll inside their own box;
  *   3. every button and disclosure is at least 32 pixels tall;
- *   4. the key is legible without pinch-zoom;
- *   5. the copy button really does yield the program with *this* browser's key
+ *   4. the key is legible without pinch-zoom, and so is anything you type into;
+ *   5. the steps advance one at a time and only one is ever open;
+ *   6. the copy button really does yield the file with *this* browser's key
  *      spliced into it, byte for byte.
  *
  * And one that is not about layout at all: **the page must make no network
  * request.** It is a page about a security key; anything it fetched would be
- * something to explain.
+ * something to explain. Two things on it can reach another host, and both need
+ * a press first: the test in step 4, which nothing here touches, and the demo
+ * video, which is pressed here precisely to prove it was inert until then.
  *
  * It needs a Chromium. `playwright-core` and a browser path, in this order:
  * `$PLAYWRIGHT_CHROMIUM`, then the usual `$PLAYWRIGHT_BROWSERS_PATH` layout,
@@ -38,6 +41,10 @@ const WORKER = readFileSync(join(REPO, "worker", "src", "worker.js"), "utf8");
 
 /** Fixed, so the browser's link and this process's link are comparable at all. */
 const FIXED_BOUNDARY = "----WebKitFormBoundaryPageCheck00";
+
+// Waited for, rather than waiting for a particular placeholder to go away: a
+// reworded placeholder would make the wait pass before the script had run.
+const KEY_SHAPE = /^[a-z2-9]{4}(-[a-z2-9]{4}){5}$/;
 
 const VIEWPORTS = [
   { name: "smallest phone still in use", width: 320, height: 568, scheme: "light" },
@@ -114,7 +121,11 @@ for (const viewport of VIEWPORTS) {
   });
 
   await page.goto(PAGE);
-  await page.waitForFunction(() => document.getElementById("key").textContent !== "generating…");
+  // The regex is written out rather than closed over: this function is
+  // serialised and run inside the browser, where nothing in this file exists.
+  await page.waitForFunction(() =>
+    /^[a-z2-9]{4}(-[a-z2-9]{4}){5}$/.test(document.getElementById("key").textContent),
+  );
 
   console.log(`\n${viewport.name} — ${viewport.width}×${viewport.height}, ${viewport.scheme}`);
   if (problems.length) fail(`script errors: ${problems.join(" | ")}`);
@@ -149,6 +160,11 @@ for (const viewport of VIEWPORTS) {
           right: el.getBoundingClientRect().right,
         };
       })(),
+      // Below 16px iOS zooms the page the moment a box takes focus, which moves
+      // the layout under someone in the middle of pasting into it.
+      tinyInputs: [...document.querySelectorAll("input")]
+        .map((el) => ({ id: el.id, fontSize: parseFloat(getComputedStyle(el).fontSize) }))
+        .filter((el) => el.fontSize < 16),
     };
   });
 
@@ -158,18 +174,46 @@ for (const viewport of VIEWPORTS) {
   if (layout.escaping.length) fail(`outside the viewport and not in a scroller: ${layout.escaping.join(", ")}`);
   if (!layout.scrollers) fail("no <pre> has its own horizontal scroller");
   if (layout.small.length) fail(`tap targets under 32px: ${JSON.stringify(layout.small)}`);
-  if (layout.key.fontSize < 16) fail(`the key is ${layout.key.fontSize}px — that needs pinch-zoom`);
-  if (!/^[a-z2-9]{4}(-[a-z2-9]{4}){5}$/.test(layout.key.text)) fail(`the key looks wrong: ${layout.key.text}`);
+  if (layout.key.fontSize < 16) fail(`the key is ${layout.key.fontSize}px, which needs pinch-zoom`);
+  if (layout.tinyInputs.length) {
+    fail(`inputs under 16px, so iOS zooms on focus: ${JSON.stringify(layout.tinyInputs)}`);
+  }
+  if (!KEY_SHAPE.test(layout.key.text)) fail(`the key looks wrong: ${layout.key.text}`);
   console.log(
     `  ✓ no sideways scroll · ${layout.scrollers} scrolling code blocks · ` +
       `key ${layout.key.fontSize.toFixed(0)}px · every target ≥ 32px`,
   );
 
-  // Copy-and-paste is the fallback route now, so it lives behind a disclosure.
-  // Open every one of them: the checks below are about what a reader can reach,
-  // and something that cannot be opened cannot be reached.
+  // The steps are an accordion, and walking it is both how the checks below
+  // reach step 4 and a test of the accordion itself. Opening all of them at once
+  // does not work, and should not: the page closes the others, which is the
+  // entire point of it.
+  const openSteps = () =>
+    page.evaluate(() =>
+      [...document.querySelectorAll("#steps > li.step")]
+        .filter((step) => step.querySelector("details").open)
+        .map((step) => step.id),
+    );
+
+  const atFirst = await openSteps();
+  if (JSON.stringify(atFirst) !== '["step-1"]') {
+    fail(`a first visit opens ${JSON.stringify(atFirst)} rather than step 1 alone`);
+  }
+  for (const [from, to] of [["step-1", "step-2"], ["step-2", "step-3"], ["step-3", "step-4"]]) {
+    await page.click(`#${from} .next`);
+    await page.waitForFunction((id) => document.querySelector(`#${id} details`).open, to);
+  }
+  const atEnd = await openSteps();
+  if (JSON.stringify(atEnd) !== '["step-4"]') fail(`after walking the steps, ${JSON.stringify(atEnd)} are open`);
+  console.log("  ✓ the steps advance one at a time, and only one is ever open");
+
+  // Everything that is not a step is an ordinary disclosure, and the checks below
+  // are about what a reader can reach. Step 4 is open, so the disclosures inside
+  // it are reachable too.
   await page.evaluate(() => {
-    for (const details of document.querySelectorAll("details")) details.open = true;
+    for (const details of document.querySelectorAll("details")) {
+      if (!details.parentElement.closest("#steps > li.step")) details.open = true;
+    }
   });
   await page.click("#copy-code");
   await page.waitForFunction(() => document.getElementById("code-status").textContent !== "");
@@ -182,7 +226,7 @@ for (const viewport of VIEWPORTS) {
   }
 
   await page.click("#copy-key");
-  await page.waitForFunction(() => /Save it/.test(document.getElementById("key-status").textContent));
+  await page.waitForFunction(() => document.getElementById("key-status").textContent !== "");
   const copiedKey = await page.evaluate(() => navigator.clipboard.readText());
   if (copiedKey !== layout.key.text) fail("the key button copied something else");
 
@@ -239,30 +283,66 @@ for (const viewport of VIEWPORTS) {
   }
   console.log(`  ✓ deploy link → ${deployPath}, same program as the playground link`);
 
-  // The name is generated inside the link builder, so it is easy for the page to
-  // show one thing and deploy another. It is also the first half of the address,
-  // which is why it is on the page at all.
-  // The address box: the one thing this page cannot work out for itself, so it
-  // asks. People paste whole URLs, so anything host-shaped has to be accepted and
-  // anything else refused — a command with rubbish in it is worse than a
+  // The URL box: the one thing this page cannot work out for itself, so it asks.
+  // People paste whole URLs, so anything host-shaped has to be accepted and
+  // anything else refused. A command with rubbish in it is worse than one with a
   // placeholder, because it looks ready to run.
   const commandFor = async (typed) => {
-    await page.fill("#address", typed);
+    await page.fill("#url", typed);
     return page.textContent("#curl");
   };
   const host = "utsi-ab12.example.workers.dev";
   for (const typed of [host, `https://${host}`, `https://${host}/healthz`, `  ${host}/  `]) {
     const command = await commandFor(typed);
     if (!command.includes(`https://${host}/api/v1/search`) || !command.includes(layout.key.text)) {
-      fail(`the address box made ${JSON.stringify(command.slice(0, 90))} of ${JSON.stringify(typed)}`);
+      fail(`the URL box made ${JSON.stringify(command.slice(0, 90))} of ${JSON.stringify(typed)}`);
     }
   }
-  const rubbish = await commandFor("not an address");
-  if (!rubbish.includes("your-address.workers.dev")) {
-    fail("the address box put something that is not an address into the command");
+  const rubbish = await commandFor("not a url");
+  if (!rubbish.includes("your-url.workers.dev")) {
+    fail("the URL box put something that is not a URL into the command");
   }
-  await page.fill("#address", "");
-  console.log("  ✓ the address box fills the command in, and refuses what is not an address");
+  await page.fill("#url", "");
+  console.log("  ✓ the URL box fills the command in, and refuses what is not a URL");
+
+  // The first thing under the title has to be the answer to the first question a
+  // stranger asks, and it has to actually go somewhere.
+  const verify = await page.evaluate(() => {
+    const link = document.querySelector("a.verify-first");
+    const target = link && document.querySelector(link.getAttribute("href"));
+    return { text: (link && link.textContent) || "", landed: Boolean(target) };
+  });
+  if (!/verify/i.test(verify.text) || !verify.landed) {
+    fail(`the verify link reads ${JSON.stringify(verify.text.slice(0, 40))} and lands: ${verify.landed}`);
+  }
+  console.log("  ✓ the page leads with verify, and the link lands on it");
+
+  // The demo is a facade: a link until it is pressed. That is what lets the page
+  // carry a video and still claim it reaches nothing, so the claim gets checked
+  // rather than trusted. Pressing it is the only thing on this page that touches
+  // another host, and it must not happen a moment sooner.
+  //
+  // The route is aborted rather than allowed, so this stays hermetic: the check
+  // is that an embed was created and pointed somewhere sensible, not that
+  // YouTube was up when CI ran.
+  await page.route(/youtube|youtu\.be|ytimg/, (route) => route.abort());
+  const beforePlay = offsite.length;
+  await page.click("#watch");
+  const player = await page.evaluate(() => {
+    const frame = document.querySelector(".video-frame iframe");
+    return {
+      src: frame ? frame.getAttribute("src") : null,
+      facadeGone: !document.getElementById("watch"),
+    };
+  });
+  if (beforePlay !== 0) {
+    fail(`the page reached ${offsite.slice(0, 3).join(", ")} before anything was pressed`);
+  }
+  if (!player.src || !player.src.startsWith("https://www.youtube-nocookie.com/embed/")) {
+    fail(`pressing the demo produced ${JSON.stringify(player.src)}`);
+  }
+  if (!player.facadeGone) fail("the demo facade is still on the page after being pressed");
+  console.log("  ✓ the demo loads nothing until it is pressed, then loads a player");
 
   await context.close();
 }
@@ -278,7 +358,11 @@ async function keyFrom(instance) {
   const context = await instance.newContext();
   const page = await context.newPage();
   await page.goto(PAGE);
-  await page.waitForFunction(() => document.getElementById("key").textContent !== "generating…");
+  // The regex is written out rather than closed over: this function is
+  // serialised and run inside the browser, where nothing in this file exists.
+  await page.waitForFunction(() =>
+    /^[a-z2-9]{4}(-[a-z2-9]{4}){5}$/.test(document.getElementById("key").textContent),
+  );
   const key = await page.textContent("#key");
   await context.close();
   return key;

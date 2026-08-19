@@ -64,7 +64,7 @@ jobs:
       # reproduce the golden rows, and the whole worker suite must be green.
       - name: Tests
         if: steps.provisioned.outputs.ready == 'true'
-        run: node --test worker/tests/worker.test.mjs
+        run: node --test worker/tests/*.test.mjs
 
       - name: Validate and replay the descriptors
         run: node worker/tools/feed.mjs check

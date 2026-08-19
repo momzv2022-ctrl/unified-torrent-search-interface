@@ -57,7 +57,8 @@ two apart — and that is checked, not asserted. See
 | `/api/v1/engines` | yes | Which engines exist and which are switched on. |
 | `/api/v1/engines?probe=1` | yes | Runs every engine once and reports what answered **from your Worker**. |
 | `/healthz` | no | Liveness, version, per-engine state, update check. |
-| `/` | no | Three lines of plain text, so a browser says something useful. `UTSI_BANNER=0` turns it off. |
+| `/` | no | A browser gets one small page: this Worker's address, and a *Finish setup* button that hands it back to the setup page as `#addr=…`. It never shows the key. Anything else — `curl`, a client, a monitor — gets three lines of plain text. `UTSI_BANNER=0` turns both off. |
+| `/robots.txt` | no | `Disallow: /`. There is no list of instances, and this keeps it that way. |
 
 `Authorization: Bearer YOUR-KEY` works as well as `X-API-Key`. The key never goes
 in the query string: it would end up in Cloudflare's request logs and in the
@@ -160,7 +161,7 @@ same reason the key is — it is the address of a private server.
 | `UTSI_TORZNAB_APIKEY` | — | Its API key. |
 | `UTSI_MAX_RESOLVE` | `0` | `.torrent` files to fetch per request to recover a missing infohash. Only Torznab needs it. |
 | `UTSI_CORS_ORIGINS` | — | Named origins allowed to call this from a web page. No wildcard, deliberately: one would let any page spend your instance. |
-| `UTSI_BANNER` | `1` | The plain-text page at `/`. |
+| `UTSI_BANNER` | `1` | The page and the plain-text banner at `/`. Off means `404`. |
 | `UTSI_UPDATE_CHECK` | `1` | Whether `/healthz` asks the project whether a newer version exists. |
 | `UTSI_ENGINE_TIMEOUT_S` | `8` | Per-engine wall clock. |
 | `UTSI_UPSTREAM_TIMEOUT_S` | `15` | Longer, because your own index runs its own fan-out behind its own deadline. |

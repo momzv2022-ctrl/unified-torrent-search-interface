@@ -8,7 +8,7 @@
  * of fixtures and 404s everything else, which is also how a test proves an
  * engine was *not* asked.
  *
- *     node --test worker/tests/
+ *     node --test worker/tests/*.test.mjs
  */
 
 import test from "node:test";
@@ -1306,6 +1306,68 @@ test("the banner answers a browser and can be turned off", async () => {
   assert.equal((await run("GET", "https://w.dev/", {}, stub({}), settings({ banner: false }))).status, 404);
 });
 
+// ───────────────────────────────────────────────────────────────────────────
+// The page that closes the setup loop
+// ───────────────────────────────────────────────────────────────────────────
+
+test("a browser at / gets the page that hands its URL back", async () => {
+  // The URL is the half of the pair only Cloudflare knows, and asking a person
+  // to transcribe `utsi-g85lc6-old-art-d5e6.<account>.workers.dev` is how setups
+  // end up broken. So the Worker says it, and links back to the page that has
+  // the key.
+  const host = "utsi-g85lc6-old-art-d5e6.demo.workers.dev";
+  const page = await run("GET", `https://${host}/`, { accept: "text/html,application/xhtml+xml" }, stub({}), settings());
+
+  assert.equal(page.status, 200);
+  assert.match(page.headers["Content-Type"], /^text\/html/);
+  assert.ok(page.text.includes(host), "the page says its own URL");
+  assert.ok(
+    page.text.includes(`#url=${encodeURIComponent(host)}`),
+    "and hands it back in a fragment, which never reaches a server",
+  );
+});
+
+test("the page at / never shows the key, whatever the key is", async () => {
+  // Every *.workers.dev hostname is in the public certificate transparency logs
+  // within minutes of being created, so "nobody knows this address" is not a
+  // control and this page is readable by anyone who looks. The address is not a
+  // secret; the key is, and it stays in the code.
+  const key = "sekr-etke-yval-uehe-rezz-zzzz";
+  const page = await run(
+    "GET",
+    "https://w.dev/",
+    { accept: "text/html" },
+    stub({}),
+    settings({ apiKey: key }),
+  );
+
+  assert.ok(!page.text.includes(key), "the landing page leaked the key");
+  assert.match(page.headers["X-Robots-Tag"], /noindex/);
+});
+
+test("anything that is not a browser still gets the plain banner", async () => {
+  // curl, a TSP client, a monitor: none of them want HTML, and the text banner
+  // is what they have always been handed.
+  for (const headers of [{}, { accept: "*/*" }, { accept: "application/json" }]) {
+    const reply = await run("GET", "https://w.dev/", headers, stub({}), settings());
+    assert.equal(reply.status, 200);
+    assert.match(reply.text, /^Unified Torrent Search Interface/);
+  }
+});
+
+test("turning the banner off turns the page off with it", async () => {
+  const off = settings({ banner: false });
+  assert.equal((await run("GET", "https://w.dev/", { accept: "text/html" }, stub({}), off)).status, 404);
+});
+
+test("robots.txt asks every crawler to leave", async () => {
+  // There is no list of other people's instances, and this is one small way of
+  // keeping it that way.
+  const robots = await run("GET", "https://w.dev/robots.txt", {}, stub({}), settings());
+  assert.equal(robots.status, 200);
+  assert.equal(robots.text, "User-agent: *\nDisallow: /\n");
+});
+
 test("CORS is named origins only", async () => {
   // A wildcard would let any page spend someone else's instance.
   const config = settings({ corsOrigins: ["https://app.test"] });
@@ -1700,10 +1762,39 @@ test("numeric and flag settings are clamped, not trusted", () => {
   assert.equal(fromEnv({ UTSI_ALLOW_ANONYMOUS: "yes" }).allowAnonymous, true);
   assert.equal(fromEnv({ UTSI_ALLOW_ANONYMOUS: "0" }).allowAnonymous, false);
   assert.equal(fromEnv({ UTSI_BANNER: "off" }).banner, false);
+  // The setup page's origin is compiled in so it can run a real search against a
+  // Worker the moment it is deployed. UTSI_CORS_ORIGINS adds to it; nothing in
+  // the environment takes it away.
+  const setupOrigin = "https://momzv2022-ctrl.github.io";
+  assert.deepEqual(fromEnv().corsOrigins, [setupOrigin]);
   assert.deepEqual(fromEnv({ UTSI_CORS_ORIGINS: "https://a.test, https://b.test" }).corsOrigins, [
+    setupOrigin,
     "https://a.test",
     "https://b.test",
   ]);
+});
+
+test("the setup page can read an answer, and nobody else can", async () => {
+  // The one compiled-in origin exists so the setup page's "test your URL and
+  // key" button can show a real answer instead of asking for faith. It is an
+  // origin and not a wildcard, so it is that page and nothing else, and a caller
+  // from it still has to present the key.
+  const config = settings();
+  const setup = "https://momzv2022-ctrl.github.io";
+
+  const allowed = await run("GET", "https://w.dev/healthz", { origin: setup }, stub({}), config);
+  assert.equal(allowed.headers["Access-Control-Allow-Origin"], setup);
+  assert.equal(allowed.headers.Vary, "Origin");
+
+  for (const origin of [
+    "https://momzv2022-ctrl.github.io.evil.test",
+    "http://momzv2022-ctrl.github.io",
+    "https://evil.test",
+    "null",
+  ]) {
+    const refused = await run("GET", "https://w.dev/healthz", { origin }, stub({}), config);
+    assert.equal(refused.headers["Access-Control-Allow-Origin"], undefined, origin);
+  }
 });
 
 test("UTSI_API_KEY wins over the key baked into the file", () => {
