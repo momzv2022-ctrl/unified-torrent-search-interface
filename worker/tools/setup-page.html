@@ -750,12 +750,20 @@ __PLAYGROUND_LIB__
      ships empty. Anchored to the exact committed text, so a file that has
      drifted fails loudly here rather than deploying without a key. */
   var EMPTY = 'const API_KEY = "";';
-  if (SOURCE.indexOf(EMPTY) === -1) {
+  var NO_WINDOW = "const SETUP_UNTIL = 0;";
+  if (SOURCE.indexOf(EMPTY) === -1 || SOURCE.indexOf(NO_WINDOW) === -1) {
     byId("code-status").textContent =
       "This page could not find the key line in the file. Do not use it, and please report this.";
     byId("copy-code").disabled = true;
   }
-  var program = SOURCE.replace(EMPTY, 'const API_KEY = "' + key + '";');
+  /* Two hours is far longer than a setup takes and far shorter than a habit.
+     It only decides one thing: whether the deployed Worker takes you back here
+     by itself instead of asking you to press a button that does the same. Long
+     enough to survive a slow certificate and a coffee, short enough that opening
+     your own Worker tomorrow is an ordinary page that stays put. */
+  var program = SOURCE
+    .replace(EMPTY, 'const API_KEY = "' + key + '";')
+    .replace(NO_WINDOW, "const SETUP_UNTIL = " + (Date.now() + 2 * 60 * 60 * 1000) + ";");
 
   byId("source").textContent = program;
   byId("size").textContent = Math.round(program.length / 1024) + " KB";

@@ -44,6 +44,7 @@ const {
   handle,
   htmlUnescape,
   humanSize,
+  landingPage,
   magnetFor,
   merge,
   normalizeInfohash,
@@ -1358,6 +1359,39 @@ test("anything that is not a browser still gets the plain banner", async () => {
 test("turning the banner off turns the page off with it", async () => {
   const off = settings({ banner: false });
   assert.equal((await run("GET", "https://w.dev/", { accept: "text/html" }, stub({}), off)).status, 404);
+});
+
+test("mid-setup the Worker takes you back by itself, and afterwards it does not", () => {
+  // Two clicks used to stand between a finished deploy and a finished setup:
+  // Visit, then Finish setup. The second is the Worker asking permission to do
+  // the only thing it is there for, so inside the setup window it just does it.
+  // Outside the window the same page has to stay put, because bouncing somebody
+  // who opened their own Worker months later to a setup page they did not ask
+  // for is how a tool gets deleted.
+  const host = "utsi-x.demo.workers.dev";
+  const midSetup = landingPage(host, true);
+  const later = landingPage(host, false);
+
+  assert.ok(midSetup.includes("location.replace"), "it returns on its own");
+  assert.ok(/Taking you back/.test(midSetup));
+  assert.ok(midSetup.includes('id="stay"'), "and can be stopped");
+  assert.ok(!later.includes("location.replace"), "and does not, later");
+
+  // Whichever it is: it says the URL, hands it back, and carries no key. The
+  // button is the fallback for both, and for anybody without JavaScript.
+  for (const page of [midSetup, later]) {
+    assert.ok(page.includes(host));
+    assert.ok(page.includes(`#url=${encodeURIComponent(host)}`));
+    assert.equal((page.match(/<script>/g) || []).length, 1, "one script block, not two");
+  }
+});
+
+test("the committed artifact ships with no setup window at all", () => {
+  // A deadline compiled into the published file would make every Worker deployed
+  // from it bounce its visitors here until that date, including the ones nobody
+  // is setting up. `build.mjs` refuses to publish a file that has one; this is
+  // the same rule, stated where the source is read.
+  assert.match(readFileSync(SOURCE, "utf8"), /^const SETUP_UNTIL = 0;$/m);
 });
 
 test("robots.txt asks every crawler to leave", async () => {

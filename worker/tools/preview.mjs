@@ -60,12 +60,18 @@ execFileSync(process.execPath, [join(REPO, "worker", "tools", "build.mjs")], { s
 
 const source = readFileSync(join(REPO, "worker", "src", "worker.js"), "utf8");
 const EMPTY_KEY = 'const API_KEY = "";';
+const NO_WINDOW = "const SETUP_UNTIL = 0;";
 const SETUP_LINE = /^const SETUP_PAGE = "[^"]*";$/m;
 if (!source.includes(EMPTY_KEY)) throw new Error("worker/src/worker.js has no empty API_KEY line");
+if (!source.includes(NO_WINDOW)) throw new Error("worker/src/worker.js has no SETUP_UNTIL line");
 if (!SETUP_LINE.test(source)) throw new Error("worker/src/worker.js has no SETUP_PAGE line");
 
+// The window is open, because a preview exists to watch the setup happen and the
+// auto-return is part of it. A real Worker gets its window from the browser that
+// minted its key.
 const patched = source
   .replace(EMPTY_KEY, `const API_KEY = "${DEV_KEY}";`)
+  .replace(NO_WINDOW, `const SETUP_UNTIL = ${Date.now() + 24 * 60 * 60 * 1000};`)
   .replace(SETUP_LINE, `const SETUP_PAGE = "${pageOrigin}/";`);
 
 // `site/` is already ignored by git, so the patched copy lands there rather than
@@ -129,9 +135,10 @@ console.log(`
     1. open the setup page and press "Copy just the key", the button under the
        key in section 1 — copying the key is one of the three actions that save
        it on this device, and it is the one that does not open Cloudflare
-    2. open the worker and press "Finish setup"
-    3. you should be back on the setup page with the address filled in, beside
-       the key from step 1
+    2. open the worker. It says it is live and takes you back on its own,
+       which is what a real one does inside its setup window
+    3. you should land on the setup page with the URL filled in, beside the key
+       from step 1
 
   Or ask it something:
     curl -s -H "X-API-Key: ${DEV_KEY}" "${workerOrigin}/api/v1/search?q=big+buck+bunny&limit=3"

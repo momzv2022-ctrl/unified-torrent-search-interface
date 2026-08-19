@@ -46,6 +46,21 @@
 // key without pasting the file again.
 const API_KEY = "";
 
+// How long this Worker should assume it is still being set up, as a millisecond
+// timestamp. The setup page writes it when it mints the key, the same way it
+// writes the key; the committed file ships with 0, which means never.
+//
+// Inside the window a browser opening `/` is almost certainly the person who
+// deployed it thirty seconds ago and has one instruction left, so the page takes
+// them back to finish rather than asking them to press a button that does the
+// same thing. Outside it, somebody opening their own Worker months later gets a
+// page that stays put, because bouncing them to a setup page they did not ask
+// for would be obnoxious.
+//
+// No storage and no cookie: the deadline is a constant in the file, so it
+// answers the same for every visitor and expires on its own.
+const SETUP_UNTIL = 0;
+
 // Bumped when the behaviour changes. `/healthz` reports it, and compares it
 // with the version the project publishes, so a Worker can tell you it is old.
 const VERSION = "0.4.2";
@@ -3912,6 +3927,34 @@ const BANNER = `Unified Torrent Search Interface
 https://github.com/momzv2022-ctrl/unified-torrent-search-interface
 `;
 
+/**
+ * The auto-return, inlined into the page only while setup is still in progress.
+ *
+ * A short pause rather than an instant jump, so "Your search is live" is read
+ * before the page moves: the reassurance is half the point of showing it at all.
+ * `replace` rather than `assign` so the back button does not land on a page that
+ * would immediately bounce again.
+ *
+ * Anyone who would rather stay presses Stay, and nothing else on the page
+ * changes. With JavaScript off none of this runs and the button is still there.
+ */
+const RETURN_SCRIPT = `
+var going = setTimeout(function () {
+  location.replace(document.getElementById("finish").href);
+}, 2500);
+document.getElementById("lede").innerHTML =
+  "<strong>All set. Taking you back to finish.<\\/strong> " +
+  "Your URL is on its way to the page that has your key, so you get both together.";
+var stay = document.getElementById("stay");
+stay.hidden = false;
+stay.addEventListener("click", function () {
+  clearTimeout(going);
+  stay.hidden = true;
+  document.getElementById("lede").innerHTML =
+    "<strong>Staying here.<\\/strong> Press Finish setup whenever you are ready.";
+});
+`;
+
 /** Escape for HTML text and double-quoted attributes. */
 function escapeHtml(text) {
   return String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -3941,7 +3984,7 @@ function escapeHtml(text) {
  * being public is what narrows an attacker to guessing the Worker name, and the
  * words Cloudflare appends are what make that a poor use of their time.
  */
-function landingPage(host) {
+function landingPage(host, returning) {
   const url = escapeHtml(host);
   const back = escapeHtml(SETUP_PAGE + "#url=" + encodeURIComponent(host));
   return `<!doctype html>
@@ -3992,7 +4035,7 @@ footer { margin-top:2.8rem; padding-top:1.2rem; border-top:1px solid var(--line)
 <main>
 
 <h1>Your search is live</h1>
-<p class="lede">
+<p class="lede" id="lede">
   <strong>One tap left. Press Finish setup below.</strong> That is the only
   thing this page is for: it hands your URL back to the page that made your key,
   so you get both together, ready to copy.
@@ -4001,7 +4044,8 @@ footer { margin-top:2.8rem; padding-top:1.2rem; border-top:1px solid var(--line)
 <div class="card">
   <label>Your URL</label>
   <div class="value" id="url">${url}</div>
-  <a class="btn" href="${back}">Finish setup &nearr;</a>
+  <a class="btn" id="finish" href="${back}">Finish setup &nearr;</a>
+  <button class="ghost" id="stay" type="button" hidden>Stay on this page</button>
   <button class="ghost" id="copy" type="button">Copy the URL</button>
   <div class="status" id="status" role="status" aria-live="polite"></div>
   <p class="note" style="margin-bottom:0">
@@ -4038,6 +4082,7 @@ footer { margin-top:2.8rem; padding-top:1.2rem; border-top:1px solid var(--line)
 
 </main>
 <script>
+${returning ? RETURN_SCRIPT : ""}
 document.getElementById("copy").addEventListener("click", function () {
   var status = document.getElementById("status");
   var text = location.protocol + "//" + location.host;
@@ -4156,8 +4201,11 @@ async function handle(method, url, headers, http, settings) {
     // a client, a monitor — gets the plain text it has always got.
     const wantsHtml = (headers.get("accept") || "").includes("text/html");
     if (!wantsHtml) return reply(200, null, cors, BANNER);
+    // Still mid-setup, as far as this file knows, so the page finishes the job
+    // rather than asking for one more press.
+    const returning = SETUP_UNTIL > Date.now();
     return reply(200, null, { ...cors, "Content-Type": "text/html; charset=utf-8", "X-Robots-Tag": "noindex" },
-      landingPage(parsed.host));
+      landingPage(parsed.host, returning));
   }
 
   if (path === "/api/v1/engines") {
@@ -4320,6 +4368,7 @@ export const __testing = {
   htmlUnescape,
   humanSize,
   isEnabled,
+  landingPage,
   magnetFor,
   merge,
   normalizeInfohash,

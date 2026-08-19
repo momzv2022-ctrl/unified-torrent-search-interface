@@ -45,6 +45,16 @@ if (!/^const API_KEY = "";$/m.test(source)) {
   );
 }
 
+// Same rule, same reason. A committed deadline in the future would make every
+// deployment made from the artifact bounce its visitors to the setup page until
+// that date, including deployments nobody is setting up.
+if (!/^const SETUP_UNTIL = 0;$/m.test(source)) {
+  throw new Error(
+    "worker/src/worker.js does not carry SETUP_UNTIL = 0. The published artifact " +
+      "must ship with no setup window; the setup page adds one in the browser.",
+  );
+}
+
 const version = /^const VERSION = "([^"]+)";$/m.exec(source);
 if (!version) throw new Error("worker/src/worker.js has no VERSION line");
 

@@ -218,7 +218,16 @@ for (const viewport of VIEWPORTS) {
   await page.click("#copy-code");
   await page.waitForFunction(() => document.getElementById("code-status").textContent !== "");
   const copied = await page.evaluate(() => navigator.clipboard.readText());
-  const expected = WORKER.replace('const API_KEY = "";', `const API_KEY = "${layout.key.text}";`);
+  // The page writes two things into the file: the key, and the window during
+  // which a deployed Worker returns here by itself. The window is a clock
+  // reading, so it is taken from what was copied and then checked, rather than
+  // predicted.
+  const stamped = /^const SETUP_UNTIL = (\d+);$/m.exec(copied);
+  if (!stamped) fail("the copied file has no SETUP_UNTIL line");
+  else if (Number(stamped[1]) <= Date.now()) fail(`the setup window is already over: ${stamped[1]}`);
+  const expected = WORKER
+    .replace('const API_KEY = "";', `const API_KEY = "${layout.key.text}";`)
+    .replace("const SETUP_UNTIL = 0;", `const SETUP_UNTIL = ${stamped ? stamped[1] : 0};`);
   if (copied !== expected) {
     fail(`the copy button did not yield the program with the key in it (${copied.length} vs ${expected.length})`);
   } else {
