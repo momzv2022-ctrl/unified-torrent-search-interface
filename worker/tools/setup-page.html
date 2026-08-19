@@ -328,8 +328,9 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
 
 <h1>Your own torrent search in 3 minutes. Free.</h1>
 <p class="lede">
-  One readable file goes into a Cloudflare account you control, and you have a
-  private search across several public indexes at a URL only you know.
+  Cloudflare runs one small program for you, free, and it searches several public
+  indexes at once. You get a web address only you know and a key to open it.
+  Nothing is installed and nothing runs on your computer.
 </p>
 <ul class="facts">
   <li class="free">Free</li>
@@ -353,6 +354,24 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
   Putting a stranger's code in your own cloud account?
   <a class="verify-first" href="#verify">Read how to check it first</a>.
 </p>
+
+<h2>What is a Cloudflare Worker?</h2>
+<div class="card soft">
+  <p style="margin-top:0">
+    <strong>A small program that Cloudflare runs for you, at a web address of its
+    own.</strong> That program is the one file this page hands you. It asks the
+    torrent indexes your question and passes the answers back.
+  </p>
+  <ul class="plain">
+    <li><strong>Nothing runs on your computer.</strong> No app, no Docker, no server, no port to open. Your machine can be switched off and your search still answers.</li>
+    <li><strong>It is one file, not a system.</strong> You can read all of it before you run it, and delete the whole thing later with one button.</li>
+    <li><strong>The address is yours.</strong> Nobody is given it but you, and it needs your key before it answers anything.</li>
+  </ul>
+  <p class="note" style="margin-bottom:0">
+    Cloudflare's free plan covers 100,000 requests a day, and no card is involved,
+    so there is nothing to be billed for.
+  </p>
+</div>
 
 <h2>Before you start</h2>
 <div class="card soft">

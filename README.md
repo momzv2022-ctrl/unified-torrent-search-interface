@@ -7,6 +7,12 @@ names, sizes, swarm counts and `magnet:` links.
 Three minutes to set up. Free, MIT licensed, no card, no domain, nothing
 installed, and it works on a phone.
 
+**If "Cloudflare Worker" means nothing to you:** it is a small program that
+Cloudflare runs for you, at a web address of its own. That program is the one
+file this repository publishes. Nothing runs on your computer, there is no app
+and no Docker, and your machine can be switched off while your search keeps
+answering. Free plan, 100,000 requests a day, no card.
+
 ---
 
 ## Get it running
