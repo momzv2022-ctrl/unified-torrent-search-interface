@@ -113,11 +113,21 @@ jobs:
         with:
           node-version: "22"
       - run: node worker/tools/build.mjs
-      - name: Install a browser
+      # The runner already has Google Chrome. Downloading a second Chromium and
+      # apt-installing a set of CJK fonts to render a Latin page took four
+      # minutes a run; `playwright-core` is one package and about a second, and
+      # `check-page.mjs` has always accepted a browser path.
+      #
+      # `test -x` is the important line. Given no browser at all the checker
+      # prints "skipped" and exits 0, so without this a runner image that
+      # dropped Chrome would turn this job green while checking nothing.
+      - name: Point Playwright at the browser this runner already has
         run: |
-          npm install --no-save --no-audit --no-fund playwright@1
-          npx playwright install --with-deps chromium
+          test -x /usr/bin/google-chrome
+          npm install --no-save --no-audit --no-fund playwright-core@1
       - run: node worker/tools/check-page.mjs
+        env:
+          PLAYWRIGHT_CHROMIUM: /usr/bin/google-chrome
 
   spec-drift:
     # `spec/tsp-openapi.yaml` is what the conformance tests validate against.
