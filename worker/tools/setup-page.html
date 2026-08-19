@@ -105,21 +105,34 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
    gets the video. Pressing it swaps in the real embed, which is the moment the
    reader chose YouTube. There is no thumbnail either: a poster image from
    ytimg is a request to Google, which is the thing being avoided. */
+/* The same 16:9 the player will occupy, so pressing it swaps one box for
+   another rather than shoving the page around. A poster frame is for looking at,
+   not reading: the play button is the message, the words underneath it are a
+   label, and everything that needed a paragraph moved out from under it. */
 a.video {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .15rem;
+  aspect-ratio: 16 / 9;
   border: 1px solid var(--demo);
   border-radius: var(--radius);
   background: var(--demo);
-  padding: 1.5rem 1rem;
-  margin: 0 0 2rem;
+  /* Everything in here has to fit inside nine sixteenths of the width, because
+     content taller than that wins and the box stops being 16:9. On a 320 pixel
+     phone that is about 159 pixels to spend, which is why the label is two short
+     lines and the circle shrinks with the viewport. */
+  padding: .7rem;
+  margin: 0 0 .55rem;
   text-align: center;
   text-decoration: none;
   color: #fff;
 }
 a.video:hover .play { transform: scale(1.04); }
 .play {
-  width: 3.3rem;
-  height: 3.3rem;
+  width: clamp(2.6rem, 11vw, 3.3rem);
+  height: clamp(2.6rem, 11vw, 3.3rem);
   margin: 0 auto .75rem;
   border-radius: 50%;
   background: #fff;
@@ -134,10 +147,11 @@ a.video:hover .play { transform: scale(1.04); }
   border-color: transparent transparent transparent var(--demo);
   margin-left: .17rem;
 }
-.video-title { display: block; font-weight: 650; letter-spacing: -.01em; }
+.video-title { display: block; font-weight: 650; letter-spacing: -.01em; margin-top: .45rem; }
 /* Not `opacity`, which would take this back under the line it was moved to
    clear. Pure white, one step smaller, is enough of a step down. */
-.video-note { display: block; font-size: .9rem; margin-top: .3rem; }
+.video-note { display: block; font-size: .88rem; }
+.video-caption { color: var(--muted); font-size: .87rem; margin: 0 0 1.9rem; text-align: center; }
 .video-frame {
   position: relative;
   width: 100%;
@@ -382,14 +396,13 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
 <a class="video" id="watch" data-video="bPfgvGbQ-48"
    href="https://youtu.be/bPfgvGbQ-48" target="_blank" rel="noopener">
   <span class="play" aria-hidden="true"></span>
-  <span class="video-title">Never done anything like this? Watch the demo.</span>
-  <span class="video-note">
-    Three minutes of somebody doing the whole thing, start to finish, on an
-    ordinary computer. No jargon and nothing to install. Follow along and copy
-    what they do. Press play and YouTube takes it from there; nothing loads
-    until you do.
-  </span>
+  <span class="video-title">Watch the demo</span>
+  <span class="video-note">3 minutes, start to finish</span>
 </a>
+<p class="video-caption">
+  Never done anything like this? Follow along and copy what they do.
+  Nothing loads until you press play.
+</p>
 
 <p class="jump">
   Putting a stranger's code in your own cloud account?
