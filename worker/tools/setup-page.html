@@ -421,18 +421,27 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
         <details class="more">
           <summary>It says the connection is not secure</summary>
           <p class="note">
-            Your Worker is fine. Cloudflare is still issuing the certificate for
-            your brand new <code>workers.dev</code> name, and until it lands the
-            browser says <code>ERR_SSL_VERSION_OR_CIPHER_MISMATCH</code>. Nothing
-            in the dashboard tells you this is happening.
+            Normal on a brand new account, and nothing to do with your Worker.
+            Cloudflare is still issuing the certificate for your new
+            <code>workers.dev</code> name, and until that lands the browser says
+            <code>ERR_SSL_VERSION_OR_CIPHER_MISMATCH</code>. The dashboard does
+            not mention it is happening.
+          </p>
+          <p class="note">
+            <strong>Try one click first.</strong> On your Worker in Cloudflare,
+            open the <em>Domains</em> tab, switch on the <em>Preview</em> URL,
+            then press <em>Visit</em> again. People report it starting to work
+            right after. Cloudflare does not document this, so it may just be the
+            extra minute, but it costs one click.
           </p>
           <p class="note" style="margin-bottom:0">
-            Usually a few minutes. On a new account it can take longer. Wait and
-            reload, or carry on now: copy your URL off the Cloudflare page, press
-            the button below, and paste it in.
+            <strong>Either way you are not stuck.</strong> That same
+            <em>Domains</em> tab shows your URL at the top. Copy it, press the
+            button below, and paste it in. Your key is already inside the Worker,
+            so your search starts working the moment the certificate lands.
           </p>
         </details>
-        <button class="ghost small next" data-next="step-4" type="button">Or type my URL in by hand</button>
+        <button class="ghost small next" data-next="step-4" type="button">Paste my URL instead</button>
       </div>
     </details>
   </li>
