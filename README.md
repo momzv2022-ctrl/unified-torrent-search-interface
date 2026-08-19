@@ -43,8 +43,9 @@ Nothing to install, no terminal, no GitHub account. It works on a phone.
 
 **[→ Open the setup page](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/)**
 
-Want to see it working first? [Here is the whole
-setup](https://youtu.be/R9z3e6vYVNg), start to finish.
+Never done anything like this? [Watch the demo](https://youtu.be/bPfgvGbQ-48):
+three minutes of somebody doing the whole thing, start to finish, with nothing to
+install and no jargon. Follow along and copy what they do.
 
 **Read it before you run it.** That page leads with the verification, not the
 button: what the file is, how to check it is the same file this repository

@@ -22,6 +22,10 @@
      for large text as well; this is 4.61:1. Same hue and saturation, so it
      still reads as Cloudflare's orange rather than some other colour. */
   --accent-deep: #ba5a08;
+  /* The demo panel. Deep enough that white sits at 8.08:1 on it, and far enough
+     from the #0067cc used to draw Cloudflare's Visit button that nobody reads
+     the two as the same thing. */
+  --demo: #12518f;
   --ok: #17603a;
   --bad: #a3211a;
   --radius: 10px;
@@ -103,9 +107,9 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
    ytimg is a request to Google, which is the thing being avoided. */
 a.video {
   display: block;
-  border: 1px solid var(--accent-deep);
+  border: 1px solid var(--demo);
   border-radius: var(--radius);
-  background: var(--accent-deep);
+  background: var(--demo);
   padding: 1.5rem 1rem;
   margin: 0 0 2rem;
   text-align: center;
@@ -127,7 +131,7 @@ a.video:hover .play { transform: scale(1.04); }
   content: "";
   border-style: solid;
   border-width: .5rem 0 .5rem .82rem;
-  border-color: transparent transparent transparent var(--accent-deep);
+  border-color: transparent transparent transparent var(--demo);
   margin-left: .17rem;
 }
 .video-title { display: block; font-weight: 650; letter-spacing: -.01em; }
@@ -375,13 +379,15 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
   <li>Works on a phone</li>
 </ul>
 
-<a class="video" id="watch" data-video="R9z3e6vYVNg"
-   href="https://youtu.be/R9z3e6vYVNg" target="_blank" rel="noopener">
+<a class="video" id="watch" data-video="bPfgvGbQ-48"
+   href="https://youtu.be/bPfgvGbQ-48" target="_blank" rel="noopener">
   <span class="play" aria-hidden="true"></span>
-  <span class="video-title">Watch someone do the whole thing</span>
+  <span class="video-title">Never done anything like this? Watch the demo.</span>
   <span class="video-note">
-    Three minutes, start to finish. Press play and YouTube takes it from there.
-    Nothing loads until you do.
+    Three minutes of somebody doing the whole thing, start to finish, on an
+    ordinary computer. No jargon and nothing to install. Follow along and copy
+    what they do. Press play and YouTube takes it from there; nothing loads
+    until you do.
   </span>
 </a>
 
