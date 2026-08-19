@@ -48,7 +48,7 @@ const API_KEY = "";
 
 // Bumped when the behaviour changes. `/healthz` reports it, and compares it
 // with the version the project publishes, so a Worker can tell you it is old.
-const VERSION = "0.4.1";
+const VERSION = "0.4.2";
 
 // Where `/healthz` looks for "is there a newer version". Reached from
 // `/healthz` only, never from a search, and never fatal: if it does not answer
@@ -3946,7 +3946,11 @@ function landingPage(host) {
 <meta name="color-scheme" content="light">
 <title>Your search is live</title>
 <style>
-:root { --bg:#fff; --ink:#111; --muted:#666; --line:#e5e5e5; --soft:#fafafa; --code:#f6f6f6; }
+:root { --bg:#fff; --ink:#111; --muted:#666; --line:#e5e5e5; --soft:#fafafa; --code:#f6f6f6;
+  /* Cloudflare's orange at 38% lightness, so white on it clears WCAG AA. The
+     same orange marks the thing to press on the setup page, and this page has
+     exactly one thing to press. */
+  --accent:#ba5a08; }
 * { box-sizing:border-box; }
 body { margin:0; padding:2rem 1.15rem 5rem; background:var(--bg); color:var(--ink);
   font:17px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -3966,8 +3970,8 @@ label { display:block; font-size:.82rem; font-weight:650; letter-spacing:.01em;
   user-select:all; -webkit-user-select:all; margin-bottom:.9rem; }
 a.btn, button { display:flex; align-items:center; justify-content:center; width:100%;
   min-height:3.15rem; padding:.8rem 1rem; font:inherit; font-weight:600; letter-spacing:-.005em;
-  text-align:center; text-decoration:none; border:1px solid var(--ink); border-radius:8px;
-  background:var(--ink); color:#fff; cursor:pointer; }
+  text-align:center; text-decoration:none; border:1px solid var(--accent); border-radius:8px;
+  background:var(--accent); color:#fff; cursor:pointer; font-size:1.05rem; }
 button.ghost { background:var(--bg); color:var(--ink); border-color:var(--line); margin-top:.5rem; }
 a.btn:active, button:active { transform:translateY(1px); }
 code { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.9em;
@@ -3982,14 +3986,15 @@ footer { margin-top:2.8rem; padding-top:1.2rem; border-top:1px solid var(--line)
 
 <h1>Your search is live</h1>
 <p class="lede">
-  This is the half only Cloudflare could tell you: your URL. The other half is
-  your key, and the page that made it still has it.
+  <strong>One tap left. Press Finish setup below.</strong> That is the only
+  thing this page is for: it hands your URL back to the page that made your key,
+  so you get both together, ready to copy.
 </p>
 
 <div class="card">
   <label>Your URL</label>
   <div class="value" id="url">${url}</div>
-  <a class="btn" href="${back}">Finish setup</a>
+  <a class="btn" href="${back}">Finish setup &nearr;</a>
   <button class="ghost" id="copy" type="button">Copy the URL</button>
   <div class="status" id="status" role="status" aria-live="polite"></div>
   <p class="note" style="margin-bottom:0">
