@@ -4,7 +4,7 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-08-18T09:48:39Z`
+- registry generated: `2026-08-19T05:17:53Z`
 - qbittorrent/search-plugins pinned at: `a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991`
 - nova3 runtime pinned at: `b1fa46da8e8a8f7c04052dbd464c732d25c3cfef`
 
@@ -64,7 +64,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `latteam` | [Lat-Team](https://lat-team.com/) 🔒 | tolotp | [tolotp/qbittorrent-search-plugins-de-busqueda](https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda) | MIT | ❗ | 2026-03-06 | unknown | no |
 | `linuxtracker` | [Linux Tracker](http://linuxtracker.org) | Made Of Magic And Wires | [MadeOfMagicAndWires/qBit-plugins](https://github.com/MadeOfMagicAndWires/qBit-plugins) | none | ✔ | 2017-04-12 | unknown | yes |
 | `lostfilm` | [LostFilm.TV](https://www.lostfilm.tv/) 🔒 | Bugsbringer | [bugsbringer/qbit-plugins](https://github.com/bugsbringer/qbit-plugins) | none | ✔ | 2020-06-13 | unknown | yes |
-| `magnetdl` | [MagnetDL with categories](http://www.magnetdl.com/) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent/) | unknown | ✔ | 2022-09-08 | unknown | no |
+| `magnetdl` | [MagnetDL with categories](https://www.magnetdl.com) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent/) | unknown | ✔ | 2022-09-08 | unknown | no |
 | `maxitorrent` | [MaxiTorrent](https://atomixhq.com) | joseeloren | [joseeloren/qbittorrent-search-plugins](https://github.com/joseeloren/qbittorrent-search-plugins) | unknown | ✔ | 2021-04-16 | unknown | yes |
 | `mejortorrent` | [MejorTorrent](https://www36.mejortorrent.eu) | iordic | [iordic/qbittorrent-search-plugins](https://github.com/iordic/qbittorrent-search-plugins) | unknown | ✔ | 2024-09-27 | unknown | yes |
 | `mikan` | [Mikan Project](https://mikanime.tv) | Cycloctane | [Cycloctane/qBittorrent-plugins](https://github.com/Cycloctane/qBittorrent-plugins) | unknown | ✔ | 2025-05-08 | unknown | yes |

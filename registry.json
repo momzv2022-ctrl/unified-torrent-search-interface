@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-18T09:48:39Z",
+  "generated_at": "2026-08-19T05:17:53Z",
   "plugin_repo_ref": "a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991",
   "runtime": {
     "repo": "qbittorrent/qBittorrent",
     "ref": "b1fa46da8e8a8f7c04052dbd464c732d25c3cfef",
     "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/b1fa46da8e8a8f7c04052dbd464c732d25c3cfef/src/searchengine/nova3",
     "files": {
-      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
-      "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
-      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
+      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
       "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
-      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece"
+      "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
+      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
+      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002"
     }
   },
   "plugins": [
@@ -1266,7 +1266,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/magnetdl.py",
       "source": "wiki",
       "site": "MagnetDL with categories",
-      "site_url": "http://www.magnetdl.com/",
+      "site_url": "https://www.magnetdl.com",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent/",
       "version": "2.0",
@@ -1278,8 +1278,10 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "a1cc2b920f1a9c94e902aa0361d1f57fcf372bb6a84c1f8c608e66c48f15f4e3",
+      "hosts": [
+        "www.magnetdl.com"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -1289,7 +1291,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "maxitorrent",
