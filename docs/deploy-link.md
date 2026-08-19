@@ -263,12 +263,23 @@ to a server, so the address travels from the Worker to the setup page and nowher
 else. The setup page reads it, pairs it with the key it minted, and shows both
 together.
 
-**The page never shows the key**, and that is not caution for its own sake: every
-`*.workers.dev` hostname appears in the public certificate transparency logs
-within minutes of being created, so "nobody knows this address" is not a control
-and anything on that page should be assumed readable. The address is not a
-secret — the key is what guards the API — so the address is there and the key is
-not.
+**The page never shows the key**, and that is not caution for its own sake. The
+page needs no key to read, so anybody who ever ended up with the URL would end up
+with the key too, permanently: a screenshot, a shared link, a synced browser
+history, a borrowed laptop. "Nobody knows this URL" is not a control. The URL is
+not a secret, because the key is what guards the API, so the URL is there and the
+key is not.
+
+An earlier version of this justified it with certificate transparency, claiming
+every `*.workers.dev` hostname is logged within minutes. That is wrong, and worth
+recording because it was wrong on a page whose whole job is being checkable.
+Cloudflare issues **one wildcard per account**, so the logs carry
+`*.<account>.workers.dev` and the account name and nothing about individual
+Workers. Checked on 2026-08-19 against certspotter for a real account: the only
+entry was `["*.axx-art3.workers.dev", "axx-art3.workers.dev"]`, issued minutes
+after the account was made, and no Worker hostname anywhere. The account name
+being public narrows an attacker to guessing the Worker name; the words
+Cloudflare appends to it are what make that unrewarding.
 
 For the pairing to work the setup page has to still know the key, which means
 storing it, which is a password in `localStorage` and worth saying out loud. Two

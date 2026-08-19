@@ -125,9 +125,9 @@ once, search. Results are cards with a **Get** button, which is an ordinary
 
 The Cloudflare Worker is an API and has no search page. It answers its own URL
 with one small page, and that page exists for a single reason: to tell you the
-URL and hand it back to the setup page. It never shows the key. Every
-`*.workers.dev` hostname turns up in the public certificate transparency logs
-within minutes, so a page anyone may find is no place for a secret.
+URL and hand it back to the setup page. It never shows the key, because that page
+needs no key to read: anyone who ever ended up with the URL would end up with the
+key too, and permanently.
 
 **From an app.** It speaks
 [Torrent Stream Protocol](https://github.com/raul2hot/torrent-stream-protocol),

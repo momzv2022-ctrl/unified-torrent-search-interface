@@ -1328,10 +1328,10 @@ test("a browser at / gets the page that hands its URL back", async () => {
 });
 
 test("the page at / never shows the key, whatever the key is", async () => {
-  // Every *.workers.dev hostname is in the public certificate transparency logs
-  // within minutes of being created, so "nobody knows this address" is not a
-  // control and this page is readable by anyone who looks. The address is not a
-  // secret; the key is, and it stays in the code.
+  // This page needs no key to read, so anybody who ever ends up with the URL
+  // would end up with the key too, permanently. "Nobody knows this URL" is not a
+  // control: URLs travel in screenshots, shared links and synced histories. The
+  // URL is not a secret; the key is, and it stays in the code.
   const key = "sekr-etke-yval-uehe-rezz-zzzz";
   const page = await run(
     "GET",

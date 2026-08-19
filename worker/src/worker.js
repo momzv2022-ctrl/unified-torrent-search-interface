@@ -3927,12 +3927,19 @@ function escapeHtml(text) {
  * wrong. This page removes it: it is the address, and it carries a link back to
  * the setup page with the address in the fragment.
  *
- * **It never shows the key.** Anyone who can reach this page can read every word
- * on it, and every `*.workers.dev` hostname appears in public certificate
- * transparency logs within minutes of being created. So the address — which is
- * not a secret, since the key is what guards the API — is here, and the key
+ * **It never shows the key.** This page needs no key to read, so anybody who ever
+ * ends up with the URL would end up with the key too, permanently: a screenshot,
+ * a shared link, a synced browser history, somebody borrowing the laptop. The
+ * URL is not a secret, because the key is what guards the API. The key is, so it
  * stays where it already is: in this Worker's code, and in the browser that made
  * it.
+ *
+ * Certificate transparency is worth being precise about, because it is easy to
+ * overstate. Cloudflare issues one wildcard per account, so the logs carry
+ * `*.<account>.workers.dev` and the account name, and **not** the hostname of any
+ * individual Worker. Checked against certspotter on 2026-08-19. The account name
+ * being public is what narrows an attacker to guessing the Worker name, and the
+ * words Cloudflare appends are what make that a poor use of their time.
  */
 function landingPage(host) {
   const url = escapeHtml(host);
