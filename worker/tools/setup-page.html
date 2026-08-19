@@ -95,6 +95,27 @@ hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
    which the demo now occupies; this is an ordinary sentence with a link in it. */
 .verify-first { color: var(--ink); font-weight: 550; }
 
+/* The way out for anybody who does not want a guided page. It sits above the
+   demo on purpose: somebody who reads shell scripts for a living should be able
+   to leave inside three seconds, and everything below here is written for
+   somebody who cannot. */
+details.cli {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0 .9rem;
+  margin: 0 0 1.4rem;
+  background: var(--soft);
+}
+details.cli > summary {
+  cursor: pointer;
+  padding: .8rem 0;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: -.008em;
+}
+details.cli > summary::marker { color: var(--muted); }
+details.cli pre { background: var(--bg); }
+
 /* ---- the demo -----------------------------------------------------------
    A facade, not a player. It is an ordinary link until it is pressed, so the
    page loads nothing from anywhere else and anyone without JavaScript still
@@ -339,6 +360,25 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
   <li>Nothing installed</li>
   <li>Works on a phone</li>
 </ul>
+
+<details class="cli">
+  <summary>Know your way around a terminal? Four lines, and skip this page.</summary>
+  <pre><code id="cli">curl -fsSLO https://momzv2022-ctrl.github.io/unified-torrent-search-interface/worker.js
+KEY=$(openssl rand -hex 16)
+npx wrangler deploy worker.js --name utsi-$(openssl rand -hex 3) \
+  --compatibility-date 2026-08-18 --var UTSI_API_KEY:"$KEY"
+echo "your key: $KEY"</code></pre>
+  <button id="copy-cli" class="ghost small" type="button">Copy</button>
+  <div class="status" id="cli-status" role="status" aria-live="polite"></div>
+  <p class="note" style="margin-bottom:.9rem">
+    <code>wrangler</code> opens your browser once to sign in to Cloudflare, then
+    prints your URL. That is the published file, deployed unedited, with the key
+    as a variable rather than spliced into the source, so what runs is exactly
+    what the SHA&#8209;256 below covers. Prefer a secret to a variable? Drop the
+    <code>--var</code> and run <code>wrangler secret put UTSI_API_KEY</code>
+    afterwards.
+  </p>
+</details>
 
 <a class="video" id="watch" data-video="R9z3e6vYVNg"
    href="https://youtu.be/R9z3e6vYVNg" target="_blank" rel="noopener">
@@ -969,6 +1009,9 @@ __PLAYGROUND_LIB__
   });
   byId("copy-curl").addEventListener("click", function () {
     copy(curlBlock.textContent, "curl-status", "Command copied.");
+  });
+  byId("copy-cli").addEventListener("click", function () {
+    copy(byId("cli").textContent, "cli-status", "Copied. Nothing else on this page applies to you.");
   });
   byId("copy-code").addEventListener("click", function () {
     rememberKey(key);

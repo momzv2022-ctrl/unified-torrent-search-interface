@@ -17,7 +17,27 @@ answering. Free plan, 100,000 requests a day, no card.
 
 ## Get it running
 
-### The quick way: a free Cloudflare account, three minutes
+### If you have a terminal: four lines
+
+```sh
+curl -fsSLO https://momzv2022-ctrl.github.io/unified-torrent-search-interface/worker.js
+KEY=$(openssl rand -hex 16)
+npx wrangler deploy worker.js --name utsi-$(openssl rand -hex 3) \
+  --compatibility-date 2026-08-18 --var UTSI_API_KEY:"$KEY"
+echo "your key: $KEY"
+```
+
+`wrangler` opens your browser once to sign in to Cloudflare, then prints your
+URL. That is the published artifact deployed unedited, with the key as a
+variable rather than spliced into the source, so what runs is exactly what
+[`worker.js.sha256`](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/worker.js.sha256)
+covers. Prefer a secret to a variable? Drop the `--var` and run
+`wrangler secret put UTSI_API_KEY` afterwards.
+
+That is the whole developer path. Everything below is for people who would
+rather not open a terminal at all.
+
+### No terminal: a free Cloudflare account, three minutes
 
 Nothing to install, no terminal, no GitHub account. It works on a phone.
 
