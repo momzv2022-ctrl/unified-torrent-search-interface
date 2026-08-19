@@ -165,6 +165,17 @@ a.video:hover .play { transform: scale(1.04); }
 }
 .mock-note { color: var(--muted); font-size: .87rem; }
 
+/* The one thing on this page that is worth reading before pressing rather than
+   after. Tinted, so it is not read as another grey aside. */
+.wait {
+  background: #fff8f0;
+  border: 1px solid #f3d9bd;
+  border-radius: 8px;
+  padding: .75rem .85rem;
+  margin: 0 0 1rem;
+}
+.wait strong { color: var(--ink); }
+
 /* Small enough to be skipped by somebody in a hurry, present for somebody who
    is not. */
 .jump { color: var(--muted); font-size: .93rem; margin: -1.3rem 0 2rem; }
@@ -405,6 +416,12 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
     <details>
       <summary><span class="num">3</span><span class="step-title">Open your Worker and finish</span><span class="state"></span></summary>
       <div class="step-body">
+        <p class="note wait">
+          <strong>Just made your Cloudflare account?</strong> Give it about two
+          minutes before you press Visit. Cloudflare issues the certificate for
+          your new name in the background, and pressing too early shows a browser
+          security warning. It is not something you did.
+        </p>
         <p>Still on Cloudflare, press the blue button at the top right.</p>
         <div class="mock">
           <span class="mock-btn" role="img" aria-label="A blue button labelled Visit">Visit &nearr;</span>
@@ -490,6 +507,7 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
         <div class="status" id="key-status" role="status" aria-live="polite"></div>
 
         <button class="ghost" id="run-test" type="button" style="margin-top:.6rem">Test your URL and key</button>
+        <button class="ghost small" id="stop-test" type="button" hidden>Stop checking</button>
         <div class="status" id="test-status" role="status" aria-live="polite"></div>
         <pre class="out" id="test-output" hidden></pre>
 
@@ -942,21 +960,71 @@ __PLAYGROUND_LIB__
      question gets no CORS headers and the browser refuses to show it the
      answer. */
   var testButton = byId("run-test");
+  var stopButton = byId("stop-test");
   var testStatus = byId("test-status");
   var testOutput = byId("test-output");
   var buildOnIt = byId("build-on-it");
 
-  testButton.addEventListener("click", function () {
+  /* A brand new Cloudflare account does not have a certificate for its
+     `workers.dev` name yet, and getting one takes a couple of minutes. During
+     that window every request to the Worker fails, and it fails in a way a
+     browser reports as a security warning, which is the single most alarming
+     thing that can happen to somebody who has just deployed a stranger's code.
+
+     Waiting is unavoidable. Waiting with nothing on screen is not. So a failure
+     that looks like "not there yet" starts checking on its own, every five
+     seconds, and says so. The moment it answers, the answer appears. */
+  var RETRY_MS = 5000;
+  var MAX_TRIES = 36;         // three minutes, then it stops asking
+  var tries = 0;
+  var timer = null;
+
+  function stopChecking() {
+    if (timer) clearTimeout(timer);
+    timer = null;
+    tries = 0;
+    stopButton.hidden = true;
+    testButton.disabled = false;
+  }
+
+  function checkAgainSoon() {
+    tries += 1;
+    if (tries > MAX_TRIES) {
+      testStatus.className = "status bad";
+      testStatus.textContent =
+        "Still nothing after three minutes. On a new account a certificate can take longer than that. " +
+        "Nothing is lost, and your URL and key are the right ones. Press Test again in a while.";
+      stopChecking();
+      return;
+    }
+    stopButton.hidden = false;
+    testButton.disabled = true;
+    testStatus.className = "status";
+    testStatus.textContent =
+      "Not live yet, which is the certificate rather than anything you did. " +
+      "Checking every five seconds. Tried " + tries + (tries === 1 ? " time." : " times.");
+    timer = setTimeout(function () { runTest(); }, RETRY_MS);
+  }
+
+  stopButton.addEventListener("click", function () {
+    stopChecking();
+    testStatus.className = "status";
+    testStatus.textContent = "Stopped. Press Test whenever you want to try again.";
+  });
+
+  function runTest() {
     var host = cleanUrl(urlInput.value);
-    testOutput.hidden = true;
     if (!host) {
+      stopChecking();
       testStatus.className = "status bad";
       testStatus.textContent = "Fill in your URL first.";
       return;
     }
-    testStatus.className = "status";
-    testStatus.textContent = "Asking your Worker for Big Buck Bunny";
-    testButton.disabled = true;
+    if (!tries) {
+      testStatus.className = "status";
+      testStatus.textContent = "Asking your Worker for Big Buck Bunny";
+      testButton.disabled = true;
+    }
 
     fetch(origin(host) + "/api/v1/search?q=big+buck+bunny&limit=3", {
       headers: { "X-API-Key": key },
@@ -969,7 +1037,7 @@ __PLAYGROUND_LIB__
         });
       })
       .then(function (answer) {
-        testButton.disabled = false;
+        stopChecking();
         testOutput.hidden = false;
         testOutput.textContent = answer.parsed
           ? JSON.stringify(answer.parsed, null, 2)
@@ -998,14 +1066,17 @@ __PLAYGROUND_LIB__
           testStatus.textContent = "Your Worker answered " + answer.status + ".";
         }
       })
+      // Nothing answered at all. On a new account that is the certificate, not
+      // the URL, so this keeps asking rather than declaring a problem.
       .catch(function () {
-        testButton.disabled = false;
-        testStatus.className = "status bad";
-        testStatus.textContent =
-          "Could not reach it. On a brand new account this is usually Cloudflare still " +
-          "issuing the certificate for your workers.dev name, which can take a few minutes. " +
-          "Your URL and key are still the right ones. Wait a little and press this again.";
+        testOutput.hidden = true;
+        checkAgainSoon();
       });
+  }
+
+  testButton.addEventListener("click", function () {
+    stopChecking();
+    runTest();
   });
 
   /* ---- the steps ----------------------------------------------------------

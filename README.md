@@ -43,12 +43,12 @@ Then four steps, one at a time:
    buttons, and a **Test your URL and key** button runs a real search and prints
    the answer.
 
-> If the Worker's URL says *This site can't provide a secure connection*, nothing
-> is wrong with it. Cloudflare is still issuing the certificate for your brand new
-> `workers.dev` name, and the dashboard does not tell you it is happening. Try
-> switching on the *Preview* URL under that Worker's *Domains* tab and pressing
-> *Visit* again, which people report clears it. Either way you are not stuck: the
-> same tab shows your URL, so copy it into step 4 and carry on.
+> **On a brand new Cloudflare account, wait about two minutes before step 3.**
+> Cloudflare issues the certificate for your new `workers.dev` name in the
+> background, and until it lands the browser shows a security warning instead of
+> your Worker. Nothing is wrong. The setup page's *Test your URL and key* button
+> knows about this: if nothing answers it keeps checking every five seconds and
+> tells you the moment your search goes live.
 
 Step 3 is the one this project spent a long time getting wrong. The URL is
 `name.your-account.workers.dev`, Cloudflare picks the account part and lengthens

@@ -71,6 +71,7 @@ const flush = async () => {
 function load(hash, store = {}, reply = null) {
   const nodes = new Map();
   const requests = [];
+  const pending = [];
 
   const element = (id) => {
     const node = {
@@ -184,18 +185,28 @@ function load(hash, store = {}, reply = null) {
     },
     fetch: (url, options) => {
       requests.push({ url, options });
-      if (!reply) return Promise.reject(new TypeError("Failed to fetch"));
-      if (reply.throws) return Promise.reject(new TypeError("Failed to fetch"));
+      // An array of replies is a sequence: one per call, the last one repeating.
+      // That is how "fails, fails, then works" gets tested without waiting.
+      const answer = Array.isArray(reply) ? reply[Math.min(requests.length - 1, reply.length - 1)] : reply;
+      if (!answer || answer.throws) return Promise.reject(new TypeError("Failed to fetch"));
       return Promise.resolve({
-        status: reply.status,
-        text: () => Promise.resolve(reply.body),
+        status: answer.status,
+        text: () => Promise.resolve(answer.body),
       });
     },
-    // The page defers the compressor so the first paint is not held up by it.
-    // Here it runs at once, so a test never has to wait or sleep.
-    setTimeout: (fn) => {
-      fn();
-      return 0;
+    // A zero delay is the page deferring the compressor past first paint, and it
+    // runs at once so no test has to sleep. Anything longer is the retry loop,
+    // which is queued so a test can drive the clock instead of living through it.
+    setTimeout: (fn, ms) => {
+      if (!ms) {
+        fn();
+        return 0;
+      }
+      pending.push(fn);
+      return pending.length;
+    },
+    clearTimeout: () => {
+      pending.length = 0;
     },
     crypto,
     console,
@@ -227,6 +238,11 @@ function load(hash, store = {}, reply = null) {
     steps,
     store,
     requests,
+    /** Fire whatever the page is waiting on. */
+    tick: () => {
+      const due = pending.splice(0, pending.length);
+      due.forEach((fn) => fn());
+    },
   };
 }
 
@@ -448,6 +464,63 @@ test("the test asks the reader's own Worker, with the key, and shows the answer"
   assert.equal(page.at("build-on-it").hidden, false, "and only now is the API worth mentioning");
 });
 
+test("a URL that answers nothing is waited on, not given up on", async () => {
+  // A brand new Cloudflare account has no certificate for its workers.dev name
+  // for a couple of minutes, and every request fails until it does. That is the
+  // most alarming moment in the whole setup, so the page keeps asking on its own
+  // and says so, rather than reporting a problem the reader cannot act on.
+  const key = "abcd-efgh-ijkl-mnop-qrst-uvwx";
+  const page = load(`#url=utsi-x.demo.workers.dev`, fresh(key), [
+    { throws: true },
+    { throws: true },
+    { status: 200, body: ANSWER },
+  ]);
+
+  page.at("run-test").click();
+  await flush();
+
+  assert.equal(page.requests.length, 1);
+  assert.match(page.at("test-status").textContent, /Not live yet/);
+  assert.match(page.at("test-status").textContent, /Tried 1 time\./);
+  assert.equal(page.at("stop-test").hidden, false, "and offers a way to stop");
+  assert.equal(page.at("run-test").disabled, true);
+
+  page.tick();
+  await flush();
+  assert.equal(page.requests.length, 2);
+  assert.match(page.at("test-status").textContent, /Tried 2 times\./);
+
+  page.tick();
+  await flush();
+  assert.equal(page.requests.length, 3);
+  assert.match(page.at("test-status").textContent, /It works\./, "and the moment it answers, it says so");
+  assert.equal(page.at("stop-test").hidden, true, "and stops asking");
+  assert.equal(page.at("run-test").disabled, false);
+  assert.equal(page.at("build-on-it").hidden, false);
+});
+
+test("the checking loop gives up eventually, and can be stopped by hand", async () => {
+  const page = load("#url=utsi-x.demo.workers.dev", fresh("abcd-efgh-ijkl-mnop-qrst-uvwx"), { throws: true });
+
+  page.at("run-test").click();
+  await flush();
+  page.at("stop-test").click();
+  assert.match(page.at("test-status").textContent, /Stopped/);
+  assert.equal(page.at("stop-test").hidden, true);
+  assert.equal(page.at("run-test").disabled, false);
+
+  // And left alone it stops itself rather than hammering a URL forever.
+  page.at("run-test").click();
+  await flush();
+  for (let i = 0; i < 40; i += 1) {
+    page.tick();
+    await flush();
+  }
+  assert.match(page.at("test-status").textContent, /Still nothing after three minutes/);
+  assert.equal(page.at("stop-test").hidden, true);
+  assert.ok(page.requests.length <= 38, `stopped asking, ${page.requests.length} tries`);
+});
+
 test("a refused key is told apart from an unreachable URL", async () => {
   const url = "utsi-x.demo.workers.dev";
 
@@ -465,8 +538,8 @@ test("a refused key is told apart from an unreachable URL", async () => {
   const unreachable = load(`#url=${url}`, fresh("abcd-efgh-ijkl-mnop-qrst-uvwx"), { throws: true });
   unreachable.at("run-test").click();
   await flush();
-  assert.equal(unreachable.at("test-status").className, "status bad");
-  assert.match(unreachable.at("test-status").textContent, /Could not reach it/);
+  assert.match(unreachable.at("test-status").textContent, /Not live yet/);
+  assert.equal(unreachable.at("test-output").hidden, true, "and shows no half-answer");
 });
 
 test("the test refuses to guess when there is no URL", async () => {
