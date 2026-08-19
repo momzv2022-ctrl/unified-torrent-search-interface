@@ -36,12 +36,18 @@ Then four steps, one at a time:
 2. **Deploy to Cloudflare for free.** One link opens the deploy screen with the
    file already loaded and your key already in it. It is there under *Code
    preview*, so you can read what you are about to run. Press *Deploy*.
-3. **Open the URL Cloudflare gives you.** You do not have to write it down. Your
-   Worker answers it with a small page of its own that says it is live and
-   carries a **Finish setup** button.
-4. **Press Finish setup.** That brings you back with your URL and your key side
-   by side, both with copy buttons, and a **Test your URL and key** button that
-   runs a real search and prints the answer.
+3. **Press the blue Visit button** on your new Worker's page. It opens and says
+   *Your search is live*, with a **Finish setup** button on it. Press that. You
+   never have to write the URL down.
+4. **You are done.** Your URL and your key are side by side, both with copy
+   buttons, and a **Test your URL and key** button runs a real search and prints
+   the answer.
+
+> If the Worker's URL says *This site can't provide a secure connection*, nothing
+> is wrong with it. Cloudflare is still issuing the certificate for your brand new
+> `workers.dev` name, which usually takes a few minutes and on a new account can
+> take longer, and the dashboard does not tell you it is happening. Wait and
+> reload, or copy the URL off Cloudflare and paste it into step 4 now.
 
 Step 3 is the one this project spent a long time getting wrong. The URL is
 `name.your-account.workers.dev`, Cloudflare picks the account part and lengthens

@@ -91,19 +91,9 @@ a { color: var(--ink); text-underline-offset: 2px; text-decoration-thickness: 1p
 a:hover { text-decoration-color: var(--muted); }
 hr { border: 0; border-top: 1px solid var(--line); margin: 3rem 0; }
 
-/* ---- the verify banner, first thing under the title -------------------- */
-.verify-first {
-  display: block;
-  border: 1px solid var(--ink);
-  border-radius: var(--radius);
-  padding: .95rem 1rem;
-  text-decoration: none;
-  color: var(--ink);
-  margin: 0 0 .7rem;
-}
-.verify-first strong { display: block; font-size: 1.04rem; letter-spacing: -0.01em; }
-.verify-first span { display: block; color: var(--muted); font-size: .93rem; margin-top: .15rem; }
-.verify-first:hover { background: var(--soft); }
+/* The way down to the verify section. It used to be a banner above everything,
+   which the demo now occupies; this is an ordinary sentence with a link in it. */
+.verify-first { color: var(--ink); font-weight: 550; }
 
 /* ---- the demo -----------------------------------------------------------
    A facade, not a player. It is an ordinary link until it is pressed, so the
@@ -156,6 +146,29 @@ a.video:hover .play { transform: scale(1.04); }
 }
 .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
+/* A picture of Cloudflare's own button, drawn rather than screenshotted: a
+   screenshot would be a third-party image to host, would go stale the next time
+   they restyle the dashboard, and would not scale on a phone. */
+.mock { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .9rem 0 1rem; }
+.mock-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .45rem .95rem;
+  border-radius: 6px;
+  background: #0067cc;         /* 5.5:1 with white */
+  color: #fff;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: -.005em;
+  white-space: nowrap;
+}
+.mock-note { color: var(--muted); font-size: .87rem; }
+
+/* Small enough to be skipped by somebody in a hurry, present for somebody who
+   is not. */
+.jump { color: var(--muted); font-size: .93rem; margin: -1.3rem 0 2rem; }
+
 /* ---- cards and lists --------------------------------------------------- */
 .card {
   border: 1px solid var(--line);
@@ -207,7 +220,7 @@ a.btn.deploy { border-color: var(--accent); background: var(--accent); color: #f
 ol.steps { list-style: none; padding: 0; margin: .5rem 0 0; counter-reset: step; }
 ol.steps > li { border: 1px solid var(--line); border-radius: var(--radius); margin: .6rem 0; overflow: hidden; }
 ol.steps > li.current { border-color: var(--ink); }
-ol.steps summary {
+ol.steps > li > details > summary {
   display: flex;
   align-items: center;
   gap: .7rem;
@@ -217,7 +230,7 @@ ol.steps summary {
   letter-spacing: -0.01em;
   list-style: none;
 }
-ol.steps summary::-webkit-details-marker { display: none; }
+ol.steps > li > details > summary::-webkit-details-marker { display: none; }
 .num {
   flex: 0 0 auto;
   width: 1.65rem; height: 1.65rem;
@@ -315,36 +328,36 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
   <li>Works on a phone</li>
 </ul>
 
-<a class="verify-first" href="#verify">
-  <strong>Do not trust this. Verify it before you deploy.</strong>
-  <span>Read the file, check it matches what was published, and see what it can and cannot reach. Written for people who read code and people who do not.</span>
-</a>
 <a class="video" id="watch" data-video="R9z3e6vYVNg"
    href="https://youtu.be/R9z3e6vYVNg" target="_blank" rel="noopener">
   <span class="play" aria-hidden="true"></span>
-  <span class="video-title">Want to see it working first?</span>
+  <span class="video-title">Watch someone do the whole thing</span>
   <span class="video-note">
-    The whole setup, start to finish. Press play and YouTube takes it from
-    there. Nothing loads until you do.
+    Three minutes, start to finish. Press play and YouTube takes it from there.
+    Nothing loads until you do.
   </span>
 </a>
+
+<p class="jump">
+  Putting a stranger's code in your own cloud account?
+  <a class="verify-first" href="#verify">Read how to check it first</a>.
+</p>
 
 <h2>Before you start</h2>
 <div class="card soft">
   <ul class="plain">
     <li><strong>A Cloudflare account.</strong> Free. An email address and a password. No card, no domain.</li>
-    <li><strong>About three minutes</strong>, and a browser you can open a second tab in.</li>
+    <li><strong>Three minutes</strong>, and a browser you can open a second tab in.</li>
     <li><strong>Keep this page open.</strong> Every step opens Cloudflare in a new tab, so you can come back here.</li>
   </ul>
   <p class="note" style="margin-bottom:0">
-    You do not need to prepare anything else. Your key is being made in this
-    browser right now, and both your key and your URL are shown at the end, in
-    step 4.
+    Nothing else to prepare. Your key is being made in this browser right now,
+    and your key and your URL are both shown at the end, in step 4.
   </p>
 </div>
 
 <h2>Deploy it</h2>
-<p class="note" style="margin-top:0">One step at a time. Finish one, press the button at the bottom of it, and the next one opens.</p>
+<p class="note" style="margin-top:0">One step at a time. Finish one, press the button at the bottom of it, and the next opens.</p>
 
 <ol class="steps" id="steps">
 
@@ -352,18 +365,19 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
     <details open>
       <summary><span class="num">1</span><span class="step-title">Sign in to Cloudflare</span><span class="state"></span></summary>
       <div class="step-body">
-        <p>
-          Open Cloudflare in a new tab and sign in. If you do not have an account,
-          the same link creates one, and it is free.
-        </p>
-        <a class="btn ghost" href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">Open Cloudflare in a new tab</a>
+        <a class="btn deploy" href="https://dash.cloudflare.com/sign-up" target="_blank" rel="noopener">
+          Open Cloudflare in a new tab and sign in
+        </a>
         <p class="note">
-          <strong>Do this before step 2, not after.</strong> If you are signed out
-          when you press Deploy, Cloudflare sends you to a login page first, and
-          the file does not survive that trip. You would arrive at an empty
-          editor and wonder what went wrong.
+          Free. An email address and a password, no card and no domain. If you
+          already have an account, that link signs you in instead.
         </p>
-        <button class="ghost next" data-next="step-2" type="button">I am signed in, open step 2</button>
+        <p class="note">
+          <strong>Do this before step 2.</strong> If you are signed out when you
+          press Deploy, Cloudflare sends you to a login page first and the file
+          does not survive the trip.
+        </p>
+        <button class="ghost next" data-next="step-2" type="button">Open step 2</button>
       </div>
     </details>
   </li>
@@ -372,48 +386,53 @@ footer { margin-top: 3.5rem; padding-top: 1.4rem; border-top: 1px solid var(--li
     <details>
       <summary><span class="num">2</span><span class="step-title">Deploy it to your account</span><span class="state"></span></summary>
       <div class="step-body">
-        <p>
-          This opens Cloudflare's deploy screen in a new tab with the file already
-          loaded and your key already in it. Nothing to copy, nothing to paste.
-        </p>
         <!-- A new tab on purpose. This page is holding a key that exists nowhere
              else yet, and leaving the page before it is saved loses it. -->
         <a class="btn deploy" id="open-deploy" href="#" target="_blank" rel="noopener">Deploy to Cloudflare for free</a>
         <div class="status" id="link-status" role="status" aria-live="polite">building your link</div>
         <p class="note">
-          On that screen the file is shown under <em>Code preview</em>, so you can
-          read it before you run it, and a name is filled in for you. Press
-          <strong>Deploy</strong>. Cloudflare may add words to the name, which is
-          fine.
+          A new tab opens with the file and your key already in it. It is under
+          <em>Code preview</em> if you want to read it. Then press
+          <strong>Deploy</strong> on that screen and wait for it to finish.
         </p>
-        <p class="note">
-          The link has your key inside it, so treat it like a password and do not
-          send it to anyone.
-        </p>
-        <button class="ghost next" data-next="step-3" type="button">I pressed Deploy, open step 3</button>
+        <p class="note">The link has your key inside it, so do not send it to anyone.</p>
+        <button class="ghost next" data-next="step-3" type="button">Open step 3</button>
       </div>
     </details>
   </li>
 
   <li class="step" id="step-3">
     <details>
-      <summary><span class="num">3</span><span class="step-title">Open your new URL</span><span class="state"></span></summary>
+      <summary><span class="num">3</span><span class="step-title">Open your Worker and finish</span><span class="state"></span></summary>
       <div class="step-body">
+        <p>Still on Cloudflare, press the blue button at the top right.</p>
+        <div class="mock">
+          <span class="mock-btn" role="img" aria-label="A blue button labelled Visit">Visit &nearr;</span>
+          <span class="mock-note">top right of your new Worker's page</span>
+        </div>
         <p>
-          When the deploy finishes, Cloudflare shows your URL as a link. It ends in
-          <code>.workers.dev</code>. Open it.
-        </p>
-        <p>
-          Your Worker answers with a small page of its own that says it is live,
-          and it has a <strong>Finish setup</strong> button. Press that button.
+          Your Worker opens and says <strong>Your search is live</strong>. Press
+          <strong>Finish setup</strong> on it.
         </p>
         <p class="note">
-          It brings your URL back to this page, so you never have to read a long
-          web address off one screen and type it into another. Nothing about your
-          Worker is sent to any server on the way: the URL travels in the part of
-          a link after the <code>#</code>, which browsers keep to themselves.
+          That is the last thing you have to do. It brings you back here with
+          your URL and your key filled in, and nothing to type.
         </p>
-        <button class="ghost next" data-next="step-4" type="button">Open step 4</button>
+        <details class="more">
+          <summary>It says the connection is not secure</summary>
+          <p class="note">
+            Your Worker is fine. Cloudflare is still issuing the certificate for
+            your brand new <code>workers.dev</code> name, and until it lands the
+            browser says <code>ERR_SSL_VERSION_OR_CIPHER_MISMATCH</code>. Nothing
+            in the dashboard tells you this is happening.
+          </p>
+          <p class="note" style="margin-bottom:0">
+            Usually a few minutes. On a new account it can take longer. Wait and
+            reload, or carry on now: copy your URL off the Cloudflare page, press
+            the button below, and paste it in.
+          </p>
+        </details>
+        <button class="ghost small next" data-next="step-4" type="button">Or type my URL in by hand</button>
       </div>
     </details>
   </li>
@@ -974,8 +993,9 @@ __PLAYGROUND_LIB__
         testButton.disabled = false;
         testStatus.className = "status bad";
         testStatus.textContent =
-          "Could not reach it. Check the URL is right and the deploy finished. " +
-          "If you changed UTSI_CORS_ORIGINS, this test needs this page's origin in it.";
+          "Could not reach it. On a brand new account this is usually Cloudflare still " +
+          "issuing the certificate for your workers.dev name, which can take a few minutes. " +
+          "Your URL and key are still the right ones. Wait a little and press this again.";
       });
   });
 

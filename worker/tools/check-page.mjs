@@ -305,17 +305,24 @@ for (const viewport of VIEWPORTS) {
   await page.fill("#url", "");
   console.log("  ✓ the URL box fills the command in, and refuses what is not a URL");
 
-  // The first thing under the title has to be the answer to the first question a
-  // stranger asks, and it has to actually go somewhere.
+  // The demo leads and the verify section is at the foot, but the way down to it
+  // has to exist and has to land on something. A link to an id that is not there
+  // scrolls nowhere and looks like nothing happened.
   const verify = await page.evaluate(() => {
     const link = document.querySelector("a.verify-first");
     const target = link && document.querySelector(link.getAttribute("href"));
-    return { text: (link && link.textContent) || "", landed: Boolean(target) };
+    const demo = document.getElementById("watch");
+    return {
+      landed: Boolean(target),
+      // The demo is the primary route through this page, so it comes first.
+      demoAbove: Boolean(link && demo) && demo.compareDocumentPosition(link) === Node.DOCUMENT_POSITION_FOLLOWING,
+      verifyBelowSteps: Boolean(target) && document.getElementById("steps").compareDocumentPosition(target) === Node.DOCUMENT_POSITION_FOLLOWING,
+    };
   });
-  if (!/verify/i.test(verify.text) || !verify.landed) {
-    fail(`the verify link reads ${JSON.stringify(verify.text.slice(0, 40))} and lands: ${verify.landed}`);
-  }
-  console.log("  ✓ the page leads with verify, and the link lands on it");
+  if (!verify.landed) fail("the verify link lands on nothing");
+  if (!verify.demoAbove) fail("the demo is not above the link to the verify section");
+  if (!verify.verifyBelowSteps) fail("the verify section is not below the steps");
+  console.log("  ✓ demo first, steps next, verify at the foot, and the link reaches it");
 
   // The demo is a facade: a link until it is pressed. That is what lets the page
   // carry a video and still claim it reaches nothing, so the claim gets checked
