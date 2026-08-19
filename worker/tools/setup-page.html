@@ -169,8 +169,27 @@ a.video:hover .play { transform: scale(1.04); }
 
 /* A picture of Cloudflare's own button, drawn rather than screenshotted: a
    screenshot would be a third-party image to host, would go stale the next time
-   they restyle the dashboard, and would not scale on a phone. */
-.mock { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; margin: .9rem 0 1rem; }
+   they restyle the dashboard, and would not scale on a phone.
+
+   Being a good likeness turned out to be the problem. A tester pressed it. So it
+   now sits in a dashed frame with a caption saying where it lives, and it does
+   not respond to a cursor or a tap, because the fastest way to learn a thing is
+   not a button is for it to refuse to behave like one. */
+.shot {
+  margin: .9rem 0 1.1rem;
+  padding: .6rem .8rem .85rem;
+  border: 1px dashed #c9c9c9;
+  border-radius: 10px;
+  background: var(--soft);
+}
+.shot figcaption {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: .55rem;
+}
 .mock-btn {
   display: inline-flex;
   align-items: center;
@@ -183,19 +202,35 @@ a.video:hover .play { transform: scale(1.04); }
   font-weight: 600;
   letter-spacing: -.005em;
   white-space: nowrap;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
-.mock-note { color: var(--muted); font-size: .87rem; }
 
-/* The one thing on this page that is worth reading before pressing rather than
-   after. Tinted, so it is not read as another grey aside. */
+/* The single point of failure in the whole setup, and the only thing on this
+   page worth reading before pressing rather than after. Loud on purpose: a
+   tinted aside was being skipped, and the cost of skipping it is a browser
+   security warning arriving thirty seconds after somebody installed a
+   stranger's code, which is where people leave and do not come back. */
 .wait {
-  background: #fff8f0;
-  border: 1px solid #f3d9bd;
-  border-radius: 8px;
-  padding: .75rem .85rem;
-  margin: 0 0 1rem;
+  background: #fff4e5;
+  border: 1px solid #f0c48a;
+  border-left: 5px solid var(--accent);
+  border-radius: 10px;
+  padding: .85rem .95rem;
+  margin: 0 0 1.2rem;
 }
-.wait strong { color: var(--ink); }
+.wait p { margin: .35rem 0; }
+.wait-label {
+  margin: 0 0 .35rem !important;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: #8a4b00;                /* 6.26:1 on the tint */
+}
+.wait-note { color: #6b4a25; font-size: .93rem; margin-bottom: 0 !important; }
 
 /* Small enough to be skipped by somebody in a hurry, present for somebody who
    is not. */
@@ -475,17 +510,20 @@ echo "your key: $KEY"</code></pre>
     <details>
       <summary><span class="num">3</span><span class="step-title">Open your Worker and finish</span><span class="state"></span></summary>
       <div class="step-body">
-        <p class="note wait">
-          <strong>Just made your Cloudflare account?</strong> Give it about two
-          minutes before you press Visit. Cloudflare issues the certificate for
-          your new name in the background, and pressing too early shows a browser
-          security warning. It is not something you did.
-        </p>
-        <p>Still on Cloudflare, press the blue button at the top right.</p>
-        <div class="mock">
-          <span class="mock-btn" role="img" aria-label="A blue button labelled Visit">Visit &nearr;</span>
-          <span class="mock-note">top right of your new Worker's page</span>
+        <div class="wait">
+          <p class="wait-label">The one thing that goes wrong</p>
+          <p><strong>Brand new Cloudflare account? Wait about two minutes before
+          you press Visit.</strong></p>
+          <p class="wait-note">Cloudflare is issuing the certificate for your new
+          name in the background. Press too early and the browser shows a security
+          warning instead of your Worker. Nothing is broken, and it is not
+          something you did.</p>
         </div>
+        <p>Still on Cloudflare, press the blue button at the top right.</p>
+        <figure class="shot">
+          <figcaption>This is on Cloudflare's page, not here</figcaption>
+          <span class="mock-btn" role="img" aria-label="A blue button labelled Visit">Visit &nearr;</span>
+        </figure>
         <p>
           Your Worker opens and says <strong>Your search is live</strong>. Press
           <strong>Finish setup</strong> on it.
