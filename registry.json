@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-08-19T05:17:53Z",
+  "generated_at": "2026-08-20T05:19:32Z",
   "plugin_repo_ref": "a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991",
   "runtime": {
     "repo": "qbittorrent/qBittorrent",
     "ref": "b1fa46da8e8a8f7c04052dbd464c732d25c3cfef",
     "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/b1fa46da8e8a8f7c04052dbd464c732d25c3cfef/src/searchengine/nova3",
     "files": {
-      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
-      "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
       "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
-      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
-      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002"
+      "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
+      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
+      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
+      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c"
     }
   },
   "plugins": [
