@@ -27,6 +27,14 @@ const REPO = join(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
 execFileSync(process.execPath, [join(REPO, "worker", "tools", "build.mjs")], { stdio: "ignore" });
 const html = readFileSync(join(REPO, "site", "index.html"), "utf8");
+const PLUGIN = readFileSync(join(REPO, "qbittorrent", "utsi.py"), "utf8");
+
+/** What the download link hands the browser, decoded. */
+const downloaded = (page) => {
+  const href = page.at("download-plugin").href;
+  assert.match(href, /^data:text\/x-python;charset=utf-8,/, "a data: URL, so the download touches no server");
+  return decodeURIComponent(href.slice(href.indexOf(",") + 1));
+};
 
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((match) => match[1]);
 const ids = [...html.matchAll(/id="([^"]+)"/g)].map((match) => match[1]);
@@ -309,6 +317,10 @@ test("acting on the key is what saves it", () => {
     page.at(button).click();
     assert.equal(JSON.parse(page.store[SAVED]).key, page.at("key").textContent, button);
   }
+  // Saving the plugin is acting on it too, once there is a URL to put in it.
+  const page = load("#url=utsi-x.demo.workers.dev");
+  page.at("download-plugin").click();
+  assert.equal(JSON.parse(page.store[SAVED]).key, page.at("key").textContent, "download-plugin");
 });
 
 test("the key never reaches this page's own URL", () => {
@@ -316,6 +328,57 @@ test("the key never reaches this page's own URL", () => {
   // link. The key goes into the fragment of the deploy link and nowhere else.
   const page = load("");
   assert.ok(!page.at("open-deploy").href.includes("?"));
+});
+
+// ───────────────────────────────────────────────────────────────────────────
+// the qBittorrent plugin
+// ───────────────────────────────────────────────────────────────────────────
+
+test("the plugin is the committed file with the URL and key written in, and nothing else changed", () => {
+  const key = "abcd-efgh-ijkl-mnop-qrst-uvwx";
+  const page = load("#url=utsi-x.demo.workers.dev", fresh(key));
+
+  const file = downloaded(page);
+  assert.equal(
+    file,
+    PLUGIN.replace('URL = ""', 'URL = "https://utsi-x.demo.workers.dev"').replace('KEY = ""', `KEY = "${key}"`),
+  );
+  // The file name is the class name, and qBittorrent refuses the plugin if
+  // they differ. It comes from the markup, which the stub does not model.
+  assert.match(html, /id="download-plugin"[^>]*\bdownload="utsi\.py"/);
+});
+
+test("the plugin follows the URL box, and a loopback URL stays http", () => {
+  const key = "abcd-efgh-ijkl-mnop-qrst-uvwx";
+  const page = load("", fresh(key));
+
+  assert.equal(page.at("download-plugin").getAttribute("aria-disabled"), "true", "no URL yet, so nothing to download");
+  assert.equal(page.at("download-plugin").href, "#");
+
+  page.at("url").value = "https://utsi-ab12.example.workers.dev/healthz";
+  page.at("url").input();
+  assert.equal(page.at("download-plugin").getAttribute("aria-disabled"), null);
+  assert.ok(downloaded(page).includes('URL = "https://utsi-ab12.example.workers.dev"'));
+  assert.ok(downloaded(page).includes(`KEY = "${key}"`));
+
+  page.at("url").value = "127.0.0.1:8787";
+  page.at("url").input();
+  assert.ok(downloaded(page).includes('URL = "http://127.0.0.1:8787"'));
+
+  page.at("url").value = "not a url";
+  page.at("url").input();
+  assert.equal(page.at("download-plugin").getAttribute("aria-disabled"), "true");
+});
+
+test("pressing Download with no URL says so, saves nothing, and goes nowhere", () => {
+  const page = load("");
+  let prevented = false;
+  page.at("download-plugin").listeners.click.forEach((handler) => handler({ preventDefault: () => { prevented = true; } }));
+
+  assert.ok(prevented, "the click on an inert link is swallowed");
+  assert.equal(page.at("plugin-status").className, "status bad");
+  assert.match(page.at("plugin-status").textContent, /Fill in your URL first/);
+  assert.deepEqual(Object.keys(page.store), [], "an inert download is not acting on the key");
 });
 
 // ───────────────────────────────────────────────────────────────────────────
@@ -556,8 +619,8 @@ test("nothing else on the page ever reaches the network", () => {
   // The claim in the verify section is that this page makes no requests. Pressing
   // the one button that does is the only exception, and it goes to the reader's
   // own Worker.
-  const page = load("", fresh("abcd-efgh-ijkl-mnop-qrst-uvwx"));
-  ["open-deploy", "copy-key", "copy-both", "copy-code", "copy-curl"].forEach((id) => page.at(id).click());
+  const page = load("#url=utsi-x.demo.workers.dev", fresh("abcd-efgh-ijkl-mnop-qrst-uvwx"));
+  ["open-deploy", "copy-key", "copy-both", "copy-code", "copy-curl", "download-plugin"].forEach((id) => page.at(id).click());
   page.steps.forEach((step) => step.children[".next"] && step.children[".next"].click());
 
   assert.deepEqual(page.requests, []);

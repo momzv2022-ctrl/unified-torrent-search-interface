@@ -13,7 +13,9 @@
  *   4. the key is legible without pinch-zoom, and so is anything you type into;
  *   5. the steps advance one at a time and only one is ever open;
  *   6. the copy button really does yield the file with *this* browser's key
- *      spliced into it, byte for byte.
+ *      spliced into it, byte for byte;
+ *   7. the qBittorrent plugin really downloads, as `utsi.py`, with the URL
+ *      from the box and the same key written in.
  *
  * And one that is not about layout at all: **the page must make no network
  * request.** It is a page about a security key; anything it fetched would be
@@ -38,6 +40,7 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const REPO = join(HERE, "..", "..");
 const PAGE = pathToFileURL(join(REPO, "site", "index.html")).href;
 const WORKER = readFileSync(join(REPO, "worker", "src", "worker.js"), "utf8");
+const PLUGIN = readFileSync(join(REPO, "qbittorrent", "utsi.py"), "utf8");
 
 /** Fixed, so the browser's link and this process's link are comparable at all. */
 const FIXED_BOUNDARY = "----WebKitFormBoundaryPageCheck00";
@@ -117,7 +120,9 @@ for (const viewport of VIEWPORTS) {
   });
   const offsite = [];
   page.on("request", (request) => {
-    if (!request.url().startsWith("file://")) offsite.push(request.url());
+    // `data:` is the plugin download: bytes the page already holds, handed to
+    // the browser to save. Nothing leaves the machine for one.
+    if (!/^(?:file|data):/.test(request.url())) offsite.push(request.url());
   });
 
   await page.goto(PAGE);
@@ -313,6 +318,27 @@ for (const viewport of VIEWPORTS) {
   }
   await page.fill("#url", "");
   console.log("  ✓ the URL box fills the command in, and refuses what is not a URL");
+
+  // The qBittorrent plugin: the same splice as the Worker, checked the same
+  // way, and then actually downloaded, because a `download` attribute that
+  // the browser ignores would be a button that does nothing.
+  await page.fill("#url", host);
+  const [download] = await Promise.all([
+    page.waitForEvent("download", { timeout: 15000 }),
+    page.click("#download-plugin"),
+  ]);
+  const savedAs = download.suggestedFilename();
+  const savedBody = readFileSync(await download.path(), "utf8");
+  const expectedPlugin = PLUGIN
+    .replace('URL = ""', `URL = "https://${host}"`)
+    .replace('KEY = ""', `KEY = "${layout.key.text}"`);
+  if (savedAs !== "utsi.py") fail(`the plugin downloads as ${JSON.stringify(savedAs)}, and qBittorrent needs utsi.py`);
+  if (savedBody !== expectedPlugin) {
+    fail(`the downloaded plugin is not the committed file with the URL and key written in (${savedBody.length} vs ${expectedPlugin.length})`);
+  } else {
+    console.log(`  ✓ the plugin downloads as utsi.py, ${savedBody.length.toLocaleString()} characters, URL and key written in`);
+  }
+  await page.fill("#url", "");
 
   // The demo leads and the verify section is at the foot, but the way down to it
   // has to exist and has to land on something. A link to an id that is not there

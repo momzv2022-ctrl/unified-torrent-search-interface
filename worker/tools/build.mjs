@@ -3,12 +3,13 @@
  *
  *     node worker/tools/build.mjs
  *
- * Four files, none of them the product of a compiler:
+ * Five files, none of them the product of a compiler:
  *
  *   site/worker.js         the artifact — byte-identical to worker/src/worker.js
  *   site/worker.js.sha256  its SHA-256, in `shasum -a 256` format
  *   site/version.json      what a deployed Worker's /healthz asks for
- *   site/index.html        the setup page, with the artifact inlined
+ *   site/utsi.py           the qBittorrent plugin, with its two lines empty
+ *   site/index.html        the setup page, with the artifact and the plugin inlined
  *
  * **There is no build step in the usual sense, and that is the point.** The
  * artifact is a copy, not an output: `site/worker.js` and `worker/src/worker.js`
@@ -30,6 +31,7 @@ const OUT = join(REPO, "site");
 const SOURCE_PATH = join(REPO, "worker", "src", "worker.js");
 const PAGE_PATH = join(HERE, "setup-page.html");
 const PLAYGROUND_PATH = join(HERE, "playground.js");
+const PLUGIN_PATH = join(REPO, "qbittorrent", "utsi.py");
 
 const REPO_URL = "https://github.com/momzv2022-ctrl/unified-torrent-search-interface";
 
@@ -57,6 +59,16 @@ if (!/^const SETUP_UNTIL = 0;$/m.test(source)) {
 
 const version = /^const VERSION = "([^"]+)";$/m.exec(source);
 if (!version) throw new Error("worker/src/worker.js has no VERSION line");
+
+// The qBittorrent plugin follows the same rule as the Worker: it ships with its
+// two lines empty and the page fills them in. A URL or key committed by
+// accident would reach everyone who ever pressed Download.
+const plugin = readFileSync(PLUGIN_PATH, "utf8");
+for (const line of ['URL = ""', 'KEY = ""']) {
+  if (plugin.split(`\n${line}\n`).length !== 2) {
+    throw new Error(`qbittorrent/utsi.py must carry exactly one line reading ${line}`);
+  }
+}
 
 const sha256 = createHash("sha256").update(source, "utf8").digest("hex");
 const published = process.env.SOURCE_DATE_EPOCH
@@ -90,16 +102,18 @@ if (/\bimport\b|\brequire\(/.test(playground)) {
 const page = readFileSync(PAGE_PATH, "utf8")
   .replace("__PLAYGROUND_LIB__", () => playground)
   .replace("__WORKER_SOURCE__", () => inlineLiteral(source))
+  .replace("__PLUGIN_SOURCE__", () => inlineLiteral(plugin))
   .replace(/__SHA256__/g, sha256)
   .replace(/__VERSION__/g, version[1]);
 
-for (const placeholder of ["__PLAYGROUND_LIB__", "__WORKER_SOURCE__", "__SHA256__", "__VERSION__"]) {
+for (const placeholder of ["__PLAYGROUND_LIB__", "__WORKER_SOURCE__", "__PLUGIN_SOURCE__", "__SHA256__", "__VERSION__"]) {
   if (page.includes(placeholder)) throw new Error(`the setup page still has ${placeholder} in it`);
 }
 
 mkdirSync(OUT, { recursive: true });
 writeFileSync(join(OUT, "worker.js"), source);
 writeFileSync(join(OUT, "worker.js.sha256"), `${sha256}  worker.js\n`);
+writeFileSync(join(OUT, "utsi.py"), plugin);
 writeFileSync(join(OUT, "index.html"), page);
 writeFileSync(
   join(OUT, "version.json"),
@@ -139,6 +153,7 @@ if (pageBytes > 2 * 1024 * 1024) throw new Error(`the setup page is ${pageBytes}
 console.log(`worker.js      ${Buffer.byteLength(source).toLocaleString()} bytes`);
 console.log(`sha256         ${sha256}`);
 console.log(`version        ${version[1]}`);
+console.log(`utsi.py        ${Buffer.byteLength(plugin).toLocaleString()} bytes`);
 console.log(`index.html     ${pageBytes.toLocaleString()} bytes`);
 console.log(`feed           ${publishedFeed.length ? publishedFeed.join(", ") : "(not provisioned; see docs/tgp.md)"}`);
 console.log(`written to     ${OUT}`);
