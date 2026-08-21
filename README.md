@@ -8,17 +8,19 @@ links. You get a URL and a key. Nothing is installed on your computer, no card
 is involved, and there is no public copy of this. The only URL that exists is
 the one you make.
 
+![How it works: you send a search and your key to your own URL at Cloudflare, which asks the public torrent indexes and hands one list back. This project only publishes the one file you copy into your account, and is not involved after that.](docs/assets/how-it-works.svg)
+
 ## Get your URL and key
 
-Free, about three minutes, and it works on a phone. You need a Cloudflare
+Free, about three minutes, and it works on a phone. You need a free Cloudflare
 account, which is an email address and a password.
 
-[![Get your URL and key, free](docs/assets/get-url-and-key.svg)](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/)
+[![Get free qBittorrent plugin / API key and URL](docs/assets/get-url-and-key.svg)](https://momzv2022-ctrl.github.io/unified-torrent-search-interface/)
 
 The setup page takes you through four steps, one at a time: sign in to
 Cloudflare, press Deploy, open your new Worker and press Finish setup, and your
 URL and key are shown together, with a button that tests them. Never done
-anything like this? [Watch someone do it](https://youtu.be/bPfgvGbQ-48), three
+anything like this? [Watch someone do it](https://www.youtube.com/watch?v=CqjcpfIk1Rs), three
 minutes.
 
 Your key is made in your browser and never sent anywhere, and the page itself

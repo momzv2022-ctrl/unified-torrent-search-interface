@@ -69,6 +69,9 @@ addopts = "-q"
 [tool.ruff]
 line-length = 110
 src = ["src", "tools", "tests"]
+# Build output. Gitignored, so ruff already skips it inside a clone; this keeps
+# `ruff check .` quiet in an exported copy too, where there is no .gitignore.
+extend-exclude = ["site"]
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "RUF"]
