@@ -4,8 +4,8 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-08-20T05:19:32Z`
-- qbittorrent/search-plugins pinned at: `a4952498ed4fd5f5d6e5dff8fcd2dc8075dc5991`
+- registry generated: `2026-08-21T05:49:51Z`
+- qbittorrent/search-plugins pinned at: `5c0f4f2fe9be55956904d531de426352117d548e`
 - nova3 runtime pinned at: `b1fa46da8e8a8f7c04052dbd464c732d25c3cfef`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
@@ -91,7 +91,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `rutracker` | [RuTracker](https://rutracker.org/) 🔒 | nbusseneau | [nbusseneau/qBittorrent-rutracker-plugin](https://github.com/nbusseneau/qBittorrent-rutracker-plugin) | unknown | ✔ | 2026-07-15 | unknown | yes |
 | `sktorrent` | [SkTorrent](https://sktorrent.eu) | Ashalda | [Ashalda/sktorrent-qbt](https://github.com/Ashalda/sktorrent-qbt) | unknown | ✔ | 2025-12-27 | unknown | yes |
 | `smallgames` | [small-games.info](http://small-games.info/) | hannsen | [hannsen/qbittorrent_search_plugins](https://github.com/hannsen/qbittorrent_search_plugins/) | unknown | ✔ | 2017-12-25 | unknown | yes |
-| `snowfl` | [Snowfl](https://snowfl.com/) | LightDestory | [LightDestory/qBittorrent-Search-Plugins](https://github.com/LightDestory/qBittorrent-Search-Plugins) | GPL-3.0 | ✔ | 2022-07-28 | unknown | yes |
+| `snowfl` | [Snowfl](https://snowfl.com) | ChocoTonic | [ChocoTonic/snowfl](https://github.com/ChocoTonic/snowfl) | unknown | ✔ | 2026-06-29 | unknown | yes |
 | `speedapp` | [SpeedApp.IO](https://speedapp.io) 🔒 | miIiano | [miIiano/SpeedApp.io-qBittorent-search-plugin](https://github.com/miIiano/SpeedApp.io-qBittorent-search-plugin) | unknown | ✔ | 2023-08-11 | unknown | yes |
 | `subsplease` | [SubsPlease.org](https://subsplease.org/) | PlutoMonkey (kli885) | [kli885/qBittorent-SubsPlease-Search-Plugin](https://github.com/kli885/qBittorent-SubsPlease-Search-Plugin) | unknown | ✔ | 2024-09-07 | unknown | yes |
 | `sukebei` | [Sukebei.Pantsu](https://sukebei.pantsu.cat/) | 4chenz | [4chenz/pantsu-plugin](https://github.com/4chenz/pantsu-plugin/) | unknown | ✖ | 2021-01-02 | unknown | no |
