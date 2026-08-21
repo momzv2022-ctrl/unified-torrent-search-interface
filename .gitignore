@@ -39,3 +39,8 @@ node_modules/
 # from that side; see _to_delete/.
 .fuse_hidden*
 _to_delete/
+
+# What the README's curl line leaves in the working tree when it is run from
+# here. The Worker lives in worker/src/worker.js; a copy at the root was once
+# committed by accident.
+/worker.js
