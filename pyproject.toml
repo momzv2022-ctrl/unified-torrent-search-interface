@@ -78,3 +78,7 @@ ignore = ["B008"]  # FastAPI Depends/Query in defaults
 # Fixture engines deliberately follow the nova3 plugin contract, which requires
 # a lowercase class name matching the module and a `supported_categories` dict.
 "tests/fixtures/**" = ["RUF012", "E501"]
+# The real plugin follows the same contract, keeps the two lines a person fills
+# in above the imports, where they can be found without reading code, and runs
+# inside qBittorrent's Python, which can be older than this project's floor.
+"qbittorrent/**" = ["RUF012", "E402", "UP017"]
