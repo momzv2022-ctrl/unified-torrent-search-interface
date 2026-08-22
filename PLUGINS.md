@@ -4,8 +4,8 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-08-21T05:49:51Z`
-- qbittorrent/search-plugins pinned at: `5c0f4f2fe9be55956904d531de426352117d548e`
+- registry generated: `2026-08-22T05:04:21Z`
+- qbittorrent/search-plugins pinned at: `f2b1ce5a97968e17fb060120b1cf8be55e88e7cb`
 - nova3 runtime pinned at: `b1fa46da8e8a8f7c04052dbd464c732d25c3cfef`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
@@ -25,7 +25,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `torrentproject` | [torrentproject](https://torrentproject.com.se) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | needs_dl | yes |
 | `torrentscsv` | [torrentscsv](https://torrents-csv.com) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | magnet | yes |
 
-## Community plugins (69 enabled / 92)
+## Community plugins (70 enabled / 93)
 
 | Plugin | Site | Author | Repository | Licence | Status | Updated | Link kind | Enabled |
 |---|---|---|---|---|:--:|---|---|:--:|
@@ -104,6 +104,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `tomadivx` | [TomaDivx](https://tomadivx.net/) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-11-07 | unknown | yes |
 | `torrenflix` | [Torrenflix](https://torrenflix.com/) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-11-23 | unknown | no |
 | `torrent9` | [Torrent9](http://torent9.fr) | menegop | [menegop/qbfrench](https://raw.githubusercontent.com/menegop/qbfrench) | unknown | ✔ | 2023-01-01 | unknown | yes |
+| `torrentclaw` | [TorrentClaw](https://torrentclaw.com) | LightDestory | [LightDestory/qBittorrent-Search-Plugins](https://github.com/LightDestory/qBittorrent-Search-Plugins) | GPL-3.0 | ✔ | 2026-08-16 | unknown | yes |
 | `torrentdownload` | [TorrentDownload with categories](https://www.torrentdownload.info) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent/) | unknown | ✔ | 2022-09-07 | unknown | no |
 | `torrentdownloads` | [Torrent Downloads Pro](https://torrentdownloads.pro) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-10-20 | unknown | yes |
 | `torrentgalaxy` | [TorrentGalaxy](https://torrentgalaxy.to) | Ni Ndogo | [source](https://github.com/nindogo) | unknown | ✔ | 2024-11-09 | unknown | yes |
