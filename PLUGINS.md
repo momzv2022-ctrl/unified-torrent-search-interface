@@ -4,9 +4,9 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-08-29T04:04:22Z`
+- registry generated: `2026-08-29T14:11:50Z`
 - qbittorrent/search-plugins pinned at: `474d2f9d956ea7bf0819f9e846983a6178ea4510`
-- nova3 runtime pinned at: `607c9881e540510e0baaad28bc9ab5607ad20cd4`
+- nova3 runtime pinned at: `55ded55c696cd149e31faafa6ac65f4811321e0b`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
 The wiki states that `❗` and `✖` plugins "will result in the slowdown and
@@ -25,7 +25,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `torrentproject` | [torrentproject](https://torrentproject.com.se) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | needs_dl | yes |
 | `torrentscsv` | [torrentscsv](https://torrents-csv.com) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | magnet | yes |
 
-## Community plugins (69 enabled / 94)
+## Community plugins (68 enabled / 94)
 
 | Plugin | Site | Author | Repository | Licence | Status | Updated | Link kind | Enabled |
 |---|---|---|---|---|:--:|---|---|:--:|
@@ -113,7 +113,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `traht` | [TrahT](https://traht.org) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2023-12-27 | unknown | yes |
 | `tsukihime` | [TsukiHime](https://tsukihime.org) | dominc8 | [dominc8/qbittorrent-tsukihime-search-plugin](https://github.com/dominc8/qbittorrent-tsukihime-search-plugin) | unknown | ✔ | 2026-08-02 | unknown | no |
 | `uindex` | [UIndex](https://uindex.org/) | tolotp | [tolotp/qbittorrent-search-plugins-de-busqueda](https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda) | MIT | ✔ | 2026-03-05 | unknown | no |
-| `uniondht` | [UnionDHT](http://uniondht.org) | msagca | [msagca/qbittorrent-plugins](https://github.com/msagca/qbittorrent-plugins/) | unknown | ✔ | 2024-10-09 | unknown | yes |
+| `uniondht` | [UnionDHT](http://uniondht.org/) | msagca | [msagca/qbittorrent-plugins](https://github.com/msagca/qbittorrent-plugins/) | unknown | ✔ | 2024-10-09 | unknown | no |
 | `unionfansub` | [UnionFansub](https://torrent.unionfansub.com/) 🔒 | CrimsonKoba | [CrimsonKoba/qb-search-plugin](https://gitlab.com/CrimsonKoba/qb-search-plugin) | unknown | ✔ | 2024-01-05 | unknown | yes |
 | `xxxclubto` | [XXXClub](https://xxxclub.to) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-10-29 | unknown | yes |
 | `yggapi` | [YggAPI](https://yggapi.eu) 🔒 | Laiteux | [Laiteux/YggAPI-qBittorrent-Search-Plugin](https://github.com/Laiteux/YggAPI-qBittorrent-Search-Plugin) | unknown | ✔ | 2025-01-31 | unknown | yes |
