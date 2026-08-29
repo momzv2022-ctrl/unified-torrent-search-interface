@@ -1,0 +1,253 @@
+<!doctype html>
+<!--
+  The browser client. Served at / by `utsi serve`.
+
+  There is no app to install: a phone browser plus whatever torrent app already
+  handles magnet links is the whole chain. Deliberately one self-contained file
+  with no build step, no framework and no external asset, so it works over a
+  tunnel, on a plane, and inside a locked-down container.
+
+  The API key is kept in localStorage. That is fine for a personal instance and
+  is not a place to put a key other people share.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Torrent search</title>
+<!-- Inline, so the browser's automatic /favicon.ico request never happens. -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text x='1' y='13' font-size='13'>%F0%9F%94%8E</text></svg>">
+<style>
+  :root {
+    --bg: #fff; --fg: #16181d; --muted: #5c6370; --line: #e3e6ea;
+    --card: #f7f8fa; --accent: #2563eb; --warn: #b45309;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --fg: #e8eaed; --muted: #9aa2ad; --line: #2a2e35;
+      --card: #1c1f25; --accent: #7aa2f7; --warn: #e0a458;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0 auto; padding: 1rem; max-width: 46rem;
+    font: 16px/1.5 system-ui, -apple-system, sans-serif;
+    background: var(--bg); color: var(--fg);
+  }
+  h1 { font-size: 1.15rem; margin: 0 0 .25rem; }
+  .status { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; }
+  .warn { color: var(--warn); }
+  form { display: grid; gap: .5rem; margin-bottom: 1rem; }
+  .row { display: flex; gap: .5rem; }
+  .row > * { flex: 1; min-width: 0; }
+  input, select, button {
+    font: inherit; padding: .6rem .7rem; border-radius: .5rem;
+    border: 1px solid var(--line); background: var(--bg); color: var(--fg);
+  }
+  button { background: var(--accent); color: #fff; border-color: transparent; font-weight: 600; }
+  button:disabled { opacity: .55; }
+  details summary { cursor: pointer; color: var(--muted); font-size: .85rem; }
+  .msg { padding: .7rem .8rem; border-radius: .5rem; background: var(--card); margin-bottom: 1rem; }
+  .msg.error { color: var(--warn); }
+  ol { list-style: none; padding: 0; margin: 0; display: grid; gap: .6rem; }
+  li { background: var(--card); border: 1px solid var(--line); border-radius: .6rem; padding: .75rem; }
+  .name { font-weight: 600; overflow-wrap: anywhere; margin-bottom: .4rem; }
+  .chips { display: flex; flex-wrap: wrap; gap: .3rem; margin-bottom: .6rem; }
+  .chip {
+    font-size: .75rem; padding: .1rem .45rem; border-radius: .3rem;
+    background: var(--bg); border: 1px solid var(--line); color: var(--muted);
+  }
+  .chip.seed { color: #15803d; }
+  .links { display: flex; gap: .75rem; flex-wrap: wrap; align-items: center; }
+  .get {
+    display: inline-block; background: var(--accent); color: #fff; text-decoration: none;
+    padding: .45rem .9rem; border-radius: .45rem; font-weight: 600; font-size: .9rem;
+  }
+  .links a:not(.get) { color: var(--muted); font-size: .8rem; }
+  footer { margin-top: 2rem; color: var(--muted); font-size: .8rem; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<h1>Torrent search</h1>
+<div class="status" id="status">checking…</div>
+
+<form id="form">
+  <div class="row">
+    <input id="q" type="search" placeholder="Search, or leave empty to browse"
+           autocomplete="off" enterkeyhint="search" style="flex:3">
+    <button id="go" type="submit" style="flex:1">Search</button>
+  </div>
+  <div class="row">
+    <select id="cat" aria-label="Category">
+      <option value="">Any type</option>
+      <option value="video">Video</option>
+      <option value="audio">Audio</option>
+      <option value="software">Software</option>
+      <option value="document">Document</option>
+      <option value="image">Image</option>
+      <option value="archive">Archive</option>
+    </select>
+    <select id="sort" aria-label="Sort">
+      <option value="">Most seeders</option>
+      <option value="size">Largest</option>
+      <option value="recent">Newest</option>
+    </select>
+  </div>
+  <details id="keybox">
+    <summary>API key</summary>
+    <input id="key" type="password" placeholder="X-API-Key" autocomplete="current-password"
+           style="width:100%;margin-top:.5rem">
+  </details>
+</form>
+
+<div id="msg" hidden class="msg"></div>
+<ol id="results"></ol>
+
+<footer>
+  Tap <b>Get</b> to hand the magnet to your torrent app.
+  <a href="/healthz">status</a> &middot; <a href="/docs">API</a>
+</footer>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const KEY_STORE = "utsi.apikey";
+$("key").value = localStorage.getItem(KEY_STORE) || "";
+$("key").addEventListener("change", (e) => localStorage.setItem(KEY_STORE, e.target.value.trim()));
+
+const bytes = (n) => {
+  if (!n) return null;
+  const units = ["B", "KB", "MB", "GB", "TB"];
+  let i = 0;
+  while (n >= 1024 && i < units.length - 1) { n /= 1024; i++; }
+  return `${n < 10 && i > 0 ? n.toFixed(1) : Math.round(n)} ${units[i]}`;
+};
+
+function say(text, isError) {
+  const box = $("msg");
+  box.hidden = !text;
+  box.textContent = text || "";
+  box.classList.toggle("error", !!isError);
+}
+
+fetch("healthz").then((r) => r.json()).then((h) => {
+  const ready = h.engines_ready ?? 0;
+  $("status").innerHTML = ready
+    ? `${ready} of ${h.engines_configured} engines ready`
+    : `<span class="warn">no engines ready — check the server log</span>`;
+  if (h.anonymous) {
+    $("keybox").hidden = true;
+    $("status").innerHTML += ` &middot; <span class="warn">no key required</span>`;
+  } else if (!$("key").value) {
+    $("keybox").open = true;
+  }
+}).catch(() => { $("status").textContent = "cannot reach the server"; });
+
+$("form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const key = $("key").value.trim();
+  if (key) localStorage.setItem(KEY_STORE, key);
+
+  $("go").disabled = true;
+  say("Searching… this fans out to several sites and can take a few seconds.");
+  $("results").innerHTML = "";
+
+  const params = new URLSearchParams({
+    q: $("q").value, cat: $("cat").value, sort: $("sort").value, limit: "50",
+  });
+  try {
+    const response = await fetch(`api/v1/search?${params}`, {
+      headers: key ? { "X-API-Key": key } : {},
+    });
+    if (response.status === 401 || response.status === 403) {
+      $("keybox").open = true;
+      return say("The server rejected that API key.", true);
+    }
+    if (response.status === 429) {
+      const wait = response.headers.get("Retry-After") || "a moment";
+      return say(`Rate limited — try again in ${wait}s.`, true);
+    }
+    const data = await response.json();
+    if (!response.ok) return say(data.detail || data.error || "Search failed.", true);
+    render(data);
+  } catch (err) {
+    say(`Could not reach the server: ${err.message}`, true);
+  } finally {
+    $("go").disabled = false;
+  }
+});
+
+function render(data) {
+  if (!data.torrents.length) {
+    return say(data.count ? "No more results on this page." : "Nothing found.");
+  }
+  say(`${data.count} result${data.count === 1 ? "" : "s"} in ${(data.took_ms / 1000).toFixed(1)}s`
+      + (data.partial ? " (partial — some engines did not answer)" : ""));
+
+  const list = $("results");
+  for (const t of data.torrents) {
+    const chips = [
+      t.seeders != null ? { text: `▲ ${t.seeders}`, cls: "seed" } : null,
+      t.leechers != null ? { text: `▼ ${t.leechers}` } : null,
+      bytes(t.size_bytes) ? { text: bytes(t.size_bytes) } : null,
+      t.resolution ? { text: t.resolution } : null,
+      t.codec ? { text: t.codec } : null,
+      t.source ? { text: t.source } : null,
+      t.year ? { text: t.year } : null,
+      t.season ? { text: `S${t.season}${t.episode ? "E" + t.episode : ""}` } : null,
+    ].filter(Boolean);
+
+    const item = document.createElement("li");
+    const name = document.createElement("div");
+    name.className = "name";
+    name.textContent = t.name || t.infohash;
+    item.append(name);
+
+    const chipRow = document.createElement("div");
+    chipRow.className = "chips";
+    for (const chip of chips) {
+      const el = document.createElement("span");
+      el.className = `chip ${chip.cls || ""}`.trim();
+      el.textContent = chip.text;
+      chipRow.append(el);
+    }
+    if (t.sources) {
+      const el = document.createElement("span");
+      el.className = "chip";
+      el.textContent = t.sources.join(", ");
+      chipRow.append(el);
+    }
+    item.append(chipRow);
+
+    const links = document.createElement("div");
+    links.className = "links";
+    const get = document.createElement("a");
+    get.className = "get";
+    get.href = t.magnet;
+    get.textContent = "Get";
+    links.append(get);
+    // Present for engines that publish the file directly; TSP calls it
+    // "decisive for thin swarms" because it skips peer discovery entirely.
+    if (t.torrent_url) {
+      const direct = document.createElement("a");
+      direct.href = t.torrent_url;
+      direct.textContent = ".torrent";
+      links.append(direct);
+    }
+    if (t.description_url) {
+      const info = document.createElement("a");
+      info.href = t.description_url;
+      info.rel = "noreferrer noopener";
+      info.target = "_blank";
+      info.textContent = "details";
+      links.append(info);
+    }
+    item.append(links);
+    list.append(item);
+  }
+}
+</script>
+</body>
+</html>

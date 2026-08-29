@@ -1,0 +1,98 @@
+name: feed
+
+# Builds and signs the TGP engine feed — the file a deployed Worker reads to
+# keep its engine addresses and definitions current without being re-pasted.
+# See docs/tgp.md for the whole design, and worker/tools/feed.mjs for the tool.
+#
+# Nightly, because the feed carries a 14-day expiry on purpose: a rebuilt feed
+# is fourteen chances to notice this pipeline being stuck before deployments
+# start reporting a stale feed in /healthz. Two platform facts are designed
+# around rather than fought: scheduled workflows are best-effort and routinely
+# delayed, and GitHub disables them in public repos after 60 days without
+# repository activity. Both failure shapes degrade a deployed Worker to its
+# compiled-in engines, never to a broken search.
+#
+# The signing subkey is the TGP_FEED_KEY repository secret. The root key that
+# blessed it never touches CI — see `node worker/tools/feed.mjs keygen`. Until
+# that secret exists this workflow skips, quietly and on purpose: an unsigned
+# feed is not a feed.
+
+on:
+  schedule:
+    - cron: "30 4 * * *"
+  push:
+    branches: [main]
+    paths:
+      - "feed/engines.json"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  # To dispatch the pages workflow after committing — see the last step.
+  actions: write
+
+# One feed build at a time, and never cancel one half-done — a scheduled
+# commit-back job races itself otherwise.
+concurrency:
+  group: feed
+  cancel-in-progress: false
+
+jobs:
+  sign:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Is the signing key provisioned?
+        id: provisioned
+        env:
+          TGP_FEED_KEY: ${{ secrets.TGP_FEED_KEY }}
+        run: |
+          if [ -n "$TGP_FEED_KEY" ] && [ -f feed/keyring.json ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "TGP_FEED_KEY or feed/keyring.json is missing — the feed stays unpublished." \
+                 "Run 'node worker/tools/feed.mjs keygen' locally and follow its instructions." \
+                 >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      # The same gate a release gets: the descriptors about to be signed must
+      # reproduce the golden rows, and the whole worker suite must be green.
+      - name: Tests
+        if: steps.provisioned.outputs.ready == 'true'
+        run: node --test worker/tests/*.test.mjs
+
+      - name: Validate and replay the descriptors
+        run: node worker/tools/feed.mjs check
+
+      - name: Build and sign
+        if: steps.provisioned.outputs.ready == 'true'
+        env:
+          TGP_FEED_KEY: ${{ secrets.TGP_FEED_KEY }}
+        run: node worker/tools/feed.mjs build
+
+      - name: Commit and publish
+        if: steps.provisioned.outputs.ready == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add feed/feed.json feed/feed.json.sig feed/serial
+          git commit -m "chore(feed): nightly rebuild and re-sign"
+          # A scheduled job can race a human push; rebase rather than fail.
+          git pull --rebase origin main
+          git push
+
+      # A push made with the workflow's own token does not fire push-triggered
+      # workflows — GitHub's loop prevention — so the commit above would sit on
+      # main while Pages kept serving yesterday's feed. Learned the direct way:
+      # the very first signed feed 404ed on Pages for exactly this reason. An
+      # explicit dispatch is not subject to that rule.
+      - name: Ask Pages to republish the feed
+        if: steps.provisioned.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main

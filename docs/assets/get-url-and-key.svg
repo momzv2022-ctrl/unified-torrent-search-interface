@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="52" viewBox="0 0 480 52" role="img" aria-label="Get free qBittorrent plugin / API key and URL">
+  <!-- The README's one button. Cloudflare's orange, the same #f6821f the setup
+       page uses for the thing to press, drawn here rather than fetched from a
+       badge service so the README depends on nothing outside the repository. -->
+  <rect width="480" height="52" rx="8" fill="#f6821f"/>
+  <text x="240" y="32" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="600"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">Get free qBittorrent plugin / API key and URL</text>
+</svg>

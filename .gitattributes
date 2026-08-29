@@ -1,0 +1,8 @@
+# The Worker, its tests and its build compare bytes: the golden search fixture is
+# a byte-for-byte string compare, and build.mjs looks for exact lines like `URL = ""`.
+# A CRLF checkout breaks both, so pin the working tree to LF on every platform.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
