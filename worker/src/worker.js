@@ -63,7 +63,7 @@ const SETUP_UNTIL = 0;
 
 // Bumped when the behaviour changes. `/healthz` reports it, and compares it
 // with the version the project publishes, so a Worker can tell you it is old.
-const VERSION = "0.4.2";
+const VERSION = "0.5.0";
 
 // Where `/healthz` looks for "is there a newer version". Reached from
 // `/healthz` only, never from a search, and never fatal: if it does not answer
@@ -108,7 +108,7 @@ const DEFAULT_FEED_URL = "https://momzv2022-ctrl.github.io/unified-torrent-searc
  * empty the feed is dark and the Worker runs from its compiled-in engines,
  * exactly as it did before the feed existed.
  */
-const TGP_ROOT_KEYS = ["LZlXuSYk5LoZ5c2xBLYgJeqfP+e3DgLHTNikvUMQMms=", "qKGFB8cTPzuxiVZevH4Nt0p/j0Wsk1uQNN5BBfm6luY="];
+const TGP_ROOT_KEYS = ["VYRlLQ/Y+DU+44cEHQjYq+nI3qsaAIfdJiLinbFdMqk=", "zh8qGlQuDEofcklH0HZLHDZPnQ1MXncRAIu3/mWXKRk="];
 
 // ═══════════════════════════════════════════════════════════════════════════
 // 2. CONFIGURATION

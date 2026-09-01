@@ -1,12 +1,12 @@
 {
   "tgp_keyring_version": 1,
-  "issued_at": "2026-08-17T07:13:30Z",
+  "issued_at": "2026-09-01T10:04:02Z",
   "subkeys": [
     {
-      "key_id": "ci-2026-08",
-      "public_key": "is7qa/PpRri4Q+KzmlURrZ4g7s2cQwW9Ym4chnRidoM=",
-      "not_before": "2026-08-17T07:13:30Z",
-      "not_after": "2028-08-17T07:13:30Z"
+      "key_id": "ci-2026-09",
+      "public_key": "tsi6UY7liRBywwxmxRvTxTJEdGdjI8xDOEKvK/Co8Kc=",
+      "not_before": "2026-09-01T10:04:02Z",
+      "not_after": "2028-09-01T10:04:02Z"
     }
   ]
 }
