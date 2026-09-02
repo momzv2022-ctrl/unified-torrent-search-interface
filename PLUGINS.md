@@ -4,7 +4,7 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-09-01T04:14:29Z`
+- registry generated: `2026-09-02T04:16:45Z`
 - qbittorrent/search-plugins pinned at: `474d2f9d956ea7bf0819f9e846983a6178ea4510`
 - nova3 runtime pinned at: `fe4506e8c6af67cd49720b8254d7b97fe5504a69`
 
