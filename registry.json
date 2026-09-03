@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-02T04:16:45Z",
+  "generated_at": "2026-09-03T05:34:39Z",
   "plugin_repo_ref": "474d2f9d956ea7bf0819f9e846983a6178ea4510",
   "runtime": {
     "repo": "qbittorrent/qBittorrent",
-    "ref": "fe4506e8c6af67cd49720b8254d7b97fe5504a69",
-    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/fe4506e8c6af67cd49720b8254d7b97fe5504a69/src/searchengine/nova3",
+    "ref": "af5a6b6cb301f1dae707b351621fef3f2d6cccf3",
+    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/af5a6b6cb301f1dae707b351621fef3f2d6cccf3/src/searchengine/nova3",
     "files": {
+      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
       "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
       "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
-      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
-      "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
-      "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209"
+      "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
+      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002"
     }
   },
   "plugins": [
@@ -1296,7 +1296,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/magnetdl.py",
       "source": "wiki",
       "site": "MagnetDL with categories",
-      "site_url": "http://www.magnetdl.com/",
+      "site_url": "https://www.magnetdl.com",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent/",
       "version": "2.0",
@@ -1308,8 +1308,10 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "a1cc2b920f1a9c94e902aa0361d1f57fcf372bb6a84c1f8c608e66c48f15f4e3",
+      "hosts": [
+        "www.magnetdl.com"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -1319,7 +1321,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "maxitorrent",
@@ -2429,7 +2431,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/thepiratebay.py",
       "source": "wiki",
       "site": "ThePirateBay with categories",
-      "site_url": "https://thepiratebay.org/",
+      "site_url": "https://thepiratebay.org",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent",
       "version": "2.0",
@@ -2441,8 +2443,20 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "58e4672890ae3d769dbcbdef8cf29205b24a4a2a38562d32c9c6a9f68c3128a5",
+      "hosts": [
+        "9.rarbg.me",
+        "9.rarbg.to",
+        "apibay.org",
+        "open.stealth.si",
+        "p4p.arenabg.com",
+        "thepiratebay.org",
+        "tracker.coppersurfer.tk",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.tiny-vps.com",
+        "tracker.torrent.eu.org"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -2452,7 +2466,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "therarbg",
@@ -2733,7 +2747,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/torrentdownload.py",
       "source": "wiki",
       "site": "TorrentDownload with categories",
-      "site_url": "https://torrentdownload.info/",
+      "site_url": "https://www.torrentdownload.info",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent/",
       "version": "2.0",
@@ -2745,8 +2759,10 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "a77676406966dffd1f93485fe6c9548a462e0e93629003d773273f8389f7889f",
+      "hosts": [
+        "www.torrentdownload.info"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -2756,7 +2772,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "torrentdownloads",
