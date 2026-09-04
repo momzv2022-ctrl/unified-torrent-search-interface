@@ -4,8 +4,8 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-09-03T05:34:39Z`
-- qbittorrent/search-plugins pinned at: `474d2f9d956ea7bf0819f9e846983a6178ea4510`
+- registry generated: `2026-09-04T04:15:12Z`
+- qbittorrent/search-plugins pinned at: `6ad16c1180caef498807e63a8c057e46a77626d0`
 - nova3 runtime pinned at: `af5a6b6cb301f1dae707b351621fef3f2d6cccf3`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
