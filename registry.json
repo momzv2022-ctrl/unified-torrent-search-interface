@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-12T04:14:36Z",
-  "plugin_repo_ref": "6ad16c1180caef498807e63a8c057e46a77626d0",
+  "generated_at": "2026-09-15T09:18:59Z",
+  "plugin_repo_ref": "543f1546377139ec7a51fc9fc85d3e9c0af2be07",
   "runtime": {
     "repo": "qbittorrent/qBittorrent",
-    "ref": "3c4409d1a204a8b7d878727a538a8f4c5ae292f1",
-    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/3c4409d1a204a8b7d878727a538a8f4c5ae292f1/src/searchengine/nova3",
+    "ref": "8d3997ac784e42c452a1226287b6b06639b04358",
+    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/8d3997ac784e42c452a1226287b6b06639b04358/src/searchengine/nova3",
     "files": {
-      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
+      "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d",
       "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
       "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
       "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
-      "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d"
+      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c"
     }
   },
   "plugins": [
@@ -795,7 +795,7 @@
     },
     {
       "id": "eztv",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/eztv.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/eztv.py",
       "source": "official",
       "site": "eztv",
       "site_url": "https://eztvx.to/",
@@ -1054,13 +1054,13 @@
     },
     {
       "id": "jackett",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/jackett.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/jackett.py",
       "source": "official",
       "site": "jackett",
       "site_url": "",
       "author": "qBittorrent",
       "repo": "https://github.com/qbittorrent/search-plugins",
-      "version": "4.10",
+      "version": "4.11",
       "last_update": "",
       "license": "GPL-2.0-or-later",
       "wiki_status": "ok",
@@ -1077,7 +1077,7 @@
         "tv"
       ],
       "link_kind": "magnet",
-      "pinned_sha256": "9718e87a1e29f8bc16effaf89413db9c57e3f6436440a9fd46c7de3ad1af9720",
+      "pinned_sha256": "6120cf2172e68086666a717a42cc7542dc1ec38f6bc417b5f522bbc38c67763c",
       "hosts": [
         "127.0.0.1",
         "github.com"
@@ -1191,7 +1191,7 @@
     },
     {
       "id": "limetorrents",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/limetorrents.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/limetorrents.py",
       "source": "official",
       "site": "limetorrents",
       "site_url": "https://www.limetorrents.lol",
@@ -1837,7 +1837,7 @@
     },
     {
       "id": "piratebay",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/piratebay.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/piratebay.py",
       "source": "official",
       "site": "piratebay",
       "site_url": "https://thepiratebay.org",
@@ -2236,7 +2236,7 @@
     },
     {
       "id": "solidtorrents",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/solidtorrents.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/solidtorrents.py",
       "source": "official",
       "site": "solidtorrents",
       "site_url": "https://solidtorrents.to",
@@ -2535,7 +2535,7 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": "f35cacefb92ea17379c3a9703780327ded0fb302565a9983139717fed2a5ad85",
+      "pinned_sha256": "e2538de8fdc9a1bdb13f4627c46d1276ed2263e17d4a4e41bd8a198c9307a729",
       "hosts": [
         "toloka.to"
       ],
@@ -2584,7 +2584,7 @@
     },
     {
       "id": "torlock",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torlock.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/torlock.py",
       "source": "official",
       "site": "torlock",
       "site_url": "https://www.torlock.com",
@@ -2856,7 +2856,7 @@
     },
     {
       "id": "torrentproject",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torrentproject.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/torrentproject.py",
       "source": "official",
       "site": "torrentproject",
       "site_url": "https://torrentproject.com.se",
@@ -2888,7 +2888,7 @@
     },
     {
       "id": "torrentscsv",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torrentscsv.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/543f1546377139ec7a51fc9fc85d3e9c0af2be07/nova3/engines/torrentscsv.py",
       "source": "official",
       "site": "torrentscsv",
       "site_url": "https://torrents-csv.com",
