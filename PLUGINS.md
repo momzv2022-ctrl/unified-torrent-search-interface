@@ -4,9 +4,9 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-09-12T04:14:36Z`
-- qbittorrent/search-plugins pinned at: `6ad16c1180caef498807e63a8c057e46a77626d0`
-- nova3 runtime pinned at: `3c4409d1a204a8b7d878727a538a8f4c5ae292f1`
+- registry generated: `2026-09-15T09:18:59Z`
+- qbittorrent/search-plugins pinned at: `543f1546377139ec7a51fc9fc85d3e9c0af2be07`
+- nova3 runtime pinned at: `8d3997ac784e42c452a1226287b6b06639b04358`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
 The wiki states that `❗` and `✖` plugins "will result in the slowdown and
