@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-12T04:14:36Z",
-  "plugin_repo_ref": "6ad16c1180caef498807e63a8c057e46a77626d0",
+  "generated_at": "2026-09-19T08:42:09Z",
+  "plugin_repo_ref": "76270545a3b136f03232d85ae1efe99b4fa75484",
   "runtime": {
     "repo": "qbittorrent/qBittorrent",
-    "ref": "3c4409d1a204a8b7d878727a538a8f4c5ae292f1",
-    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/3c4409d1a204a8b7d878727a538a8f4c5ae292f1/src/searchengine/nova3",
+    "ref": "9b0e9311f3e8aa511e46605d7e1a156e101adac9",
+    "base_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/9b0e9311f3e8aa511e46605d7e1a156e101adac9/src/searchengine/nova3",
     "files": {
-      "helpers.py": "a0f72007139d53d751cb5080d9223a2028e58e681e25d4b33674f71d3b10a53c",
+      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
+      "helpers.py": "fb9aa0c5f107f0b2b85dcde0e123bcc8270762b491a4c779ecdc63682b97423f",
       "novaprinter.py": "edab674061496d5a787ac8aa8a858cf40c3f2dbebf5ce041467a683833eefece",
       "nova2.py": "c34fceb2f59d04ac15403bc6fef731acb4b6b422ebc1804322ada7680791c209",
-      "socks.py": "80af424d5bf0271e23f27328e34909a28d2fbdc01f1575da6c02ade64bbd3002",
       "nova2dl.py": "e768b069bec74d82c8ab496fe8143ac76411a82e9953dd2929ae4414bd0fc89d"
     }
   },
@@ -795,7 +795,7 @@
     },
     {
       "id": "eztv",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/eztv.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/eztv.py",
       "source": "official",
       "site": "eztv",
       "site_url": "https://eztvx.to/",
@@ -893,14 +893,14 @@
     },
     {
       "id": "fitgirl_repacks",
-      "url": "https://raw.githubusercontent.com/Bioux1/qbtSearchPlugins/main/fitgirl_repacks.py",
+      "url": "https://raw.githubusercontent.com/afalvarezsite/qbtFitGirl-search/main/fitgirl_repacks.py",
       "source": "wiki",
       "site": "FitGirl Repacks",
       "site_url": "https://fitgirl-repacks.site/",
-      "author": "Bioux1",
-      "repo": "https://github.com/Bioux1/qbtSearchPlugins",
-      "version": "1.1",
-      "last_update": "2025-05-01",
+      "author": "afalvarezsite",
+      "repo": "https://github.com/afalvarezsite/qbtFitGirl-search",
+      "version": "3.3",
+      "last_update": "2026-09-16",
       "license": "unknown",
       "wiki_status": "ok",
       "private": false,
@@ -908,10 +908,15 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": "3285f800eac78beb6bec8ad0503d34966abcea36ecbf802048e87a46b6965bd2",
+      "pinned_sha256": "6e6c2ba27d0dbb9c99f9483e5430fe5fc96714d66dead164b914265677bb050e",
       "hosts": [
+        "explodie.org",
         "fitgirl-repacks.site",
-        "hydralinks.cloud"
+        "open.stealth.si",
+        "opentor.net",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.torrent.eu.org"
       ],
       "health": {
         "score": 0.5,
@@ -921,8 +926,8 @@
         "rows": null,
         "consecutive_failures": 0
       },
-      "enabled": true,
-      "notes": "✔ qbt 5.1.0 / Python 3.13.3"
+      "enabled": false,
+      "notes": "✔ qbt 4.1.0+ / Python 3.7+ | static scan: [deny] denied-import:18 socket"
     },
     {
       "id": "gazellegames",
@@ -1054,13 +1059,13 @@
     },
     {
       "id": "jackett",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/jackett.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/jackett.py",
       "source": "official",
       "site": "jackett",
       "site_url": "",
       "author": "qBittorrent",
       "repo": "https://github.com/qbittorrent/search-plugins",
-      "version": "4.10",
+      "version": "4.12",
       "last_update": "",
       "license": "GPL-2.0-or-later",
       "wiki_status": "ok",
@@ -1077,7 +1082,7 @@
         "tv"
       ],
       "link_kind": "magnet",
-      "pinned_sha256": "9718e87a1e29f8bc16effaf89413db9c57e3f6436440a9fd46c7de3ad1af9720",
+      "pinned_sha256": "441bfb2eca06c67bf76fee613f052fd214399d37472e8f35a92039fc5adcac7b",
       "hosts": [
         "127.0.0.1",
         "github.com"
@@ -1191,7 +1196,7 @@
     },
     {
       "id": "limetorrents",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/limetorrents.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/limetorrents.py",
       "source": "official",
       "site": "limetorrents",
       "site_url": "https://www.limetorrents.lol",
@@ -1837,7 +1842,7 @@
     },
     {
       "id": "piratebay",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/piratebay.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/piratebay.py",
       "source": "official",
       "site": "piratebay",
       "site_url": "https://thepiratebay.org",
@@ -2236,7 +2241,7 @@
     },
     {
       "id": "solidtorrents",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/solidtorrents.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/solidtorrents.py",
       "source": "official",
       "site": "solidtorrents",
       "site_url": "https://solidtorrents.to",
@@ -2429,7 +2434,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/thepiratebay.py",
       "source": "wiki",
       "site": "ThePirateBay with categories",
-      "site_url": "https://thepiratebay.org/",
+      "site_url": "https://thepiratebay.org",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent",
       "version": "2.0",
@@ -2441,8 +2446,20 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "58e4672890ae3d769dbcbdef8cf29205b24a4a2a38562d32c9c6a9f68c3128a5",
+      "hosts": [
+        "9.rarbg.me",
+        "9.rarbg.to",
+        "apibay.org",
+        "open.stealth.si",
+        "p4p.arenabg.com",
+        "thepiratebay.org",
+        "tracker.coppersurfer.tk",
+        "tracker.openbittorrent.com",
+        "tracker.opentrackr.org",
+        "tracker.tiny-vps.com",
+        "tracker.torrent.eu.org"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -2452,7 +2469,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "therarbg",
@@ -2535,7 +2552,7 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": "f35cacefb92ea17379c3a9703780327ded0fb302565a9983139717fed2a5ad85",
+      "pinned_sha256": "e2538de8fdc9a1bdb13f4627c46d1276ed2263e17d4a4e41bd8a198c9307a729",
       "hosts": [
         "toloka.to"
       ],
@@ -2584,7 +2601,7 @@
     },
     {
       "id": "torlock",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torlock.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/torlock.py",
       "source": "official",
       "site": "torlock",
       "site_url": "https://www.torlock.com",
@@ -2733,7 +2750,7 @@
       "url": "https://Scare.ca/dl/qBittorrent/torrentdownload.py",
       "source": "wiki",
       "site": "TorrentDownload with categories",
-      "site_url": "https://torrentdownload.info/",
+      "site_url": "https://www.torrentdownload.info",
       "author": "Scare!",
       "repo": "https://Scare.ca/dl/qBittorrent/",
       "version": "2.0",
@@ -2745,8 +2762,10 @@
         "all"
       ],
       "link_kind": "unknown",
-      "pinned_sha256": null,
-      "hosts": [],
+      "pinned_sha256": "a77676406966dffd1f93485fe6c9548a462e0e93629003d773273f8389f7889f",
+      "hosts": [
+        "www.torrentdownload.info"
+      ],
       "health": {
         "score": 0.5,
         "last_ok": null,
@@ -2756,7 +2775,7 @@
         "consecutive_failures": 0
       },
       "enabled": false,
-      "notes": "✔ qbt 4.4.4 / Python 3.8.10 | unreachable"
+      "notes": "✔ qbt 4.4.4 / Python 3.8.10"
     },
     {
       "id": "torrentdownloads",
@@ -2856,7 +2875,7 @@
     },
     {
       "id": "torrentproject",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torrentproject.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/torrentproject.py",
       "source": "official",
       "site": "torrentproject",
       "site_url": "https://torrentproject.com.se",
@@ -2888,7 +2907,7 @@
     },
     {
       "id": "torrentscsv",
-      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/6ad16c1180caef498807e63a8c057e46a77626d0/nova3/engines/torrentscsv.py",
+      "url": "https://raw.githubusercontent.com/qbittorrent/search-plugins/76270545a3b136f03232d85ae1efe99b4fa75484/nova3/engines/torrentscsv.py",
       "source": "official",
       "site": "torrentscsv",
       "site_url": "https://torrents-csv.com",
@@ -2927,6 +2946,39 @@
       },
       "enabled": true,
       "notes": ""
+    },
+    {
+      "id": "tr4ker",
+      "url": "https://raw.githubusercontent.com/Apologieze/qbittorrent-tr4ket-plugin/refs/heads/main/tr4ker.py",
+      "source": "wiki",
+      "site": "TR4KER",
+      "site_url": "https://tr4ker.net/",
+      "author": "Apologieze",
+      "repo": "https://github.com/Apologieze/qbittorrent-tr4ket-plugin",
+      "version": "1.00",
+      "last_update": "2026-09-11",
+      "license": "unknown",
+      "wiki_status": "ok",
+      "private": true,
+      "categories": [
+        "all"
+      ],
+      "link_kind": "unknown",
+      "pinned_sha256": "6a3fb3d4f792429674e2d0ff4bd6d462e0ad8a9a6f0f129165f4e348936a268b",
+      "hosts": [
+        "torznab.com",
+        "tr4ker.net"
+      ],
+      "health": {
+        "score": 0.5,
+        "last_ok": null,
+        "last_error": null,
+        "median_ms": null,
+        "rows": null,
+        "consecutive_failures": 0
+      },
+      "enabled": true,
+      "notes": "✔ qbt 5.x / Python 3.9+ Semi-private tracker, requires API key"
     },
     {
       "id": "traht",
