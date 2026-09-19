@@ -4,9 +4,9 @@ Every plugin below is **fetched from its author at runtime**. None of this
 code is stored in this repository — see the README for why that is a
 deliberate design constraint rather than an oversight.
 
-- registry generated: `2026-09-12T04:14:36Z`
-- qbittorrent/search-plugins pinned at: `6ad16c1180caef498807e63a8c057e46a77626d0`
-- nova3 runtime pinned at: `3c4409d1a204a8b7d878727a538a8f4c5ae292f1`
+- registry generated: `2026-09-19T08:42:09Z`
+- qbittorrent/search-plugins pinned at: `76270545a3b136f03232d85ae1efe99b4fa75484`
+- nova3 runtime pinned at: `9b0e9311f3e8aa511e46605d7e1a156e101adac9`
 
 `✔`/`❗`/`✖` are the community status glyphs from the qBittorrent wiki.
 The wiki states that `❗` and `✖` plugins "will result in the slowdown and
@@ -25,7 +25,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `torrentproject` | [torrentproject](https://torrentproject.com.se) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | needs_dl | yes |
 | `torrentscsv` | [torrentscsv](https://torrents-csv.com) | qBittorrent | [qbittorrent/search-plugins](https://github.com/qbittorrent/search-plugins) | GPL-2.0-or-later | ✔ | — | magnet | yes |
 
-## Community plugins (68 enabled / 94)
+## Community plugins (68 enabled / 95)
 
 | Plugin | Site | Author | Repository | Licence | Status | Updated | Link kind | Enabled |
 |---|---|---|---|---|:--:|---|---|:--:|
@@ -55,7 +55,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `esmeraldatorrent` | [esmeraldatorrent](https://esmeraldatorrent.com/) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-11-07 | unknown | yes |
 | `eztvx` | [EZTV](https://eztvx.to) | DrPurp | [DrPurp/eztvx-qbittorrent-plugin](https://github.com/DrPurp/eztvx-qbittorrent-plugin) | unknown | ✔ | 2026-04-18 | unknown | yes |
 | `filelist` | [FileList](https://filelist.io) 🔒 | RaresPNet | [RaresPNet/filelist_search_plugin](https://github.com/RaresPNet/filelist_search_plugin) | unknown | ✔ | 2026-03-25 | unknown | yes |
-| `fitgirl_repacks` | [FitGirl Repacks](https://fitgirl-repacks.site/) | Bioux1 | [Bioux1/qbtSearchPlugins](https://github.com/Bioux1/qbtSearchPlugins) | unknown | ✔ | 2025-05-01 | unknown | yes |
+| `fitgirl_repacks` | [FitGirl Repacks](https://fitgirl-repacks.site/) | afalvarezsite | [afalvarezsite/qbtFitGirl-search](https://github.com/afalvarezsite/qbtFitGirl-search) | unknown | ✔ | 2026-09-16 | unknown | no |
 | `gazellegames` | [GazelleGames](https://gazellegames.net) 🔒 | Ooggle | [Ooggle/qbittorrent-search-plugins](https://github.com/Ooggle/qbittorrent-search-plugins) | unknown | ✔ | 2022-10-07 | unknown | yes |
 | `glotorrents` | [GloTorrents](https://glodls.to/) | LightDestory | [LightDestory/qBittorrent-Search-Plugins](https://github.com/LightDestory/qBittorrent-Search-Plugins) | GPL-3.0 | ✔ | 2022-07-28 | unknown | yes |
 | `goggames` | [Gog-games](https://gog-games.to) | tolotp | [tolotp/qbittorrent-search-plugins-de-busqueda](https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda) | MIT | ❗ | 2026-03-10 | unknown | no |
@@ -98,7 +98,7 @@ malfunction of other plugins as well", so both are excluded by default.
 | `sukebei` | [Sukebei.Pantsu](https://sukebei.pantsu.cat/) | 4chenz | [4chenz/pantsu-plugin](https://github.com/4chenz/pantsu-plugin/) | unknown | ✖ | 2021-01-02 | unknown | no |
 | `sukebeisi` | [Sukebei (Nyaa)](https://sukebei.nyaa.si) | vt-idiot | [vt-idiot/qBit-SukebeiNyaa-plugin](https://github.com/vt-idiot/qBit-SukebeiNyaa-plugin) | unknown | ✔ | 2022-06-21 | unknown | no |
 | `tapochek` | [Tapochek](https://tapochek.net/) 🔒 | MjKey | [MjKey/qBT-SE](https://github.com/MjKey/qBT-SE) | unknown | ✔ | 2025-08-13 | unknown | no |
-| `thepiratebay` | [ThePirateBay with categories](https://thepiratebay.org/) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent) | unknown | ✔ | 2022-09-01 | unknown | no |
+| `thepiratebay` | [ThePirateBay with categories](https://thepiratebay.org) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent) | unknown | ✔ | 2022-09-01 | unknown | no |
 | `therarbg` | [The RarBg](https://therarbg.com) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-10-20 | unknown | yes |
 | `tokyotoshokan` | [Tokyo Toshokan](http://tokyotosho.info) | BrunoReX | [BrunoReX/qBittorrent-Search-Plugin-TokyoToshokan](https://github.com/BrunoReX/qBittorrent-Search-Plugin-TokyoToshokan) | unknown | ✔ | 2018-03-18 | unknown | yes |
 | `toloka_to` | [Гуртом — торрент-толока](https://toloka.to/) 🔒 | PlayDay | [source](https://github.com/playday3008) | unknown | ✔ | 2025-12-19 | unknown | yes |
@@ -106,10 +106,11 @@ malfunction of other plugins as well", so both are excluded by default.
 | `torrenflix` | [Torrenflix](https://torrenflix.com/) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-11-23 | unknown | no |
 | `torrent9` | [Torrent9](http://torent9.fr) | menegop | [menegop/qbfrench](https://raw.githubusercontent.com/menegop/qbfrench) | unknown | ✔ | 2023-01-01 | unknown | yes |
 | `torrentclaw` | [TorrentClaw](https://torrentclaw.com) | LightDestory | [LightDestory/qBittorrent-Search-Plugins](https://github.com/LightDestory/qBittorrent-Search-Plugins) | GPL-3.0 | ✔ | 2026-08-16 | unknown | no |
-| `torrentdownload` | [TorrentDownload with categories](https://torrentdownload.info/) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent/) | unknown | ✔ | 2022-09-07 | unknown | no |
+| `torrentdownload` | [TorrentDownload with categories](https://www.torrentdownload.info) | Scare! | [dl/qBittorrent](https://Scare.ca/dl/qBittorrent/) | unknown | ✔ | 2022-09-07 | unknown | no |
 | `torrentdownloads` | [Torrent Downloads Pro](https://torrentdownloads.pro) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2024-10-20 | unknown | yes |
 | `torrentgalaxy` | [TorrentGalaxy](https://torrentgalaxy.to) | Ni Ndogo | [source](https://github.com/nindogo) | unknown | ✔ | 2024-11-09 | unknown | yes |
 | `torrentleech` | [TorrentLeech](https://www.torrentleech.org) 🔒 | 444995 | [444995/qbit-search-plugins](https://github.com/444995/qbit-search-plugins) | unknown | ✔ | 2024-08-06 | unknown | yes |
+| `tr4ker` | [TR4KER](https://tr4ker.net/) 🔒 | Apologieze | [Apologieze/qbittorrent-tr4ket-plugin](https://github.com/Apologieze/qbittorrent-tr4ket-plugin) | unknown | ✔ | 2026-09-11 | unknown | yes |
 | `traht` | [TrahT](https://traht.org) | BurningMop | [BurningMop/qBittorrent-Search-Plugins](https://github.com/BurningMop/qBittorrent-Search-Plugins) | MIT | ✔ | 2023-12-27 | unknown | yes |
 | `tsukihime` | [TsukiHime](https://tsukihime.org) | dominc8 | [dominc8/qbittorrent-tsukihime-search-plugin](https://github.com/dominc8/qbittorrent-tsukihime-search-plugin) | unknown | ✔ | 2026-08-02 | unknown | no |
 | `uindex` | [UIndex](https://uindex.org/) | tolotp | [tolotp/qbittorrent-search-plugins-de-busqueda](https://github.com/tolotp/qbittorrent-search-plugins-de-busqueda) | MIT | ✔ | 2026-03-05 | unknown | no |
