@@ -1,5 +1,5 @@
 {
   "key_id": "ci-2026-09",
   "algorithm": "ed25519",
-  "signature": "qEd9imUya9J1qy+0ikvbSUlhFtPMBnnrP+gzCvEGKcjp4iCj+kEavV/jubyPwZ2/apSHlUeOmBdYclQEwS/eDg=="
+  "signature": "tgsmlts89ewAj2RwydUU5zMoHoeLpMW3h5dQrNR5klhuId7n44n9Jh5lCczV/H92O5szPsCebLxMAXGmQWhgAA=="
 }
